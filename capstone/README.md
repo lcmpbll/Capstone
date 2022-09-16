@@ -9,3 +9,7 @@ _Read thinking in React._
 * 2:30 - 3p
 _Research Hooks_
 
+* 3p - 4p
+_Research hook side effects_
+
+
