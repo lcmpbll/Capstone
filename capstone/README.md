@@ -22,7 +22,8 @@ _Research NoSQL_
 * 9a - 10a 
 _Continue reasearching NoSQL_
 
-
+* 10a - 11a
+_Read about differences between Firebase and AWS_
 
 
 
