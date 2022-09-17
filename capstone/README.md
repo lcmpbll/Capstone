@@ -1,6 +1,9 @@
 # Capstone
 
 ## By Liam Campbell
+## Technologies used
+* React
+* Javascript
 
 ## 9/16/22
 * 2p - 2:30
@@ -11,5 +14,15 @@ _Research Hooks_
 
 * 3p - 4p
 _Research hook side effects_
+
+* 4p - 5p
+_Research NoSQL_
+
+## 9/17/22
+* 9a - 10a 
+_Continue reasearching NoSQL_
+
+
+
 
 
