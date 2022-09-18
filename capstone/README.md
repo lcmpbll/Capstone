@@ -25,5 +25,10 @@ _Continue reasearching NoSQL_
 * 10a - 11a
 _Read about differences between Firebase and AWS_
 
+## 9/18/22
+* 930a - 10:15a
+_Research NoSQL data structure/ differences between SQL and NoSQL._ 
+
+
 
 
