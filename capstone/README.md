@@ -44,7 +44,7 @@ _&#8593; I will clean this up before final submission_
 >
 >_Read about differences between Firebase and AWS_
 >
->## 9/18/22 
+>## 9/18/22 3hr / 8hr total
 >
 >> 930a - 10:15a
 >
@@ -57,6 +57,10 @@ _&#8593; I will clean this up before final submission_
 > 10:45 - 11:45
 >
 >>_Make diagram_
+>
+>11:45 - 1230
+>
+>> _Build Dog, DogList, DogParkControl basic structure_
 
 
 
