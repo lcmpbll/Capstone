@@ -8,7 +8,7 @@
 * draw.io
 ## Capstone Proposal 
 
-_This project aims to make it easier to take your dog to the dog park by helping your dog to make friends. Here is the full [capstone proposal](https://docs.google.com/document/d/1yxRCpg8vTEHJAs1Qay7uP65t-RreGbJPicOqEb2ECiM/edit?usp=sharing)._
+_This project aims to make it easier to take your dog to the dog park by helping your dog to make friends. Here is the full [capstone proposal](./CapstonePropsal.md)._
 
 ## React Map
 
