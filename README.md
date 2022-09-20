@@ -16,6 +16,8 @@ _This project aims to make it easier to take your dog to the dog park by helping
 
 _&#8593; I will clean this up before final submission_
 
+# Research log
+
 >## 9/16/22  3hr
 >
 >> 2p - 2:30
