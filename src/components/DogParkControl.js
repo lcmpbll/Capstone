@@ -4,10 +4,12 @@ import NewDogForm from './NewDogForm';
 import DogDetail from './DogDetail';
 
 
+
 function DogParkControl(){
   const [mainDogList , setMainDogList ] = useState([]);
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
   const [selectedDog, setSelectedDog] = useState(null);
+  const [atTheParkList, setAtTheParkList] = useState([]);
   const handleClick = () => {
     if(selectedDog != null){
       setFormVisibleOnPage(false);
@@ -25,20 +27,25 @@ function DogParkControl(){
   const handleChangingSelectedDog = (id) => {
     const selection = mainDogList.filter(dog=> dog.id === id)[0];
     setSelectedDog(selection);
-    console.log(id);
+  }
+  const handleGoingToThePark = (id) => {
+    const dogGoingToPark = mainDogList.filter(dog => dog.id === id);
+    const newAtTheParkList = atTheParkList.concat(dogGoingToPark);
+    setAtTheParkList(newAtTheParkList);
+    console.log(newAtTheParkList);
+    
   }
   
   const handleAddingNewDogToList = (newDog) => {
     const newMainDogList = mainDogList.concat(newDog);
     setMainDogList(newMainDogList);
-    console.log(newDog);
     console.log(newMainDogList);
     setFormVisibleOnPage(false);
   }
   let currentlyVisibleState = null;
   let buttonText = null;
   if(selectedDog != null){
-    currentlyVisibleState = <DogDetail dog={selectedDog} onClickingDelete={handleDeletingDog} />
+    currentlyVisibleState = <DogDetail dog={selectedDog} onClickingDelete={handleDeletingDog} onClickingGo={handleGoingToThePark}/>
     buttonText= 'Return to dog list';
   } else if(formVisibleOnPage) {
     currentlyVisibleState = <NewDogForm onNewDogCreation={handleAddingNewDogToList} />
