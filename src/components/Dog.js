@@ -4,13 +4,14 @@ import PropTypes from 'prop-types'
 function Dog(props){
   return(
     <React.Fragment>
-      <div>
+      <div onClick = {() => props.whenDogClicked(props.id)} >
         <div>
           <h1>{props.dogName}</h1>
         </div>
         <div>
-          <h2>Dog size in lbs: {props.dogWeight}</h2>
-          <h2>Dog's gender:{props.dogSex}</h2>
+          <h4>Dog weight: {props.dogWeight}</h4>
+          <h4>Dog's gender:{props.dogSex}</h4>
+          
         </div>
         <div>
           <div> 
