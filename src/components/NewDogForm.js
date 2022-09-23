@@ -2,28 +2,44 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {v4} from 'uuid';
 
-function NewDogForm() {
+function NewDogForm(props) {
   const [dogLikesList, setDogLikesList] = useState({
     dogLikes: [], likesResponse: [],
   });
   const [dogSex, setDogSex] = useState({
-    selectedSex: '', dogSexResponse: '',
+    selectedSex: null, dogSexResponse: null,
   });
   
   const handleSexValueChange = (event) => {
-    const {selectedSexOption, checked} = event.target;
-    const { selectedSex } = dogSex;
-    console.log(`${selectedSexOption} is ${checked}`);
+    const {value, checked} = event.target;
+    const { selectedSexOption } = dogSex;
+    console.log(`${value} is ${checked}`);
     if(checked){
       setDogSex({
         dogSex: selectedSexOption,
       });
     } else {
       setDogSex({
-        dogSex: ''
+        dogSex: null,
       });
     }
   };
+  
+  // const onSexChange = (event) => {
+  //   const { value, checked } = event.target;
+  //   const { dogSex } = selectedSexOption;
+  //   console.log(`${value} is ${checked}`);
+  //   if(checked) {
+  //     setDogSex({
+  //       dogSex: event.target.dogSex.value
+  //     });
+  //   } else {
+  //     setDogSex({
+  //       dogSex: ' '
+  //     });
+  //   }
+  // }
+  
   const handleLikesListChange = (event) => {
     const { value, checked } = event.target;
     const { dogLikes } = dogLikesList;
@@ -83,22 +99,19 @@ function NewDogForm() {
       return dogAgeGroup;
     }
   }
-  onSexChange(event){
-    
-  }
   function handleNewDogFormSubmission(event) {
     event.preventDefault();
     props.onNewDogCreation({
       dogName: event.target.dogName.value,
-      dogWeight: event.target.dogWeight.value,
-      dogSize: calculateDogSize(dogWeight),
-      dogYears: event.target.dogYears.value,
-      dogMonths: event.target.dogMonths.value,
-      dogAge: calculateDogAge(dogYears, dogMonths),
-      dogAgeGroup: calculateDogAgeGroup(dogAge),
+      dogWeight: parseInt(event.target.dogWeight.value),
+      dogSize: calculateDogSize(parseInt(event.target.dogWeight.value)),
+      dogYears: parseInt(event.target.dogYears.value),
+      dogMonths: parseInt(event.target.dogMonths.value),
+      dogAge: calculateDogAge(parseInt(event.target.dogYears.value), parseInt(event.target.dogMonths.value)),
+      dogAgeGroup: calculateDogAgeGroup(calculateDogAge(parseInt(event.target.dogYears.value), parseInt(event.target.dogMonths.value))),
       dogSex: event.target.selectedSexOption.value,
       dogLikes: handleLikesListChange(event),
-      dogDisLikes: event.target.dogDisLikes.value === checked,
+      dogDisLikes: event.target.dogDisLikes.value,
       dogParks: event.target.dogParks.value,
       id: v4(),
     });
@@ -118,10 +131,10 @@ function NewDogForm() {
           <div className='radioSection'>
             <label htmlFor='dogSex'>Dog's gender:</label>
             <div className='radioButton'>
-              <input type='radio' value='Female' name='dogSex'checked={selectedSexOption === 'Female'} onChange={handleSexValueChange}/>Female
+              <input type='radio' value='Female' name='dogSex' onChange={handleSexValueChange}/>Female
             </div>
             <div className='radioButton'>
-              <input type='radio' value='Male' name='dogSex' checked={seletedSexOption === 'Male'} onChange={handleSexValueChange}/>Male
+              <input type='radio' value='Male' name='dogSex'  onChange={handleSexValueChange}/>Male
             </div>
           </div>
           <div className='checkBoxSelectionLikes row'>
@@ -144,5 +157,11 @@ function NewDogForm() {
     );
   }
 }
+
+NewDogForm.propTypes = {
+  onNewDogCreation: PropTypes.func,
+}
+
+
 
 export default NewDogForm;
