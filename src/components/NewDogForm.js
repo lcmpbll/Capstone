@@ -9,6 +9,9 @@ function NewDogForm(props) {
   const [selectedSex, setSelectedSex] = useState({
     dogSex: 'Female', dogSexResponse: 'Female',
   });
+  const [dogDislikesList, setDogDislikesList] = useState({
+    dogDislikes: [], dislikesResponse: [],
+  });
   
   const handleSexValueChange = (event) => {
     const {value, checked} = event.target;
@@ -25,9 +28,23 @@ function NewDogForm(props) {
     }
     return dogSex;
   };
-  
-
-  
+  const handleDislikesListChange = (event) => {
+    const { value, checked } = event.target;
+    const {dogDislikes } = dogDislikesList;
+    console.log(`${value} is ${checked}`);
+    if(checked) {
+      setDogDislikesList({
+        dogDislikes: [...dogDislikes, value],
+        dislikesResponse: [...dogDislikes, value],
+      });
+    } else {
+      setDogDislikesList({
+        dogDislikes: dogDislikes.filter((event) => event !== value),
+        dislikesResponse: dogDislikes.filter((event) => event !== value),
+      });
+    }
+    return dogDislikes;
+  }
   const handleLikesListChange = (event) => {
     const { value, checked } = event.target;
     const { dogLikes } = dogLikesList;
@@ -101,7 +118,7 @@ function NewDogForm(props) {
       dogSex: handleSexValueChange(event),
       dogLikes: handleLikesListChange(event),
      
-      dogDisLikes: event.target.dogDislikes.value,
+      dogDisLikes: handleDislikesListChange(event),
       dogParks: event.target.dogParks.value,
       id: v4(),
     });
@@ -128,7 +145,9 @@ function NewDogForm(props) {
               <input type='radio' value='Male' name='dogSex'  onChange={handleSexValueChange}/>Male
             </div>
           </div>
+          <br />
           <div className='checkBoxSelectionLikes row'>
+          <label htmlFor="DogLikes">My dog likes:</label>
             <div className='col-md-6'>
               <div className='form-check m-3'>
                 <input className='form-check-likes' type='checkbox' name='dogLikes' value='puppies' onChange={handleLikesListChange}/>
@@ -140,8 +159,23 @@ function NewDogForm(props) {
               </div>
             </div>
           </div>
-          <label htmlFor='dogDislikes'>My dog doesn't like:</label>
-          <input type='text' name='dogDislikes' placeholder="Things my dog doesn't like"/>
+          <br />
+          <div className='checkBoxSelectionDislikes row'>
+            <label htmlFor="DogDislikes">My dog doesn't like:</label>
+            <div className='col-md-6'>
+              <div className='form-check m-3'>
+                <input className='form-check-dislikes' type='checkbox' name='dogDislikes' value='puppies' onChange={handleDislikesListChange}/>
+                <label className='form-check-label'>Puppies</label>
+              </div>
+              <div className='form-check m-3'>
+                <input className='form-check-dislikes' type='checkbox' name='dogDislikes' value='children' onChange={handleDislikesListChange}/>
+                <label className='form-check-label'>Children</label>
+              </div>
+            </div>
+          </div>
+          <br />
+          {/* <label htmlFor='dogDislikes'>My dog doesn't like:</label>
+          <input type='text' name='dogDislikes' placeholder="Things my dog doesn't like"/> */}
           <label htmlFor='dogParks'>My dog's favorite Park:</label>
           <input type='text' name='dogParks' placeholder='Alberta Park' />
           <button type='submit' className='btn btn-default'>Submit</button>
