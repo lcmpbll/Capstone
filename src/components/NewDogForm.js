@@ -6,40 +6,27 @@ function NewDogForm(props) {
   const [dogLikesList, setDogLikesList] = useState({
     dogLikes: [], likesResponse: [],
   });
-  const [dogSex, setDogSex] = useState({
-    selectedSex: null, dogSexResponse: null,
+  const [selectedSex, setSelectedSex] = useState({
+    dogSex: 'Female', dogSexResponse: 'Female',
   });
   
   const handleSexValueChange = (event) => {
     const {value, checked} = event.target;
-    const { selectedSexOption } = dogSex;
+    const { dogSex } = selectedSex;
     console.log(`${value} is ${checked}`);
     if(checked){
-      setDogSex({
-        dogSex: selectedSexOption,
+      setSelectedSex({
+        dogSex: value,
       });
     } else {
-      setDogSex({
-        dogSex: null,
+      setSelectedSex({
+        dogSex: ' ',
       });
     }
     return dogSex;
   };
   
-  // const onSexChange = (event) => {
-  //   const { value, checked } = event.target;
-  //   const { dogSex } = selectedSexOption;
-  //   console.log(`${value} is ${checked}`);
-  //   if(checked) {
-  //     setDogSex({
-  //       dogSex: event.target.dogSex.value
-  //     });
-  //   } else {
-  //     setDogSex({
-  //       dogSex: ' '
-  //     });
-  //   }
-  // }
+
   
   const handleLikesListChange = (event) => {
     const { value, checked } = event.target;

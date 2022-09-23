@@ -9,6 +9,7 @@ function DogParkControl(){
   const handleAddingNewDogToList = (newDog) => {
     const newMainDogList = mainDogList.concat(newDog);
     setMainDogList(newMainDogList);
+    console.log(newDog);
   }
   return( 
     <React.Fragment>
