@@ -1,5 +1,6 @@
 import React from 'react';
 import Dog from './Dog';
+import PropTypes from 'prop-types';
 const mainDogList = [
   {
     dogName: 'Dolph',
@@ -29,17 +30,21 @@ const mainDogList = [
     id: 'jdfhuhe222'
   }
 ]
-function DogList(){
+function DogList(props){
   return (
     <React.Fragment>
-      {mainDogList.map((dog) =>
+      {Object.values(props.dogList).map((dog) =>
       <div className='card' key={dog.id}>
-        <Dog dogName={dog.dogName}
+        <Dog 
+        whenDogClicked={props.onDogSelection}
+        dogName={dog.dogName}
         dogSex={dog.dogSex}
         dogWeight={dog.dogWeight}
         dogDislikes={dog.dogDislikes}
         dogLikes={dog.dogLikes}
         dogParks={dog.dogParks}
+        id={dog.id}
+        key={dog.id}
         />
       </div>
       )}

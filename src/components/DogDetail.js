@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Dog from './Dog';
+
 
 function DogDetail(props){
-  const {dog, onClickingDelete} = props;
+  const {dog, onClickingDelete, onClickingEdit} = props;
 
   return(
     <React.Fragment>
@@ -16,25 +16,20 @@ function DogDetail(props){
       <hr/>
       <div className='likes'>
         <h2>Likes</h2>
+        {dog.dogLikes}
         <hr/>
-        {dog.dogLikes.map((likes, index) => (
-          <tr key={index}>{likes}</tr>
-        ))}
       </div>
       <div className='dislikes'>
         <h2>Dislikes</h2>
+        {dog.dogDislikes}
         <hr/>
-        {dog.dogDislikes.map((dislikes, index) => (
-          <tr key={index}>{dislikes}</tr>
-        ))}
       </div>
       <div className='parks'>
         <h2>Parks</h2>
+       {dog.dogParks}
         <hr />
-        {dog.dogParks.map((parks, index) => (
-          <tr key={index}>{parks}</tr> //Eventually this key will be an id and link to a specific park. Perhaps add parks button as well. 
-        ))}
       </div>
+      <br/>
       <div className='buttonControl'>
         <button onClick={onClickingEdit}>Edit Dog</button>
         <button onClick={()=> onClickingDelete(dog.id)}>Remove Dog</button>
