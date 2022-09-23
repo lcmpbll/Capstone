@@ -119,7 +119,8 @@ function NewDogForm(props) {
       dogLikes: handleLikesListChange(event),
      
       dogDislikes: handleDislikesListChange(event),
-      dogParks: event.target.dogParks.value,
+      dogParks: 'Alberta Park',
+      atThePark: false,
       id: v4(),
     });
   }
@@ -173,9 +174,9 @@ function NewDogForm(props) {
               </div>
             </div>
           </div>
-          <br />
-          <label htmlFor='dogParks'>My dog's favorite Park:</label>
-          <input type='text' name='dogParks' placeholder='Alberta Park' />
+           <br />
+          {/* <label htmlFor='dogParks'>My dog's favorite Park:</label>
+          <input type='text' name='dogParks' placeholder='Alberta Park' /> */} 
           <button type='submit' className='btn btn-default'>Submit</button>
         </form>
       </React.Fragment>
