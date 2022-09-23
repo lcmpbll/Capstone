@@ -40,7 +40,7 @@ function Dog(props){
 
 Dog.propTypes = {
   dogName: PropTypes.string.isRequired,
-  dogSize: PropTypes.string.isRequired,
+  dogSize: PropTypes.string,
   dogWeight: PropTypes.number,
   dogAge: PropTypes.number,
   dogAgeGroup: PropTypes.string,
