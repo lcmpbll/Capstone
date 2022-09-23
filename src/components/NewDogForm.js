@@ -174,8 +174,6 @@ function NewDogForm(props) {
             </div>
           </div>
           <br />
-          {/* <label htmlFor='dogDislikes'>My dog doesn't like:</label>
-          <input type='text' name='dogDislikes' placeholder="Things my dog doesn't like"/> */}
           <label htmlFor='dogParks'>My dog's favorite Park:</label>
           <input type='text' name='dogParks' placeholder='Alberta Park' />
           <button type='submit' className='btn btn-default'>Submit</button>
