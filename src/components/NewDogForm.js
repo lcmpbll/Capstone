@@ -1,10 +1,30 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import {v4} from 'uuid';
 
 function NewDogForm() {
   const [dogLikesList, setDogLikesList] = useState({
     dogLikes: [], likesResponse: [],
   });
+  const [dogSex, setDogSex] = useState({
+    selectedSex: '', dogSexResponse: '',
+  });
+  const handleLikesListChange = (event) => {
+    const { value, checked } = event.target;
+    const { dogLikes } = dogLikesList;
+    console.log(`${value} is ${checked}`);
+    if(checked) {
+      setDogLikesList({
+        dogLikes: [...dogLikes, value],
+        likesResponse: [...dogLikes, value],
+      });
+    } else {
+      setDogLikesList({
+        dogLikes: dogLikes.filter((event) => event !== value),
+        likesResponse: dogLikes.filter((event) => event !== value),
+      });
+    }
+  };
   function calculateDogSize(dogLbs) {
     if(dogLbs <= 22){
       const dogSize = 'small';
@@ -48,6 +68,9 @@ function NewDogForm() {
       return dogAgeGroup;
     }
   }
+  onSexChange(event){
+    
+  }
   function handleNewDogFormSubmission(event) {
     event.preventDefault();
     props.onNewDogCreation({
@@ -58,8 +81,36 @@ function NewDogForm() {
       dogMonths: event.target.dogMonths.value,
       dogAge: calculateDogAge(dogYears, dogMonths),
       dogAgeGroup: calculateDogAgeGroup(dogAge),
-      dogSex: event.target.dogSex.value,
-      dogLikes: event.target
-    })
+      dogSex: selectedSexOption,
+      dogLikes: handleLikesListChange(event),
+      dogDisLikes: event.target.dogDisLikes.value === checked,
+      dogParks: event.target.dogParks.value,
+      id: v4(),
+    });
+    return (
+      <React.Fragment>
+        <form onSubmit={handleNewDogFormSubmission}>
+          <label htmlFor="dogName">Dog's Name:</label>
+          <input type='text' name='dogName' placeholder="Your dog's name" />
+          <br/>
+          <label htmlFor='dogWeight'>Dog's weight in lbs:</label>
+          <input type='number' name='dogWeight' placeholder='lbs'/>
+          <br/>
+          <label htmlFor='dogYears'>Your dog's age:</label>
+          <input type='number' name='dogMonths' placeholder='months'/>
+          <input type='number' name='dogYears' placeholder='years'/>
+          <br/>
+          <div className='radioSection'>
+            <label htmlFor='dogSex'>Dog's gender:</label>
+            <div className='radioButton'>
+              <input type='radio' value='Female' name='dogSex'checked={selectedSexOption === 'Female'} onSexChange={onSexValueChange}/>Female
+            </div>
+            <div className='radioButton'>
+              <input type='radio' value='Male' name='dogSex' checked={seletedSexOption === 'Male'} onSexChange={onSexValueChange}/>Male
+            </div>
+          </div>
+        </form>
+      </React.Fragment>
+    )
   }
 }
