@@ -23,16 +23,16 @@ function DogParkControl(){
     setSelectedDog(null);
   }
   const handleChangingSelectedDog = (id) => {
-    const selection = mainDogList.gilter(dog=> dog.id === id)[0];
+    const selection = mainDogList.filter(dog=> dog.id === id)[0];
     setSelectedDog(selection);
-    console.log('click');
+    console.log(id);
   }
   
   const handleAddingNewDogToList = (newDog) => {
     const newMainDogList = mainDogList.concat(newDog);
     setMainDogList(newMainDogList);
     console.log(newDog);
-    console.log(mainDogList);
+    console.log(newMainDogList);
     setFormVisibleOnPage(false);
   }
   let currentlyVisibleState = null;
