@@ -23,6 +23,7 @@ function NewDogForm(props) {
         dogSex: null,
       });
     }
+    return dogSex;
   };
   
   // const onSexChange = (event) => {
@@ -55,6 +56,7 @@ function NewDogForm(props) {
         likesResponse: dogLikes.filter((event) => event !== value),
       });
     }
+    return dogLikes;
   };
   function calculateDogSize(dogLbs) {
     if(dogLbs <= 22){
@@ -109,15 +111,17 @@ function NewDogForm(props) {
       dogMonths: parseInt(event.target.dogMonths.value),
       dogAge: calculateDogAge(parseInt(event.target.dogYears.value), parseInt(event.target.dogMonths.value)),
       dogAgeGroup: calculateDogAgeGroup(calculateDogAge(parseInt(event.target.dogYears.value), parseInt(event.target.dogMonths.value))),
-      dogSex: event.target.selectedSexOption.value,
+      dogSex: handleSexValueChange(event),
       dogLikes: handleLikesListChange(event),
-      dogDisLikes: event.target.dogDisLikes.value,
+     
+      dogDisLikes: event.target.dogDislikes.value,
       dogParks: event.target.dogParks.value,
       id: v4(),
     });
+  }
     return (
       <React.Fragment>
-        <form onSubmit={handleNewDogFormSubmission}>
+         <form onSubmit={handleNewDogFormSubmission}>
           <label htmlFor="dogName">Dog's Name:</label>
           <input type='text' name='dogName' placeholder="Your dog's name" />
           <br/>
@@ -151,11 +155,13 @@ function NewDogForm(props) {
           </div>
           <label htmlFor='dogDislikes'>My dog doesn't like:</label>
           <input type='text' name='dogDislikes' placeholder="Things my dog doesn't like"/>
+          <label htmlFor='dogParks'>My dog's favorite Park:</label>
+          <input type='text' name='dogParks' placeholder='Alberta Park' />
           <button type='submit' className='btn btn-default'>Submit</button>
         </form>
       </React.Fragment>
     );
-  }
+  
 }
 
 NewDogForm.propTypes = {
