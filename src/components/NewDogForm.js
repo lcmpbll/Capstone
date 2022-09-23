@@ -118,7 +118,7 @@ function NewDogForm(props) {
       dogSex: handleSexValueChange(event),
       dogLikes: handleLikesListChange(event),
      
-      dogDisLikes: handleDislikesListChange(event),
+      dogDislikes: handleDislikesListChange(event),
       dogParks: event.target.dogParks.value,
       id: v4(),
     });
