@@ -9,6 +9,21 @@ function NewDogForm() {
   const [dogSex, setDogSex] = useState({
     selectedSex: '', dogSexResponse: '',
   });
+  
+  const handleSexValueChange = (event) => {
+    const {selectedSexOption, checked} = event.target;
+    const { selectedSex } = dogSex;
+    console.log(`${selectedSexOption} is ${checked}`);
+    if(checked){
+      setDogSex({
+        dogSex: selectedSexOption,
+      });
+    } else {
+      setDogSex({
+        dogSex: ''
+      });
+    }
+  };
   const handleLikesListChange = (event) => {
     const { value, checked } = event.target;
     const { dogLikes } = dogLikesList;
@@ -81,7 +96,7 @@ function NewDogForm() {
       dogMonths: event.target.dogMonths.value,
       dogAge: calculateDogAge(dogYears, dogMonths),
       dogAgeGroup: calculateDogAgeGroup(dogAge),
-      dogSex: selectedSexOption,
+      dogSex: event.target.selectedSexOption.value,
       dogLikes: handleLikesListChange(event),
       dogDisLikes: event.target.dogDisLikes.value === checked,
       dogParks: event.target.dogParks.value,
@@ -103,14 +118,31 @@ function NewDogForm() {
           <div className='radioSection'>
             <label htmlFor='dogSex'>Dog's gender:</label>
             <div className='radioButton'>
-              <input type='radio' value='Female' name='dogSex'checked={selectedSexOption === 'Female'} onSexChange={onSexValueChange}/>Female
+              <input type='radio' value='Female' name='dogSex'checked={selectedSexOption === 'Female'} onChange={handleSexValueChange}/>Female
             </div>
             <div className='radioButton'>
-              <input type='radio' value='Male' name='dogSex' checked={seletedSexOption === 'Male'} onSexChange={onSexValueChange}/>Male
+              <input type='radio' value='Male' name='dogSex' checked={seletedSexOption === 'Male'} onChange={handleSexValueChange}/>Male
             </div>
           </div>
+          <div className='checkBoxSelectionLikes row'>
+            <div className='col-md-6'>
+              <div className='form-check m-3'>
+                <input className='form-check-likes' type='checkbox' name='dogLikes' value='puppies' onChange={handleLikesListChange}/>
+                <label className='form-check-label'>Puppies</label>
+              </div>
+              <div className='form-check m-3'>
+                <input className='form-check-likes' type='checkbox' name='dogLikes' value='children' onChange={handleLikesListChange}/>
+                <label className='form-check-label'>Children</label>
+              </div>
+            </div>
+          </div>
+          <label htmlFor='dogDislikes'>My dog doesn't like:</label>
+          <input type='text' name='dogDislikes' placeholder="Things my dog doesn't like"/>
+          <button type='submit' className='btn btn-default'>Submit</button>
         </form>
       </React.Fragment>
-    )
+    );
   }
 }
+
+export default NewDogForm;
