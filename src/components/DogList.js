@@ -40,11 +40,16 @@ function DogList(){
         dogDislikes={dog.dogDislikes}
         dogLikes={dog.dogLikes}
         dogParks={dog.dogParks}
-        key={dog.id}/>
+        />
       </div>
       )}
     </React.Fragment>
   );
 }
+
+DogList.propTypes = {
+  dogList: PropTypes.object,
+  onDogSelection: PropTypes.func
+};
 
 export default DogList;
