@@ -49,6 +49,7 @@ Dog.propTypes = {
   dogLikes: PropTypes.array,
   dogDislikes: PropTypes.array,
   dogParks: PropTypes.array,   //may switch to obj
+  atThePark: PropTypes.bool,
   id: PropTypes.string,
   
   
