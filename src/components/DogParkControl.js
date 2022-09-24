@@ -10,6 +10,7 @@ function DogParkControl(){
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
   const [selectedDog, setSelectedDog] = useState(null);
   const [atTheParkList, setAtTheParkList] = useState([]);
+  const [atThePark, setAtThePark] = useState(false);
   const handleClick = () => {
     if(selectedDog != null){
       setFormVisibleOnPage(false);
@@ -27,10 +28,15 @@ function DogParkControl(){
   const handleChangingSelectedDog = (id) => {
     const selection = mainDogList.filter(dog=> dog.id === id)[0];
     setSelectedDog(selection);
+    console.log(selection);
   }
   const handleGoingToThePark = (id) => {
     const dogGoingToPark = mainDogList.filter(dog => dog.id === id);
     const newAtTheParkList = atTheParkList.concat(dogGoingToPark);
+    if(dogGoingToPark.atThePark === false){
+      dogGoingToPark.atThePark.setAtThePark(true);
+      console.log(dogGoingToPark);
+    }
     setAtTheParkList(newAtTheParkList);
     console.log(newAtTheParkList);
     
