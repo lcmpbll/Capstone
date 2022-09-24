@@ -63,6 +63,12 @@ _&#8593; I will clean this up before final submission_
 >11:45 - 1230
 >
 >> _Build Dog, DogList, DogParkControl basic structure_
+>
+>## 9/24/22
+>
+>2p - 
+>
+>>AWS tutorial
 
 
 
