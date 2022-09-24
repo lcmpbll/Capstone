@@ -68,7 +68,7 @@ _&#8593; I will clean this up before final submission_
 >
 >2p - 
 >
->>AWS tutorial
+>>AWS tutorial, add amplify, display list, use api to call to database
 
 
 
