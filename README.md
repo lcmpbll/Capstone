@@ -64,11 +64,16 @@ _&#8593; I will clean this up before final submission_
 >
 >> _Build Dog, DogList, DogParkControl basic structure_
 >
->## 9/24/22
+>## 9/21/22 8hrs / 16 hrs total
 >
->2p - 
+>> _Working in app, can create, new dogs with traits, and delete them, can send them to the park._
 >
->>AWS tutorial, add amplify, display list, use api to call to database, still working on this tutorial, should be able to host images but they are just popping up as broken img files. 
+>## 9/24/22 2hrs / 18 hrs total
+>
+>2p - 4p
+>
+>> _AWS tutorial, add amplify, display list, use api to call to database, still working on this tutorial, should be able to host images but they are just popping up as broken img files._
+>
 
 
 
