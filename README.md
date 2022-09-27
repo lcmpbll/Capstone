@@ -72,7 +72,8 @@ _&#8593; I will clean this up before final submission_
 >
 >2p - 4p
 >
->> _AWS tutorial, add amplify, display list, use api to call to database, still working on this tutorial, should be able to host images but they are just popping up as broken img files._
+>> _AWS tutorial, add amplify, display list, use api to call to database, still working on this tutorial, should be able to host images but they are just popping up as broken img files._ 
+>
 >
 
 
