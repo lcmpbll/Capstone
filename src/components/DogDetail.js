@@ -37,6 +37,7 @@ function DogDetail(props){
       <div className='buttonControl'>
         <button onClick={onClickingEdit}>Edit Dog</button>
         <button onClick={()=> onClickingDelete(dog.id)}>Remove Dog</button>
+        
       </div>
     </React.Fragment>
   )
