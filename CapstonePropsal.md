@@ -16,7 +16,7 @@
 
 ## Tools, frameworks, and libraries
 
-* AWS - DynaamoDB
+* AWS - DynamoDB, Amplify, Graphql
 
 * React
 
