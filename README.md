@@ -76,9 +76,9 @@ _&#8593; I will clean this up before final submission_
 >
 >## 9/27/22 
 >
->7p
+>7p - 8p
 >
->>Read about users in Amplify
+>>Read about users in Amplify, set up at the park list.
 
 
 

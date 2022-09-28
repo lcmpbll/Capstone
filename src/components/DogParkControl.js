@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DogList from './DogList';
 import NewDogForm from './NewDogForm';
 import DogDetail from './DogDetail';
+import AtThePark from './AtThePark';
 
 
 
@@ -9,7 +10,7 @@ function DogParkControl(){
   const [mainDogList , setMainDogList ] = useState([]);
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
   const [selectedDog, setSelectedDog] = useState(null);
-  const [atTheParkList, setAtTheParkList] = useState([]);
+  const [mainAtTheParkList, setMainAtTheParkList] = useState([]);
   const [atThePark, setAtThePark] = useState(false);
   const handleClick = () => {
     if(selectedDog != null){
@@ -32,13 +33,13 @@ function DogParkControl(){
   }
   const handleGoingToThePark = (id) => {
     const dogGoingToPark = mainDogList.filter(dog => dog.id === id);
-    const newAtTheParkList = atTheParkList.concat(dogGoingToPark);
+    const newMainAtTheParkList = mainAtTheParkList.concat(dogGoingToPark);
     if(dogGoingToPark.atThePark === false){
       dogGoingToPark.atThePark.setAtThePark(true);
       console.log(dogGoingToPark);
     }
-    setAtTheParkList(newAtTheParkList);
-    console.log(newAtTheParkList);
+    setMainAtTheParkList(newMainAtTheParkList);
+    console.log(mainAtTheParkList);
     
   }
   
@@ -48,6 +49,7 @@ function DogParkControl(){
     console.log(newMainDogList);
     setFormVisibleOnPage(false);
   }
+  let parkList = null;
   let currentlyVisibleState = null;
   let buttonText = null;
   if(selectedDog != null){
@@ -58,11 +60,13 @@ function DogParkControl(){
     buttonText = 'Return to dog list';
   } else {
     currentlyVisibleState = <DogList onDogSelection={handleChangingSelectedDog} dogList={mainDogList} />
+      parkList = <AtThePark atTheParkList={mainAtTheParkList} />
     buttonText = 'Add Dog';
   }
   return(
     <React.Fragment>
       {currentlyVisibleState}
+      {parkList}
       <button onClick={handleClick}>{buttonText}</button>
     </React.Fragment>
   );
