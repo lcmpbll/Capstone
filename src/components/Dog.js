@@ -10,7 +10,7 @@ function Dog(props){
         </div>
         <div>
           <h4>Dog weight: {props.dogWeight}</h4>
-          <h4>Dog's gender:{props.dogSex}</h4>
+          <h4>Dog's gender: {props.dogSex}</h4>
           
         </div>
         <div>
@@ -48,8 +48,9 @@ Dog.propTypes = {
   dogSex: PropTypes.string,
   dogLikes: PropTypes.array,
   dogDislikes: PropTypes.array,
-  dogParks: PropTypes.array,   //may switch to obj
+  dogParks: PropTypes.string,   //may switch to obj
   atThePark: PropTypes.bool,
+  ownerId: PropTypes.string,
   id: PropTypes.string,
   
   
