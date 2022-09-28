@@ -33,7 +33,8 @@ const mainDogList = [
 function DogList(props){
   return (
     <React.Fragment>
-      {Object.values(props.dogList).map((dog) =>
+      <h1>All Dogs</h1>
+      {(Object.values(props.dogList).map((dog) =>
       <div className='card' key={dog.id}>
         <Dog 
         whenDogClicked={props.onDogSelection}
@@ -47,13 +48,13 @@ function DogList(props){
         key={dog.id}
         />
       </div>
-      )}
+      ))}
     </React.Fragment>
   );
 }
 
 DogList.propTypes = {
-  dogList: PropTypes.object,
+  dogList: PropTypes.array,
   onDogSelection: PropTypes.func
 };
 
