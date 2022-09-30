@@ -48,7 +48,7 @@ function DogParkControl(){
   //hoping I can reuse for actually editing dogs. 
   const handleEditingDogInList = (editedDog) => {
     const editedDogList = mainDogList
-      .filter(dog => dog.id != editedDog.id)
+      .filter(dog => dog.id !== editedDog.id)
       .concat(editedDog);
     setMainDogList(editedDogList);
     setFriendingDog(false);
@@ -70,7 +70,7 @@ function DogParkControl(){
   let currentlyVisibleState = null;
   let buttonText = null;
   if(friendingDog === true){
-    currentlyVisibleState = <FriendingDog dog={selectedDog} dogList={mainDogList} onEditDog={handleEditingDogInList} />
+    currentlyVisibleState = <FriendingDog dog={selectedDog} dogList={mainDogList} onFriendsSelection={handleEditingDogInList} />
   } else if(selectedDog != null){
     currentlyVisibleState = <DogDetail dog={selectedDog} onClickingFriend={handleFriendingClick} onClickingDelete={handleDeletingDog} onClickingGo={handleGoingToThePark}/>
     buttonText= 'Return to dog list';
