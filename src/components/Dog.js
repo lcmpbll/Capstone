@@ -34,6 +34,12 @@ function Dog(props){
             <li>{props.dogParks}</li>
           </ul>
         </div>
+        <div>
+          <h3>Friends</h3>
+          <ul>
+            <li>{props.friendsArray}</li>
+          </ul>
+        </div>
       </div>
     </React.Fragment>
   );
@@ -51,6 +57,7 @@ Dog.propTypes = {
   dogParks: PropTypes.string,   //may switch to obj
   atThePark: PropTypes.bool,
   ownerId: PropTypes.string,
+  friendsArray: PropTypes.array,
   id: PropTypes.string,
   
   
