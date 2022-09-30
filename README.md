@@ -74,11 +74,27 @@ _&#8593; I will clean this up before final submission_
 >
 >> _AWS tutorial, add amplify, display list, use api to call to database, still working on this tutorial, should be able to host images but they are just popping up as broken img files._ 
 >
->## 9/27/22 
+>## 9/27/22 1 hr / 19 hrs total
 >
 >7p - 8p
 >
 >>Read about users in Amplify, set up at the park list.
+>
+>## 9/30/22 
+>
+>7:15a 
+>
+>> _Plan for day, refocus on MVP_
+>
+> - [x] A user can enter information about their dog, i.e. size, name. likes and dislikes...
+>
+> - [x] A user can say they are taking their dog to the park
+>
+> - [] A user can list other dogs as their dog's friends and see when they are at the park.
+>   
+>   - Add element to dogs that will take an array of the dog's friend's ids.
+>   - Have a spot to display this array.
+>   - Only show dogs at the park that are friends with the selected dog. 
 
 
 
