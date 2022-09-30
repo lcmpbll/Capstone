@@ -44,6 +44,7 @@ function DogList(props){
         dogDislikes={dog.dogDislikes}
         dogLikes={dog.dogLikes}
         dogParks={dog.dogParks}
+        dogFriends={dog.friendsArray}
         id={dog.id}
         key={dog.id}
         />
