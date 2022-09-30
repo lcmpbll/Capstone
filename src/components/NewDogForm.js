@@ -117,6 +117,7 @@ function NewDogForm(props) {
       dogAgeGroup: calculateDogAgeGroup(calculateDogAge(parseInt(event.target.dogYears.value), parseInt(event.target.dogMonths.value))),
       dogSex: handleSexValueChange(event),
       dogLikes: handleLikesListChange(event),
+      friendsArray: [],
      
       dogDislikes: handleDislikesListChange(event),
       dogParks: 'Alberta Park',
