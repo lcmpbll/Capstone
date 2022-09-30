@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 
 function DogDetail(props){
-  const {dog, onClickingDelete, onClickingEdit, onClickingGo} = props;
-  const [atThePark, setAtThePark] = useState(false);
-  const handleSettingAtPark = (dog) => {
-    setAtThePark(!atThePark);
-  }
+  const {dog, onClickingDelete, onClickingFriend, onClickingGo} = props;
+  // const [atThePark, setAtThePark] = useState(false);
+  // const handleSettingAtPark = (dog) => {
+  //   setAtThePark(!atThePark);
+  // }
   return(
     <React.Fragment>
       <h1>{dog.dogName}</h1>
@@ -30,12 +30,12 @@ function DogDetail(props){
       <div className='parks'>
         <h2>Parks</h2>
        {dog.dogParks}
-       <button onClick={() => onClickingGo(dog.id)} onClickButton={handleSettingAtPark}>Go to the park</button>
+       <button onClick={() => onClickingGo(dog.id)} >Go to the park</button>
         <hr />
       </div>
       <br/>
       <div className='buttonControl'>
-        <button onClick={onClickingEdit}>Edit Dog</button>
+        <button onClick={() => onClickingFriend(dog.id)}>Make some Dog friends</button>
         <button onClick={()=> onClickingDelete(dog.id)}>Remove Dog</button>
         
       </div>
