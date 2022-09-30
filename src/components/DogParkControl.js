@@ -3,6 +3,7 @@ import DogList from './DogList';
 import NewDogForm from './NewDogForm';
 import DogDetail from './DogDetail';
 import AtThePark from './AtThePark';
+import FriendingDog from './FriendingDog';
 
 
 
@@ -11,12 +12,14 @@ function DogParkControl(){
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
   const [selectedDog, setSelectedDog] = useState(null);
   const [mainAtTheParkList, setMainAtTheParkList] = useState([]);
-  const [atThePark, setAtThePark] = useState(false);
+  // const [atThePark, setAtThePark] = useState(false);
+  const [friendingDog, setFriendingDog] = useState(false);
+  
   const handleClick = () => {
     if(selectedDog != null){
       setFormVisibleOnPage(false);
       setSelectedDog(null);
-      // setEditingDog(false);
+      setFriendingDog(false);
     } else {
       setFormVisibleOnPage(!formVisibleOnPage);
     }
@@ -42,6 +45,16 @@ function DogParkControl(){
     console.log(mainAtTheParkList);
     
   }
+  //hoping I can reuse for actually editing dogs. 
+  const handleEditingDogInList = (editedDog) => {
+    const editedDogList = mainDogList
+      .filter(dog => dog.id != editedDog.id)
+      .concat(editedDog);
+    setMainDogList(editedDogList);
+    setFriendingDog(false);
+  }
+
+  
   
   const handleAddingNewDogToList = (newDog) => {
     const newMainDogList = mainDogList.concat(newDog);
@@ -49,11 +62,17 @@ function DogParkControl(){
     console.log(newMainDogList);
     setFormVisibleOnPage(false);
   }
+  
+  const handleFriendingClick = () => {
+    setFriendingDog(true);
+  }
   let parkList = null;
   let currentlyVisibleState = null;
   let buttonText = null;
-  if(selectedDog != null){
-    currentlyVisibleState = <DogDetail dog={selectedDog} onClickingDelete={handleDeletingDog} onClickingGo={handleGoingToThePark}/>
+  if(friendingDog === true){
+    currentlyVisibleState = <FriendingDog dog={selectedDog} dogList={mainDogList} onEditDog={handleEditingDogInList} />
+  } else if(selectedDog != null){
+    currentlyVisibleState = <DogDetail dog={selectedDog} onClickingFriend={handleFriendingClick} onClickingDelete={handleDeletingDog} onClickingGo={handleGoingToThePark}/>
     buttonText= 'Return to dog list';
   } else if(formVisibleOnPage) {
     currentlyVisibleState = <NewDogForm onNewDogCreation={handleAddingNewDogToList} />
