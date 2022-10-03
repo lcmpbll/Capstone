@@ -80,9 +80,9 @@ _&#8593; I will clean this up before final submission_
 >
 >>Read about users in Amplify, set up at the park list.
 >
->## 9/30/22 
+>## 9/30/22 3 hrs / 22 hrs total
 >
->7:15a 
+>7:15a - 10:15a 
 >
 >> _Plan for day, refocus on MVP_
 >
@@ -95,6 +95,12 @@ _&#8593; I will clean this up before final submission_
 >   - Add element to dogs that will take an array of the dog's friend's ids.
 >   - Have a spot to display this array.
 >   - Only show dogs at the park that are friends with the selected dog. 
+>
+>## 10/2/22 
+>
+> 8:15p - 
+>
+>>_Impliment AWS, amplify, dynamodb_
 
 
 
