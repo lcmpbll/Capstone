@@ -94,7 +94,7 @@ _&#8593; I will clean this up before final submission_
 >   
 >   - Add element to dogs that will take an array of the dog's friend's ids.
 >   - Have a spot to display this array.
->   - Only show dogs at the park that are friends with the selected dog. 
+<!-- >   - Only show dogs at the park that are friends with the selected dog?  -->
 >
 >## 10/2/22 2 hrs/ 24 hrs total
 >
