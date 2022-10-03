@@ -96,11 +96,11 @@ _&#8593; I will clean this up before final submission_
 >   - Have a spot to display this array.
 >   - Only show dogs at the park that are friends with the selected dog. 
 >
->## 10/2/22 
+>## 10/2/22 2 hrs/ 24 hrs total
 >
-> 8:15p - 
+> 8:15p - 10:15 
 >
->>_Impliment AWS, amplify, dynamodb_
+>>_Impliment AWS, amplify, dynamodb, in process_
 
 
 
