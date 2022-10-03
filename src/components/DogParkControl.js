@@ -71,6 +71,7 @@ function DogParkControl(){
   let buttonText = null;
   if(friendingDog === true){
     currentlyVisibleState = <FriendingDog dog={selectedDog} dogList={mainDogList} onFriendsSelection={handleEditingDogInList} />
+    buttonText="Return to dog list"
   } else if(selectedDog != null){
     currentlyVisibleState = <DogDetail dog={selectedDog} onClickingFriend={handleFriendingClick} onClickingDelete={handleDeletingDog} onClickingGo={handleGoingToThePark}/>
     buttonText= 'Return to dog list';
