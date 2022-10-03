@@ -9,13 +9,15 @@ type Dog @model @auth(rules: [
   id: ID!
   dogName: String!
   dogSize: String
+  dogYears: Int
+  dogMonths: Int
   dogWeight: Int
-  dogAge: Int
+  dogAge: Double
   dogAgeGroup: String
   dogSex: String
   dogLikes: [String]
   dogDislikes: [String]
   dogParks: String
   ownerId: String
-  friendsArray: [Dog]
+  friendsArray: [String]
 }
