@@ -18,17 +18,18 @@ function DogParkControl(){
   const [mainAtTheParkList, setMainAtTheParkList] = useState([]);
   const [friendingDog, setFriendingDog] = useState(false);
   
+  
+  //  AWS Api fetch 
+  
+  
   // useEffect(() => {
   //   fetchDogs();
   // }, []);
   
   // async function fetchDogs() {
   //   const apiData =  await API.graphql({ query: listDogs });
-  //   console.log(apiData);
   //   const apiDogs = apiData.data.listDogs.items;
-  //   console.log(apiDogs);
   //   setMainDogList(apiDogs);
-    
   // }
   
   // const handleAddingNewDogToList = async (newDog) => {
