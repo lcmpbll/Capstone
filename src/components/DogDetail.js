@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 
 
 function DogDetail(props){
-  const {dog, onClickingDelete, onClickingFriend, onClickingGo} = props;
-  
+  const {dog, dogList, onClickingDelete, onClickingFriend, onClickingGo} = props;
+  const displayedFriends = dogList.filter(function(dogFriends){
+    return dog.friendsArray.indexOf(dogFriends.id) !== -1;
+  });
+  console.log(displayedFriends);
   //Styling
   const detailsStyles = {
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
-    // justifyContent: 'center',
-    marginLeft: '450px',
+    justifyContent: 'center',
+    // marginLeft: '450px',
     fontWeight: 'bold',
   }
   return(
@@ -21,7 +24,7 @@ function DogDetail(props){
         <div>
           <h2>Stats:</h2>
           <p>Size: {dog.dogSize}</p>
-          <p>Weight: {dog.dogWeight}</p>
+          <p>Weight: {dog.dogWeight} lbs</p>
           <p>Age: {dog.dogAgeGroup}</p>
         </div>
         <hr/>
@@ -37,7 +40,7 @@ function DogDetail(props){
         </div>
         <div className='friends'>
           <h2>Friends</h2>
-          {dog.friendsArray}
+          {displayedFriends.map((dog) => dog.dogName)}
           <hr/>
         </div>
         <div className='parks'>
