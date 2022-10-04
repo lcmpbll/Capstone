@@ -87,9 +87,11 @@ function NewDogForm(props) {
       return dogSize;
     }
   }
-  function calculateDogAge(dogMonths, dogYears){
-    const dogAge = dogYears + (dogMonths/12);
-    return dogAge * 100;
+  function calculateDogAge(dogYears, dogMonths){
+    const dogAge = (dogYears + (dogMonths/12));
+    console.log(dogAge);
+    const dogIntAge = Math.floor(dogAge * 100);
+    return dogIntAge;
   }
   function calculateDogAgeGroup(dogYrs){
     if(dogYrs <= 35){
@@ -155,15 +157,18 @@ function NewDogForm(props) {
         <div style={newDogFormStyle}>
           <div style={innerDogFormStyle}>
           <form onSubmit={handleNewDogFormSubmission}>
-            <label htmlFor="dogName">Dog's Name:</label>
+            <label htmlFor="dogName">Dog's Name:</label> &nbsp;
             <input type='text' name='dogName' placeholder="Your dog's name" />
             <br/>
-            <label htmlFor='dogWeight'>Dog's weight in lbs:</label>
+            <br/>
+            <label htmlFor='dogWeight'>Dog's weight in lbs:</label> &nbsp;
             <input type='number' name='dogWeight' placeholder='lbs'/>
             <br/>
-            <label htmlFor='dogYears'>Your dog's age:</label>
-            <input type='number' name='dogMonths' placeholder='months'/>
+            <br/>
+            <label htmlFor='dogYears'>Dog's age:</label> &nbsp;
+            <input type='number' name='dogMonths' placeholder='months'/> &nbsp;
             <input type='number' name='dogYears' placeholder='years'/>
+            <br/>
             <br/>
             <div className='radioSection'>
               <label htmlFor='dogSex'>Dog's gender:</label>
@@ -176,7 +181,7 @@ function NewDogForm(props) {
             </div>
             <br />
             <div className='checkBoxSelectionLikes row'>
-              <label htmlFor="DogLikes">My dog likes:</label>
+              <label htmlFor="DogLikes"> Dog's likes:</label>
                 <div className='col-md-6'>
                   <div className='form-check m-3'>
                     <input className='form-check-likes' type='checkbox' name='dogLikes' value='puppies' onChange={handleLikesListChange}/>
@@ -190,7 +195,7 @@ function NewDogForm(props) {
               </div>
               <br />
               <div className='checkBoxSelectionDislikes row'>
-                <label htmlFor="DogDislikes">My dog doesn't like:</label>
+                <label htmlFor="DogDislikes">Dog's dislikes:</label>
                 <div className='col-md-6'>
                   <div className='form-check m-3'>
                     <input className='form-check-dislikes' type='checkbox' name='dogDislikes' value='puppies' onChange={handleDislikesListChange}/>
@@ -201,8 +206,9 @@ function NewDogForm(props) {
                     <label className='form-check-label'>Children</label>
                   </div>
                 </div>
+                <br/>
                 <div className='form-check m-3'>
-                  <label>Find Friends for your dog:</label>
+                  <label>Add your dog's friends:</label> &nbsp;
                   <select onChange={handleFriendChange}>
                     <option value='none'>--Select a friend for your dog--</option>
                     {Object.entries(dogList).map((dogs) => <option key={dogs.id} value={dogs.id}>{dogs.dogName}</option>)}
