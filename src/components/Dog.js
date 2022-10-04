@@ -1,22 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-
+import profileImg from '../Img/dogMedia.jpeg';
 function Dog(props){
+  
+  //Styles
+  const mainDogStyles = {
+    display: 'flex',
+    width: '350px',
+    height: '200px',
+    border: '2px solid-black'
+  }
+  const statsStyle = {
+    margin: 'auto',
+    marginRight: '5px',
+  }
+  
+  const profileImageStyles = {
+    margin: 'auto',
+  }
+  
+  const picAndStatsStyles = {
+    display: 'flex',
+    marginTop: '10px'
+  }
+  
+  const nameStyles = {
+    position: 'relative',
+    marginRight: '5px',
+    justifyContent: 'center',
+  }
   return(
     <React.Fragment>
-      <div onClick = {() => props.whenDogClicked(props.id)} >
-        <div>
-          <h1>{props.dogName}</h1>
+      <div style={mainDogStyles} onClick = {() => props.whenDogClicked(props.id)} >
+        <div style={nameStyles}>
+          <h3>{props.dogName}</h3>
         </div>
-        <div>
-          <h4>Dog weight: {props.dogWeight}</h4>
-          <h4>Dog's gender: {props.dogSex}</h4>
-          
+        <div style={picAndStatsStyles}>
+          <div style={statsStyle}>
+            <p>Size: {props.dogSize}</p>
+            <p>Gender: {props.dogSex}</p>
+            <p>Age group: {props.dogAgeGroup}</p>
+          </div>
+          <div style={profileImageStyles}>
+            <img src={profileImg}  width='100px' alt="dog profile image placeholder"/>
+          </div>
         </div>
-        <div>
-          <div> 
+      </div>
+        {/* <div> */}
+          {/* <div>  */}
             {/* may change to tables */}
-            <h3>Dog's dislikes</h3>
+            {/* <h3>Dog's dislikes</h3>
             <ul>
               <li>{props.dogDislikes}</li>
             </ul>
@@ -40,7 +73,7 @@ function Dog(props){
             <li>{props.friendsArray}</li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 }
