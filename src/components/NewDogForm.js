@@ -88,8 +88,8 @@ function NewDogForm(props) {
     }
   }
   function calculateDogAge(dogMonths, dogYears){
-    const dogAge = dogYears + (dogMonths/12) * 100;
-    return dogAge;
+    const dogAge = dogYears + (dogMonths/12);
+    return dogAge * 100;
   }
   function calculateDogAgeGroup(dogYrs){
     if(dogYrs <= 35){
@@ -115,6 +115,9 @@ function NewDogForm(props) {
       return dogAgeGroup;
     }
   }
+  
+  //Gather input from form
+  
   function handleNewDogFormSubmission(event) {
     event.preventDefault();
     props.onNewDogCreation({
@@ -134,68 +137,85 @@ function NewDogForm(props) {
       id: v4(),
     });
   }
+  
+  //Form styles
+  
+  const newDogFormStyle ={
+    justifyContent: 'center',
+    marginLeft: '200px',
+    marginTop: '20px',
+    width: '100%',
+    // backgroundColor: 'skyBlue'
+  }
+  const innerDogFormStyle = {
+    margin: '10px'
+  }
     return (
       <React.Fragment>
-         <form onSubmit={handleNewDogFormSubmission}>
-          <label htmlFor="dogName">Dog's Name:</label>
-          <input type='text' name='dogName' placeholder="Your dog's name" />
-          <br/>
-          <label htmlFor='dogWeight'>Dog's weight in lbs:</label>
-          <input type='number' name='dogWeight' placeholder='lbs'/>
-          <br/>
-          <label htmlFor='dogYears'>Your dog's age:</label>
-          <input type='number' name='dogMonths' placeholder='months'/>
-          <input type='number' name='dogYears' placeholder='years'/>
-          <br/>
-          <div className='radioSection'>
-            <label htmlFor='dogSex'>Dog's gender:</label>
-            <div className='radioButton'>
-              <input type='radio' value='Female' name='dogSex' onChange={handleSexValueChange}/>Female
+        <div style={newDogFormStyle}>
+          <div style={innerDogFormStyle}>
+          <form onSubmit={handleNewDogFormSubmission}>
+            <label htmlFor="dogName">Dog's Name:</label>
+            <input type='text' name='dogName' placeholder="Your dog's name" />
+            <br/>
+            <label htmlFor='dogWeight'>Dog's weight in lbs:</label>
+            <input type='number' name='dogWeight' placeholder='lbs'/>
+            <br/>
+            <label htmlFor='dogYears'>Your dog's age:</label>
+            <input type='number' name='dogMonths' placeholder='months'/>
+            <input type='number' name='dogYears' placeholder='years'/>
+            <br/>
+            <div className='radioSection'>
+              <label htmlFor='dogSex'>Dog's gender:</label>
+              <div className='radioButton'>
+                <input type='radio' value='Female' name='dogSex' onChange={handleSexValueChange}/>Female
+              </div>
+              <div className='radioButton'>
+                <input type='radio' value='Male' name='dogSex'  onChange={handleSexValueChange}/>Male
+              </div>
             </div>
-            <div className='radioButton'>
-              <input type='radio' value='Male' name='dogSex'  onChange={handleSexValueChange}/>Male
-            </div>
+            <br />
+            <div className='checkBoxSelectionLikes row'>
+              <label htmlFor="DogLikes">My dog likes:</label>
+                <div className='col-md-6'>
+                  <div className='form-check m-3'>
+                    <input className='form-check-likes' type='checkbox' name='dogLikes' value='puppies' onChange={handleLikesListChange}/>
+                    <label className='form-check-label'>Puppies</label>
+                  </div>
+                  <div className='form-check m-3'>
+                    <input className='form-check-likes' type='checkbox' name='dogLikes' value='children' onChange={handleLikesListChange}/>
+                    <label className='form-check-label'>Children</label>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <div className='checkBoxSelectionDislikes row'>
+                <label htmlFor="DogDislikes">My dog doesn't like:</label>
+                <div className='col-md-6'>
+                  <div className='form-check m-3'>
+                    <input className='form-check-dislikes' type='checkbox' name='dogDislikes' value='puppies' onChange={handleDislikesListChange}/>
+                    <label className='form-check-label'>Puppies</label>
+                  </div>
+                  <div className='form-check m-3'>
+                    <input className='form-check-dislikes' type='checkbox' name='dogDislikes' value='children' onChange={handleDislikesListChange}/>
+                    <label className='form-check-label'>Children</label>
+                  </div>
+                </div>
+                <div className='form-check m-3'>
+                  <label>Find Friends for your dog:</label>
+                  <select onChange={handleFriendChange}>
+                    <option value='none'>--Select a friend for your dog--</option>
+                    {Object.entries(dogList).map((dogs) => <option key={dogs.id} value={dogs.id}>{dogs.dogName}</option>)}
+                  </select>
+                </div>
+              </div>
+              <br />
+              {/* <label htmlFor='dogParks'>My dog's favorite Park:</label>
+              <input type='text' name='dogParks' placeholder='Alberta Park' /> */} 
+              <button type='submit' className='btn btn-default'>Submit</button>
+            </form>
           </div>
-          <br />
-          <div className='checkBoxSelectionLikes row'>
-          <label htmlFor="DogLikes">My dog likes:</label>
-            <div className='col-md-6'>
-              <div className='form-check m-3'>
-                <input className='form-check-likes' type='checkbox' name='dogLikes' value='puppies' onChange={handleLikesListChange}/>
-                <label className='form-check-label'>Puppies</label>
-              </div>
-              <div className='form-check m-3'>
-                <input className='form-check-likes' type='checkbox' name='dogLikes' value='children' onChange={handleLikesListChange}/>
-                <label className='form-check-label'>Children</label>
-              </div>
-            </div>
-          </div>
-          <br />
-          <div className='checkBoxSelectionDislikes row'>
-            <label htmlFor="DogDislikes">My dog doesn't like:</label>
-            <div className='col-md-6'>
-              <div className='form-check m-3'>
-                <input className='form-check-dislikes' type='checkbox' name='dogDislikes' value='puppies' onChange={handleDislikesListChange}/>
-                <label className='form-check-label'>Puppies</label>
-              </div>
-              <div className='form-check m-3'>
-                <input className='form-check-dislikes' type='checkbox' name='dogDislikes' value='children' onChange={handleDislikesListChange}/>
-                <label className='form-check-label'>Children</label>
-              </div>
-            </div>
-            <div className='form-check m-3'>
-              <label>Find Friends for your dog:</label>
-              <select onChange={handleFriendChange}>
-                <option value='none'>--Select a friend for your dog--</option>
-                {Object.entries(dogList).filter(dogs => dogs.id !== props.dog.id).map((dogs) => <option key={dogs.id} value={dogs.id}>{dogs.dogName}</option>)}
-              </select>
-            </div>
-          </div>
-           <br />
-          {/* <label htmlFor='dogParks'>My dog's favorite Park:</label>
-          <input type='text' name='dogParks' placeholder='Alberta Park' /> */} 
-          <button type='submit' className='btn btn-default'>Submit</button>
-        </form>
+        </div>
       </React.Fragment>
     );
   
