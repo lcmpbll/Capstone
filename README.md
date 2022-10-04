@@ -101,10 +101,10 @@ _&#8593; I will clean this up before final submission_
 >
 > - [x] A user can say they are taking their dog to the park
 >
-> - [] A user can list other dogs as their dog's friends and see when they are at the park.
+> - [x] A user can list other dogs as their dog's friends and see when they are at the park.
 >   
->   - Add element to dogs that will take an array of the dog's friend's ids.
->   - Have a spot to display this array.
+>   - [x] Add element to dogs that will take an array of the dog's friend's ids.
+>   - [x] Have a spot to display this array.
 <!-- >   - Only show dogs at the park that are friends with the selected dog?  -->
 >
 >## 10/2/22 2 hrs/ 24 hrs total
