@@ -12,23 +12,11 @@ function NewDogForm(props) {
   const [dogDislikesList, setDogDislikesList] = useState({
     dogDislikes: [], dislikesResponse: [],
   });
-  const {dogList} = props;
-  const [dogFriendsArray, setDogFriendsArray] = useState({
-      dogFriends: [], dogFriendsResponse: [],
-    });
-    
-    const handleFriendChange = (event) => {
-      const {value} = event.target;
-      setDogFriendsArray({
-        dogFriends: [dogFriendsArray, value],
-        dogFriendsResponse: [dogFriendsArray, value],
-      }); 
-    }
+  
   
   const handleSexValueChange = (event) => {
     const {value, checked} = event.target;
     const { dogSex } = selectedSex;
-    console.log(`${value} is ${checked}`);
     if(checked){
       setSelectedSex({
         dogSex: value,
@@ -89,7 +77,6 @@ function NewDogForm(props) {
   }
   function calculateDogAge(dogYears, dogMonths){
     const dogAge = (dogYears + (dogMonths/12));
-    console.log(dogAge);
     const dogIntAge = Math.floor(dogAge * 100);
     return dogIntAge;
   }
@@ -132,25 +119,29 @@ function NewDogForm(props) {
       dogAgeGroup: calculateDogAgeGroup(calculateDogAge(parseInt(event.target.dogYears.value), parseInt(event.target.dogMonths.value))),
       dogSex: handleSexValueChange(event),
       dogLikes: handleLikesListChange(event),
-      friendsArray: handleFriendChange(event),
+      friendsArray: [],
       ownerId: v4(),
       dogDislikes: handleDislikesListChange(event),
       dogParks: 'Alberta Park',
       id: v4(),
     });
+    
   }
   
   //Form styles
   
   const newDogFormStyle ={
     justifyContent: 'center',
-    marginLeft: '200px',
+    // marginLeft: '100px',
     marginTop: '20px',
     width: '100%',
     // backgroundColor: 'skyBlue'
   }
   const innerDogFormStyle = {
-    margin: '10px'
+    marginTop: '10px',
+    marginLeft: '100px',
+    fontWeight: 'bold',
+    position: 'relative',
   }
     return (
       <React.Fragment>
@@ -207,13 +198,13 @@ function NewDogForm(props) {
                   </div>
                 </div>
                 <br/>
-                <div className='form-check m-3'>
+                {/* <div className='form-check m-3'>
                   <label>Add your dog's friends:</label> &nbsp;
                   <select onChange={handleFriendChange}>
                     <option value='none'>--Select a friend for your dog--</option>
                     {Object.entries(dogList).map((dogs) => <option key={dogs.id} value={dogs.id}>{dogs.dogName}</option>)}
                   </select>
-                </div>
+                </div> */}
               </div>
               <br />
               {/* <label htmlFor='dogParks'>My dog's favorite Park:</label>
