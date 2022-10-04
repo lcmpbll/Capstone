@@ -16,6 +16,8 @@ function Dog(props){
   }
   
   const profileImageStyles = {
+    position: 'relative',
+    left: '25px',
     margin: 'auto',
   }
   
