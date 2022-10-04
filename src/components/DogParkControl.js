@@ -7,7 +7,7 @@ import FriendingDog from './FriendingDog';
 import { API } from 'aws-amplify';
 import { listDogs } from '../graphql/queries';
 import { createDog as createDogMutation, deleteDog as deleteDogMutation } from '../graphql/mutations';
-import { flushSync } from 'react-dom';
+
 
 
 
