@@ -4,6 +4,7 @@ import DogParkControl from './DogParkControl';
 import '@aws-amplify/ui-react/styles.css';
 import { withAuthenticator, Button} from '@aws-amplify/ui-react';
 import background from '../Img/background.jpg';
+import headerImg from '../Img/headerImg.jpg';
 
 function App({signOut}) {
   const landingPageStyle = {
@@ -27,7 +28,10 @@ function App({signOut}) {
   const topStyle = {
     display: 'flex',
     justifyContent: 'center',
+    backgroundImage: `url(${headerImg})`,
     width: '100vw',
+   
+    
     
   }
   return (
