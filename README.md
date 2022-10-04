@@ -1,6 +1,7 @@
 # Capstone
 
 ## By Liam Campbell
+
 ## Technologies used
 * React
 * Javascript
@@ -9,6 +10,16 @@
 ## Capstone Proposal 
 
 _This project aims to make it easier to take your dog to the dog park by helping your dog to make friends. Here is the full [capstone proposal](./CapstonePropsal.md)._
+
+
+![Main app image.](...)
+
+### Attribution
+
+<pre>
+<a href="https://www.vecteezy.com/free-vector/madeira">Madeira Vectors by Vecteezy</a>
+<a href="https://www.vecteezy.com/free-vector/dog-park">Dog Park Vectors by Vecteezy</a>
+</pre>
 
 ## React Map
 
