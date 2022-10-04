@@ -92,22 +92,22 @@ function NewDogForm(props) {
     return dogAge;
   }
   function calculateDogAgeGroup(dogYrs){
-    if(dogYrs <= .35){
+    if(dogYrs <= 35){
       const dogAgeGroup = 'Pre vaccinated puppy';
       return dogAgeGroup;
-    }else if(dogYrs <= .5){
+    }else if(dogYrs <= 50){
       const dogAgeGroup = 'Puppy';
       return dogAgeGroup;
-    }else if(dogYrs <= 1){
+    }else if(dogYrs <= 100){
       const dogAgeGroup = 'Juvenile';
       return dogAgeGroup;
-    }else if(dogYrs <= 2){
+    }else if(dogYrs <= 200){
       const dogAgeGroup = 'Young Adult';
       return dogAgeGroup;
-    }else if(dogYrs <= 7){
+    }else if(dogYrs <= 700){
       const dogAgeGroup = 'Adult';
       return dogAgeGroup;
-    }else if(dogYrs <= 11){
+    }else if(dogYrs <= 1100){
       const dogAgeGroup = 'Senior';
       return dogAgeGroup;
     }else{
