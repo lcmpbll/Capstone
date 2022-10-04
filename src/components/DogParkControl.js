@@ -115,7 +115,7 @@ function DogParkControl(){
     
     const mainContentStyle = {
       justifyContent: 'center',
-      marginLeft: '100px',
+      marginLeft: '400px',
     }
     
     
@@ -129,7 +129,7 @@ function DogParkControl(){
     currentlyVisibleState = <FriendingDog dog={selectedDog} dogList={mainDogList} onFriendsSelection={handleEditingDogInList} />
     buttonText="Return to dog list"
   } else if(selectedDog != null){
-    currentlyVisibleState = <DogDetail dog={selectedDog} onClickingFriend={handleFriendingClick} onClickingDelete={handleDeletingDog} onClickingGo={handleGoingToThePark}/>
+    currentlyVisibleState = <DogDetail dog={selectedDog} dogList={mainDogList} onClickingFriend={handleFriendingClick} onClickingDelete={handleDeletingDog} onClickingGo={handleGoingToThePark}/>
     buttonText= 'Return to dog list';
   } else if(formVisibleOnPage) {
     currentlyVisibleState = <NewDogForm onNewDogCreation={handleAddingNewDogToList} dogList={mainDogList} />
