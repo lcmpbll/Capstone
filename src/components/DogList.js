@@ -1,35 +1,7 @@
 import React from 'react';
 import Dog from './Dog';
 import PropTypes from 'prop-types';
-const mainDogList = [
-  {
-    dogName: 'Dolph',
-    dogSex: 'Male',
-    dogWeight: 35,
-    dogDislikes: ["childern"],
-    dogLikes: ["Big dogs"],
-    dogParks: ["Alberta"],
-    id: 'jncouwirh8'
-  },
-  {
-    dogName: 'Angus',
-    dogSex: 'Male',
-    dogWeight: 150,
-    dogDislikes: ["Small Dogs", " Rude People"],
-    dogLikes: ["Sticks"],
-    dogParks: ["Fremont"],
-    id: 'okjncoiw34'
-  },
-  {
-    dogName: 'Sweetie',
-    dogSex: 'Female',
-    dogWeight: 12,
-    dogDislikes: ["Big Dogs"],
-    dogLikes: ["Loud Noises"],
-    dogParks: ["Alberta"],
-    id: 'jdfhuhe222'
-  }
-]
+
 function DogList(props){
   return (
     <React.Fragment>
