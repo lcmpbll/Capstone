@@ -6,9 +6,10 @@ function FriendDogForm(props) {
   const [dogFriendsArray, setDogFriendsArray] = useState({
       dogFriends: [], dogFriendsResponse: [],
     });
+    
   const handleFriendChange = (event) => {
     const {value} = event.target;
-    // const {dogFriends} = dogFriendsArray;
+    const {...dogFriends} = dogFriendsArray;
     console.log(`${dog.dogName} is friends with ${value}`);
     setDogFriendsArray({
       dogFriends: [...dogFriendsArray, value],
@@ -39,10 +40,10 @@ function FriendDogForm(props) {
   return (
     <React.Fragment>
       <form onSubmit={handleFriendDogFormSubmission}>
-        <h1>Find Friends:</h1>
+        <h1>`Find Friends for ${dog.dogName}:`</h1>
         <select onChange={handleFriendChange}>
           <option value='none'>--Select a friend for your dog--</option>
-          {dogList.filter(dogs => dogs.id !== props.dog.id).map((dogs) => <option key={dogs.id} value={dogs.id}>{dogs.dogName}</option>)}
+          {Object.entries(dogList).filter(dogs => dogs.id !== props.dog.id).map((dogs) => <option key={dogs.id} value={dogs.id}>{dogs.dogName}</option>)}
         </select>
         <br/>
         <button type="submit" className='btn btn-default'>Submit</button>
