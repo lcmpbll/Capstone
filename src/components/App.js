@@ -14,16 +14,39 @@ function App({signOut}) {
     width: '100vw',
     height: '100vh'
   }
+  const headerStyle = {
+    textAlign: 'center',
+  }
+  
+  const signOutStyle = {
+    
+    position: 'absolute',
+    top: '30px',
+    right: '10px',
+  }
+  const topStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100vw',
+    
+  }
   return (
    <React.Fragment>
-    <Header />
+    <div style={topStyle}>
+      <div style={headerStyle}>
+        <Header />
+      </div>
+      <div style={signOutStyle}>
+        <Button onClick={signOut}>Sign Out</Button>
+      </div>
+    </div>
     <div style={landingPageStyle}>
       <DogParkControl/>
       <br/>
       <br/>
       <br/>
       <br/>
-      <Button onClick={signOut}>Sign Out</Button>
+      
     </div>
     </React.Fragment>
     
