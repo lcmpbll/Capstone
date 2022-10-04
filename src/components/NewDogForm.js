@@ -12,6 +12,18 @@ function NewDogForm(props) {
   const [dogDislikesList, setDogDislikesList] = useState({
     dogDislikes: [], dislikesResponse: [],
   });
+  const {dogList} = props;
+  const [dogFriendsArray, setDogFriendsArray] = useState({
+      dogFriends: [], dogFriendsResponse: [],
+    });
+    
+    const handleFriendChange = (event) => {
+      const {value} = event.target;
+      setDogFriendsArray({
+        dogFriends: [dogFriendsArray, value],
+        dogFriendsResponse: [dogFriendsArray, value],
+      }); 
+    }
   
   const handleSexValueChange = (event) => {
     const {value, checked} = event.target;
@@ -31,7 +43,6 @@ function NewDogForm(props) {
   const handleDislikesListChange = (event) => {
     const { value, checked } = event.target;
     const {dogDislikes } = dogDislikesList;
-    console.log(`${value} is ${checked}`);
     if(checked) {
       setDogDislikesList({
         dogDislikes: [...dogDislikes, value],
@@ -48,7 +59,6 @@ function NewDogForm(props) {
   const handleLikesListChange = (event) => {
     const { value, checked } = event.target;
     const { dogLikes } = dogLikesList;
-    console.log(`${value} is ${checked}`);
     if(checked) {
       setDogLikesList({
         dogLikes: [...dogLikes, value],
@@ -78,7 +88,7 @@ function NewDogForm(props) {
     }
   }
   function calculateDogAge(dogMonths, dogYears){
-    const dogAge = dogYears + (dogMonths/12);
+    const dogAge = dogYears + (dogMonths/12) * 100;
     return dogAge;
   }
   function calculateDogAgeGroup(dogYrs){
@@ -117,11 +127,10 @@ function NewDogForm(props) {
       dogAgeGroup: calculateDogAgeGroup(calculateDogAge(parseInt(event.target.dogYears.value), parseInt(event.target.dogMonths.value))),
       dogSex: handleSexValueChange(event),
       dogLikes: handleLikesListChange(event),
-      friendsArray: [],
-     
+      friendsArray: handleFriendChange(event),
+      ownerId: v4(),
       dogDislikes: handleDislikesListChange(event),
       dogParks: 'Alberta Park',
-      atThePark: false,
       id: v4(),
     });
   }
@@ -174,6 +183,13 @@ function NewDogForm(props) {
                 <label className='form-check-label'>Children</label>
               </div>
             </div>
+            <div className='form-check m-3'>
+              <label>Find Friends for your dog:</label>
+              <select onChange={handleFriendChange}>
+                <option value='none'>--Select a friend for your dog--</option>
+                {Object.entries(dogList).filter(dogs => dogs.id !== props.dog.id).map((dogs) => <option key={dogs.id} value={dogs.id}>{dogs.dogName}</option>)}
+              </select>
+            </div>
           </div>
            <br />
           {/* <label htmlFor='dogParks'>My dog's favorite Park:</label>
@@ -187,6 +203,7 @@ function NewDogForm(props) {
 
 NewDogForm.propTypes = {
   onNewDogCreation: PropTypes.func,
+  mainDogList: PropTypes.array,
 }
 
 
