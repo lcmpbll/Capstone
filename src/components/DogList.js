@@ -40,11 +40,12 @@ function DogList(props){
         whenDogClicked={props.onDogSelection}
         dogName={dog.dogName}
         dogSex={dog.dogSex}
-        dogWeight={dog.dogWeight}
-        dogDislikes={dog.dogDislikes}
-        dogLikes={dog.dogLikes}
-        dogParks={dog.dogParks}
-        dogFriends={dog.friendsArray}
+        dogSize={dog.dogSize}
+        dogAgeGroup={dog.dogAgeGroup}
+        // dogDislikes={dog.dogDislikes}
+        // dogLikes={dog.dogLikes}
+        // dogParks={dog.dogParks}
+        // dogFriends={dog.friendsArray}
         id={dog.id}
         key={dog.id}
         />
