@@ -8,7 +8,6 @@ function Dog(props){
     display: 'flex',
     width: '350px',
     height: '200px',
-    border: '2px solid-black'
   }
   const statsStyle = {
     margin: 'auto',
@@ -19,11 +18,14 @@ function Dog(props){
     position: 'relative',
     left: '25px',
     margin: 'auto',
+    border: '5px solid-black',
   }
   
   const picAndStatsStyles = {
     display: 'flex',
-    marginTop: '10px'
+    marginTop: '10px',
+    width: '100%',
+    fontWeight: 'bold',
   }
   
   const nameStyles = {
@@ -31,6 +33,7 @@ function Dog(props){
     marginRight: '5px',
     justifyContent: 'center',
   }
+  
   return(
     <React.Fragment>
       <div style={mainDogStyles} onClick = {() => props.whenDogClicked(props.id)} >
@@ -44,7 +47,7 @@ function Dog(props){
             <p>Age group: {props.dogAgeGroup}</p>
           </div>
           <div style={profileImageStyles}>
-            <img src={profileImg}  width='100px' alt="dog profile image placeholder"/>
+            <img src={profileImg}  width='100px' height='100px' alt="dog profile image placeholder"/>
           </div>
         </div>
       </div>
