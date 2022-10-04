@@ -7,6 +7,8 @@ export const onCreateDog = /* GraphQL */ `
       id
       dogName
       dogSize
+      dogYears
+      dogMonths
       dogWeight
       dogAge
       dogAgeGroup
@@ -19,6 +21,8 @@ export const onCreateDog = /* GraphQL */ `
         id
         dogName
         dogSize
+        dogYears
+        dogMonths
         dogWeight
         dogAge
         dogAgeGroup
@@ -31,6 +35,8 @@ export const onCreateDog = /* GraphQL */ `
           id
           dogName
           dogSize
+          dogYears
+          dogMonths
           dogWeight
           dogAge
           dogAgeGroup
@@ -59,6 +65,8 @@ export const onUpdateDog = /* GraphQL */ `
       id
       dogName
       dogSize
+      dogYears
+      dogMonths
       dogWeight
       dogAge
       dogAgeGroup
@@ -71,6 +79,8 @@ export const onUpdateDog = /* GraphQL */ `
         id
         dogName
         dogSize
+        dogYears
+        dogMonths
         dogWeight
         dogAge
         dogAgeGroup
@@ -83,6 +93,8 @@ export const onUpdateDog = /* GraphQL */ `
           id
           dogName
           dogSize
+          dogYears
+          dogMonths
           dogWeight
           dogAge
           dogAgeGroup
@@ -111,6 +123,8 @@ export const onDeleteDog = /* GraphQL */ `
       id
       dogName
       dogSize
+      dogYears
+      dogMonths
       dogWeight
       dogAge
       dogAgeGroup
@@ -123,6 +137,8 @@ export const onDeleteDog = /* GraphQL */ `
         id
         dogName
         dogSize
+        dogYears
+        dogMonths
         dogWeight
         dogAge
         dogAgeGroup
@@ -135,6 +151,8 @@ export const onDeleteDog = /* GraphQL */ `
           id
           dogName
           dogSize
+          dogYears
+          dogMonths
           dogWeight
           dogAge
           dogAgeGroup

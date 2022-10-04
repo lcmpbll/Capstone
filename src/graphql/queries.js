@@ -7,6 +7,8 @@ export const getDog = /* GraphQL */ `
       id
       dogName
       dogSize
+      dogYears
+      dogMonths
       dogWeight
       dogAge
       dogAgeGroup
@@ -19,6 +21,8 @@ export const getDog = /* GraphQL */ `
         id
         dogName
         dogSize
+        dogYears
+        dogMonths
         dogWeight
         dogAge
         dogAgeGroup
@@ -31,6 +35,8 @@ export const getDog = /* GraphQL */ `
           id
           dogName
           dogSize
+          dogYears
+          dogMonths
           dogWeight
           dogAge
           dogAgeGroup
@@ -64,6 +70,8 @@ export const listDogs = /* GraphQL */ `
         id
         dogName
         dogSize
+        dogYears
+        dogMonths
         dogWeight
         dogAge
         dogAgeGroup
@@ -76,6 +84,8 @@ export const listDogs = /* GraphQL */ `
           id
           dogName
           dogSize
+          dogYears
+          dogMonths
           dogWeight
           dogAge
           dogAgeGroup

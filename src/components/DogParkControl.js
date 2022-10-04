@@ -22,28 +22,28 @@ function DogParkControl(){
   //  AWS Api fetch 
   
   
-  // useEffect(() => {
-  //   fetchDogs();
-  // }, []);
+  useEffect(() => {
+    fetchDogs();
+  }, []);
   
-  // async function fetchDogs() {
-  //   const apiData =  await API.graphql({ query: listDogs });
-  //   const apiDogs = apiData.data.listDogs.items;
-  //   setMainDogList(apiDogs);
-  // }
+  async function fetchDogs() {
+    const apiData =  await API.graphql({ query: listDogs });
+    const apiDogs = apiData.data.listDogs.items;
+    setMainDogList(apiDogs);
+  }
   
-  // const handleAddingNewDogToList = async (newDog) => {
-  //   await API.graphql({ query : createDogMutation, variables : { input: newDog}, });
-  //   fetchDogs();
-  //   setFormVisibleOnPage(false);
-  // }
-  
-  const handleAddingNewDogToList = (newDog) => {
-    const newMainDogList = mainDogList.concat(newDog);
-    setMainDogList(newMainDogList);
-    console.log(newMainDogList);
+  const handleAddingNewDogToList = async (newDog) => {
+    await API.graphql({ query : createDogMutation, variables : { input: newDog}, });
+    fetchDogs();
     setFormVisibleOnPage(false);
   }
+  
+  // const handleAddingNewDogToList = (newDog) => {
+  //   const newMainDogList = mainDogList.concat(newDog);
+  //   setMainDogList(newMainDogList);
+  //   console.log(newMainDogList);
+  //   setFormVisibleOnPage(false);
+  // }
   
   
   
