@@ -47,7 +47,7 @@ function Dog(props){
             <p>Age group: {props.dogAgeGroup}</p>
           </div>
           <div style={profileImageStyles}>
-            <img src={profileImg}  width='100px' height='100px' alt="dog profile image placeholder"/>
+            <img src={profileImg}  width='100px' height='100px' alt="Dog profile placeholder."/>
           </div>
         </div>
       </div>
