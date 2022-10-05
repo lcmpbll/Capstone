@@ -67,7 +67,7 @@ _This is a react based application that allows the user to create a dog, set it'
 * Set up an AWS service account. Create a free account [here](https://aws.amazon.com/free/?trk=fce796e8-4ceb-48e0-9767-89f7873fac3d&sc_channel=ps&s_kwcid=AL!4422!3!592542020599!e!!g!!aws&ef_id=Cj0KCQjw1vSZBhDuARIsAKZlijR_PojG3JT5EPtzKwuKZigQwvzsbjQIr83oSXeJWAZ9t2wuV1_JA0caAhWKEALw_wcB:G:s&s_kwcid=AL!4422!3!592542020599!e!!g!!aws&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)
 
 
-* I followed [these](https://aws.amazon.com/getting-started/hands-on/build-react-app-amplify-graphql/) instructions 
+* I followed [these](https://aws.amazon.com/getting-started/hands-on/build-react-app-amplify-graphql/) instructions to host my website on amplify, modules 1-4.
 
 - * Log in to the [AWS management console](https://us-west-2.console.aws.amazon.com/console/)
 
@@ -78,6 +78,29 @@ _This is a react based application that allows the user to create a dog, set it'
 - * Select the repository branch for this project. 
 
 - * Accept default settings.
+
+- * Install amplify CLI `$nmp install -g @aws-amplify/cli`
+
+- * Configure amplify CLI `$ amplify configure`
+
+- * In the amplify console select <strong>Backend environments</strong> and choose <strong>Get Started</strong>. Wati for the back end to be deployed.
+
+- * On the back end environements tab, choose <strong>Launch studio</strong>
+
+- * Return to the back end environments tab and expand the Local setup instructions section. Copy the command to your clipboard and open the terminal on your computer. 
+
+- * Paste the command in to your terminal and follow the set up instructions. 
+
+` ? Choose your default editor: Visual Studio Code
+? Choose the type of app that you're building javascript
+? What javascript framework are you using react
+? Source Directory Path:  src 
+? Distribution Directory Path: build
+? Build Command:  npm run-script build
+? Start Command: npm run-script start
+? Do you plan on modifying this backend? Y `
+
+- * You can continue to follow the module to add authentication. 
 
 
 
