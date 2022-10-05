@@ -28,7 +28,8 @@ function DogParkControl(){
   
   async function fetchDogs() {
     const apiData =  await API.graphql({ query: listDogSchemas });
-    const apiDogs = apiData.data.listDogs.items;
+    console.log(apiData);
+    const apiDogs = apiData.data.listDogSchemas.items;
     setMainDogList(apiDogs);
   }
   
