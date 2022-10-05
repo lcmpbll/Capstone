@@ -58,12 +58,28 @@ _This is a react based application that allows the user to create a dog, set it'
 
 <details>
 <summary>Setup</summary>
-* Clone this repsitory from github: https://github.com/lcmpbll/Capstone to your desktop
-* Navigate to the top level of the directory.
-* In your terminal `$npm install`
-* Set up an AWS service account. []()
+* Fork this repsitory from github: https://github.com/lcmpbll/Capstone to your desktop
 
-*
+* Navigate to the top level of the directory.
+
+* In your terminal `$npm install`
+
+* Set up an AWS service account. Create a free account [here](https://aws.amazon.com/free/?trk=fce796e8-4ceb-48e0-9767-89f7873fac3d&sc_channel=ps&s_kwcid=AL!4422!3!592542020599!e!!g!!aws&ef_id=Cj0KCQjw1vSZBhDuARIsAKZlijR_PojG3JT5EPtzKwuKZigQwvzsbjQIr83oSXeJWAZ9t2wuV1_JA0caAhWKEALw_wcB:G:s&s_kwcid=AL!4422!3!592542020599!e!!g!!aws&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all)
+
+
+* I followed [these](https://aws.amazon.com/getting-started/hands-on/build-react-app-amplify-graphql/) instructions 
+
+- * Log in to the [AWS management console](https://us-west-2.console.aws.amazon.com/console/)
+
+- * Select AWS amplify getting started. 
+
+- * Select your github repo for this project. 
+
+- * Select the repository branch for this project. 
+
+- * Accept default settings.
+
+
 
 </details>
 
