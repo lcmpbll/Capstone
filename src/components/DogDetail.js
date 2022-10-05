@@ -7,7 +7,7 @@ function DogDetail(props){
   const displayedFriends = dogList.filter(function(dogFriends){
     return dog.friendsArray.indexOf(dogFriends.id) !== -1;
   });
-  console.log(displayedFriends);
+ 
   //Styling
   const detailsStyles = {
     display: 'flex',
