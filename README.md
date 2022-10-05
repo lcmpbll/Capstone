@@ -12,9 +12,9 @@
 _This project aims to make it easier to take your dog to the dog park by helping your dog to make friends. Here is the full [capstone proposal](./CapstonePropsal.md)._
 
 
-![Main app image.](...)
+![Main app image.](src/Img/applicationDemo.png)
 
-### Attribution
+### Background image Attribution
 
 <pre>
 <a href="https://www.vecteezy.com/free-vector/madeira">Madeira Vectors by Vecteezy</a>
