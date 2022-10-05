@@ -1,4 +1,5 @@
 import React from 'react';
+import Park from './Park';
 
 
 
@@ -23,6 +24,7 @@ function AtThePark(props){
         <div style={parkHeaderStyle}>
           <h1>Alberta Park</h1>
         </div>
+        <Park atTheParkList={props.atTheParkList} />
         {props.atTheParkList.map((dog) =>
         <div style={dogAtTheParkStyles} key={dog.id}>
         <h1>{dog.dogName}</h1>
