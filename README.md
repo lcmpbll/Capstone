@@ -102,6 +102,19 @@ _This is a react based application that allows the user to create a dog, set it'
 
 - * You can continue to follow the module to add authentication. 
 
+- * Add a GraphQL API to your app run the following command `$ amplify add api` and select these options. 
+
+`? Select from one of the below mentioned services: GraphQL
+? Here is the GraphQL API that we will create. Select a setting to edit or continue: Continue
+? Choose a schema template: Single object with fields (e.g., "Todo" with ID, name, description)
+? Do you want to edit the schema now? (Y/n) yes`
+
+* The graphql schema should aleady be present in the project. 
+
+* Deploy the API `$ amplify push --y`
+
+* Run the app `$npm run start`
+
 
 
 </details>
