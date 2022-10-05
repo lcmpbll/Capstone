@@ -17,6 +17,7 @@ function DogDetail(props){
     // marginLeft: '450px',
     fontWeight: 'bold',
   }
+  let buttonText = 'Switch Park Status!'
   return(
     <React.Fragment>
       <div style={detailsStyles}>
@@ -45,8 +46,8 @@ function DogDetail(props){
         </div>
         <div className='parks'>
           <h2>Parks</h2>
-        {dog.dogParks} &nbsp;
-        <button onClick={() => onClickingGo(dog.id)} >Go to the park</button>
+          {dog.dogParks} &nbsp;
+          <button onClick={() => onClickingGo(dog.id)} >{buttonText}</button>
           <hr />
         </div>
         <br/>

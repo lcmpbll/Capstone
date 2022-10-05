@@ -75,14 +75,16 @@ function DogParkControl(){
   }
   const handleGoingToThePark = (id) => {
     const dogGoingToPark = mainDogList.filter(dog => dog.id === id);
-    const newMainAtTheParkList = mainAtTheParkList.concat(dogGoingToPark);
-    if(dogGoingToPark.atThePark === false){
-      dogGoingToPark.atThePark.setAtThePark(true);
-      console.log(dogGoingToPark);
+    const checkAtPark = mainAtTheParkList.filter(dog => dog.id === id)
+    console.log(checkAtPark.length);
+    if(checkAtPark.length === 0){
+      const newMainAtTheParkList = mainAtTheParkList.concat(dogGoingToPark);  
+      setMainAtTheParkList(newMainAtTheParkList);
+    } else {
+      const newMainAtTheParkList = mainAtTheParkList.filter(dog => dog.id !== id);
+      console.log(newMainAtTheParkList);
+      setMainAtTheParkList(newMainAtTheParkList);
     }
-    setMainAtTheParkList(newMainAtTheParkList);
-    console.log(mainAtTheParkList);
-    
   }
   //hoping I can reuse for actually editing dogs. 
   const handleEditingDogInList = (editedDog) => {
