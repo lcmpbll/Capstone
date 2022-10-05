@@ -26,7 +26,6 @@ export const createDogSchema = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
     }
   }
 `;
@@ -55,7 +54,6 @@ export const updateDogSchema = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
     }
   }
 `;
@@ -84,7 +82,6 @@ export const deleteDogSchema = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
     }
   }
 `;

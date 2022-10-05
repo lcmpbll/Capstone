@@ -2,8 +2,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateDogSchema = /* GraphQL */ `
-  subscription OnCreateDogSchema($owner: String) {
-    onCreateDogSchema(owner: $owner) {
+  subscription OnCreateDogSchema {
+    onCreateDogSchema {
       id
       dogName
       dogSize
@@ -23,13 +23,12 @@ export const onCreateDogSchema = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
     }
   }
 `;
 export const onUpdateDogSchema = /* GraphQL */ `
-  subscription OnUpdateDogSchema($owner: String) {
-    onUpdateDogSchema(owner: $owner) {
+  subscription OnUpdateDogSchema {
+    onUpdateDogSchema {
       id
       dogName
       dogSize
@@ -49,13 +48,12 @@ export const onUpdateDogSchema = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
     }
   }
 `;
 export const onDeleteDogSchema = /* GraphQL */ `
-  subscription OnDeleteDogSchema($owner: String) {
-    onDeleteDogSchema(owner: $owner) {
+  subscription OnDeleteDogSchema {
+    onDeleteDogSchema {
       id
       dogName
       dogSize
@@ -75,7 +73,6 @@ export const onDeleteDogSchema = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      owner
     }
   }
 `;
