@@ -5,8 +5,8 @@ import DogDetail from './DogDetail';
 import AtThePark from './AtThePark';
 import FriendingDog from './FriendingDog';
 import { API } from 'aws-amplify';
-import { listDogs } from '../graphql/queries';
-import { createDog as createDogMutation, deleteDog as deleteDogMutation } from '../graphql/mutations';
+import { listDogSchemas } from '../graphql/queries';
+import { createDogSchema as createDogMutation, deleteDogSchema as deleteDogMutation } from '../graphql/mutations';
 
 
 
@@ -27,7 +27,7 @@ function DogParkControl(){
   }, []);
   
   async function fetchDogs() {
-    const apiData =  await API.graphql({ query: listDogs });
+    const apiData =  await API.graphql({ query: listDogSchemas });
     const apiDogs = apiData.data.listDogs.items;
     setMainDogList(apiDogs);
   }

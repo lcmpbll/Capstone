@@ -61,5 +61,12 @@
         }
       }
     }
+  },
+  "storage": {
+    "s3capstonestorageee592a54": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }
