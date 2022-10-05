@@ -2,18 +2,26 @@
 
 ## By Liam Campbell
 
-## Description
-
 _A React webpage that helps users have a positive dog park experience._ 
 
 ### Table of Contents
 
 [Technologies Used](#technologies-used)  
-[Description](#description)  
+
+[Capstone Proposal](#capstone-proposal)
+ 
+[Description](#description)
+ 
+[React Map](#react-map)
+
 [Setup/Installation Requirements](#setup-and-installation-requirements)
+
 [React planning map](#react-map)
-[Reasearch and Planning Log](#research-log) 
-[Known Bugs](#known-bugs)  
+
+[Reasearch and Planning Log](#research-and-planning) 
+
+[Known Bugs](#known-bugs) 
+ 
 [License](#License)
 
 ## Technologies used
@@ -24,10 +32,10 @@ _A React webpage that helps users have a positive dog park experience._
 * AWS graphql
 * JSX
 * draw.io
+
 ## Capstone Proposal 
 
 _This project aims to make it easier to take your dog to the dog park by helping your dog to make friends. Here is the full [capstone proposal](./CapstonePropsal.md)._
-
 
 ![Main app image.](src/Img/applicationDemo.png)
 
@@ -38,13 +46,36 @@ _This project aims to make it easier to take your dog to the dog park by helping
 <a href="https://www.vecteezy.com/free-vector/dog-park">Dog Park Vectors by Vecteezy</a>
 </pre>
 
+## Description 
+
+_This is a react based application that allows the user to create a dog, set it's traits such as weight, name, gender, age, likes and dislikes. The information is then stored in a AWS dynamodb table. The dog can then be interacted with, it can name other dogs as it's friends and declare it is going to the park. Other users can then see which dogs are at the park and decide wether to take their dogs as well._ 
+
 ## React Map
 
 ![project diagram](Capstonediagram.drawio.png)
 
-_&#8593; I will clean this up before final submission_
+## Setup and installation Requirements
 
-## Research log
+<details>
+<summary>Setup</summary>
+* Clone this repsitory from github: https://github.com/lcmpbll/Capstone to your desktop
+* Navigate to the top level of the directory.
+* In your terminal `$npm install`
+* Set up an AWS service account. []()
+
+*
+
+</details>
+
+<details>
+<summary>Available Scripts</summary>
+</details>
+
+## Research and planning
+
+<details>
+
+<summary><strong>Research log</strong></summary>
 
 >### 9/16/22  3hr
 >
@@ -130,10 +161,13 @@ _&#8593; I will clean this up before final submission_
 >
 > - [x] _Impliment AWS, amplify, dynamodb_
 
+</details>
+
 ## Known Bugs/ WIPs
 
 * Impliment owners for dogs. 
 * Add dog park information.
+* Allow dogs to leave the dog park. 
 
 ## License
 
