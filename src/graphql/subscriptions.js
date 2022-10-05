@@ -1,12 +1,14 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateDog = /* GraphQL */ `
-  subscription OnCreateDog($owner: String) {
-    onCreateDog(owner: $owner) {
+export const onCreateDogSchema = /* GraphQL */ `
+  subscription OnCreateDogSchema {
+    onCreateDogSchema {
       id
       dogName
       dogSize
+      dogYears
+      dogMonths
       dogWeight
       dogAge
       dogAgeGroup
@@ -15,50 +17,23 @@ export const onCreateDog = /* GraphQL */ `
       dogDislikes
       dogParks
       ownerId
-      friendsArray {
-        id
-        dogName
-        dogSize
-        dogWeight
-        dogAge
-        dogAgeGroup
-        dogSex
-        dogLikes
-        dogDislikes
-        dogParks
-        ownerId
-        friendsArray {
-          id
-          dogName
-          dogSize
-          dogWeight
-          dogAge
-          dogAgeGroup
-          dogSex
-          dogLikes
-          dogDislikes
-          dogParks
-          ownerId
-          createdAt
-          updatedAt
-          owner
-        }
-        createdAt
-        updatedAt
-        owner
-      }
+      friendsArray
       createdAt
       updatedAt
-      owner
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
-export const onUpdateDog = /* GraphQL */ `
-  subscription OnUpdateDog($owner: String) {
-    onUpdateDog(owner: $owner) {
+export const onUpdateDogSchema = /* GraphQL */ `
+  subscription OnUpdateDogSchema {
+    onUpdateDogSchema {
       id
       dogName
       dogSize
+      dogYears
+      dogMonths
       dogWeight
       dogAge
       dogAgeGroup
@@ -67,50 +42,23 @@ export const onUpdateDog = /* GraphQL */ `
       dogDislikes
       dogParks
       ownerId
-      friendsArray {
-        id
-        dogName
-        dogSize
-        dogWeight
-        dogAge
-        dogAgeGroup
-        dogSex
-        dogLikes
-        dogDislikes
-        dogParks
-        ownerId
-        friendsArray {
-          id
-          dogName
-          dogSize
-          dogWeight
-          dogAge
-          dogAgeGroup
-          dogSex
-          dogLikes
-          dogDislikes
-          dogParks
-          ownerId
-          createdAt
-          updatedAt
-          owner
-        }
-        createdAt
-        updatedAt
-        owner
-      }
+      friendsArray
       createdAt
       updatedAt
-      owner
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
-export const onDeleteDog = /* GraphQL */ `
-  subscription OnDeleteDog($owner: String) {
-    onDeleteDog(owner: $owner) {
+export const onDeleteDogSchema = /* GraphQL */ `
+  subscription OnDeleteDogSchema {
+    onDeleteDogSchema {
       id
       dogName
       dogSize
+      dogYears
+      dogMonths
       dogWeight
       dogAge
       dogAgeGroup
@@ -119,41 +67,12 @@ export const onDeleteDog = /* GraphQL */ `
       dogDislikes
       dogParks
       ownerId
-      friendsArray {
-        id
-        dogName
-        dogSize
-        dogWeight
-        dogAge
-        dogAgeGroup
-        dogSex
-        dogLikes
-        dogDislikes
-        dogParks
-        ownerId
-        friendsArray {
-          id
-          dogName
-          dogSize
-          dogWeight
-          dogAge
-          dogAgeGroup
-          dogSex
-          dogLikes
-          dogDislikes
-          dogParks
-          ownerId
-          createdAt
-          updatedAt
-          owner
-        }
-        createdAt
-        updatedAt
-        owner
-      }
+      friendsArray
       createdAt
       updatedAt
-      owner
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;

@@ -1,12 +1,14 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getDog = /* GraphQL */ `
-  query GetDog($id: ID!) {
-    getDog(id: $id) {
+export const getDogSchema = /* GraphQL */ `
+  query GetDogSchema($id: ID!) {
+    getDogSchema(id: $id) {
       id
       dogName
       dogSize
+      dogYears
+      dogMonths
       dogWeight
       dogAge
       dogAgeGroup
@@ -15,55 +17,28 @@ export const getDog = /* GraphQL */ `
       dogDislikes
       dogParks
       ownerId
-      friendsArray {
-        id
-        dogName
-        dogSize
-        dogWeight
-        dogAge
-        dogAgeGroup
-        dogSex
-        dogLikes
-        dogDislikes
-        dogParks
-        ownerId
-        friendsArray {
-          id
-          dogName
-          dogSize
-          dogWeight
-          dogAge
-          dogAgeGroup
-          dogSex
-          dogLikes
-          dogDislikes
-          dogParks
-          ownerId
-          createdAt
-          updatedAt
-          owner
-        }
-        createdAt
-        updatedAt
-        owner
-      }
+      friendsArray
       createdAt
       updatedAt
-      owner
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
-export const listDogs = /* GraphQL */ `
-  query ListDogs(
-    $filter: ModelDogFilterInput
+export const listDogSchemas = /* GraphQL */ `
+  query ListDogSchemas(
+    $filter: ModelDogSchemaFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listDogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listDogSchemas(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         dogName
         dogSize
+        dogYears
+        dogMonths
         dogWeight
         dogAge
         dogAgeGroup
@@ -72,27 +47,54 @@ export const listDogs = /* GraphQL */ `
         dogDislikes
         dogParks
         ownerId
-        friendsArray {
-          id
-          dogName
-          dogSize
-          dogWeight
-          dogAge
-          dogAgeGroup
-          dogSex
-          dogLikes
-          dogDislikes
-          dogParks
-          ownerId
-          createdAt
-          updatedAt
-          owner
-        }
+        friendsArray
         createdAt
         updatedAt
-        owner
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncDogSchemas = /* GraphQL */ `
+  query SyncDogSchemas(
+    $filter: ModelDogSchemaFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncDogSchemas(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        dogName
+        dogSize
+        dogYears
+        dogMonths
+        dogWeight
+        dogAge
+        dogAgeGroup
+        dogSex
+        dogLikes
+        dogDislikes
+        dogParks
+        ownerId
+        friendsArray
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;

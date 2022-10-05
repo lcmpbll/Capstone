@@ -1,15 +1,17 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createDog = /* GraphQL */ `
-  mutation CreateDog(
-    $input: CreateDogInput!
-    $condition: ModelDogConditionInput
+export const createDogSchema = /* GraphQL */ `
+  mutation CreateDogSchema(
+    $input: CreateDogSchemaInput!
+    $condition: ModelDogSchemaConditionInput
   ) {
-    createDog(input: $input, condition: $condition) {
+    createDogSchema(input: $input, condition: $condition) {
       id
       dogName
       dogSize
+      dogYears
+      dogMonths
       dogWeight
       dogAge
       dogAgeGroup
@@ -18,53 +20,26 @@ export const createDog = /* GraphQL */ `
       dogDislikes
       dogParks
       ownerId
-      friendsArray {
-        id
-        dogName
-        dogSize
-        dogWeight
-        dogAge
-        dogAgeGroup
-        dogSex
-        dogLikes
-        dogDislikes
-        dogParks
-        ownerId
-        friendsArray {
-          id
-          dogName
-          dogSize
-          dogWeight
-          dogAge
-          dogAgeGroup
-          dogSex
-          dogLikes
-          dogDislikes
-          dogParks
-          ownerId
-          createdAt
-          updatedAt
-          owner
-        }
-        createdAt
-        updatedAt
-        owner
-      }
+      friendsArray
       createdAt
       updatedAt
-      owner
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
-export const updateDog = /* GraphQL */ `
-  mutation UpdateDog(
-    $input: UpdateDogInput!
-    $condition: ModelDogConditionInput
+export const updateDogSchema = /* GraphQL */ `
+  mutation UpdateDogSchema(
+    $input: UpdateDogSchemaInput!
+    $condition: ModelDogSchemaConditionInput
   ) {
-    updateDog(input: $input, condition: $condition) {
+    updateDogSchema(input: $input, condition: $condition) {
       id
       dogName
       dogSize
+      dogYears
+      dogMonths
       dogWeight
       dogAge
       dogAgeGroup
@@ -73,53 +48,26 @@ export const updateDog = /* GraphQL */ `
       dogDislikes
       dogParks
       ownerId
-      friendsArray {
-        id
-        dogName
-        dogSize
-        dogWeight
-        dogAge
-        dogAgeGroup
-        dogSex
-        dogLikes
-        dogDislikes
-        dogParks
-        ownerId
-        friendsArray {
-          id
-          dogName
-          dogSize
-          dogWeight
-          dogAge
-          dogAgeGroup
-          dogSex
-          dogLikes
-          dogDislikes
-          dogParks
-          ownerId
-          createdAt
-          updatedAt
-          owner
-        }
-        createdAt
-        updatedAt
-        owner
-      }
+      friendsArray
       createdAt
       updatedAt
-      owner
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
-export const deleteDog = /* GraphQL */ `
-  mutation DeleteDog(
-    $input: DeleteDogInput!
-    $condition: ModelDogConditionInput
+export const deleteDogSchema = /* GraphQL */ `
+  mutation DeleteDogSchema(
+    $input: DeleteDogSchemaInput!
+    $condition: ModelDogSchemaConditionInput
   ) {
-    deleteDog(input: $input, condition: $condition) {
+    deleteDogSchema(input: $input, condition: $condition) {
       id
       dogName
       dogSize
+      dogYears
+      dogMonths
       dogWeight
       dogAge
       dogAgeGroup
@@ -128,41 +76,12 @@ export const deleteDog = /* GraphQL */ `
       dogDislikes
       dogParks
       ownerId
-      friendsArray {
-        id
-        dogName
-        dogSize
-        dogWeight
-        dogAge
-        dogAgeGroup
-        dogSex
-        dogLikes
-        dogDislikes
-        dogParks
-        ownerId
-        friendsArray {
-          id
-          dogName
-          dogSize
-          dogWeight
-          dogAge
-          dogAgeGroup
-          dogSex
-          dogLikes
-          dogDislikes
-          dogParks
-          ownerId
-          createdAt
-          updatedAt
-          owner
-        }
-        createdAt
-        updatedAt
-        owner
-      }
+      friendsArray
       createdAt
       updatedAt
-      owner
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
