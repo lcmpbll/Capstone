@@ -1,11 +1,28 @@
-# Capstone
+# Dog Bark / Capstone
 
 ## By Liam Campbell
+
+## Description
+
+_A React webpage that helps users have a positive dog park experience._ 
+
+### Table of Contents
+
+[Technologies Used](#technologies-used)  
+[Description](#description)  
+[Setup/Installation Requirements](#setup-and-installation-requirements)
+[React planning map](#react-map)
+[Reasearch and Planning Log](#research-log) 
+[Known Bugs](#known-bugs)  
+[License](#License)
 
 ## Technologies used
 * React
 * Javascript
 * AWS DynamoDB
+* AWS amplify
+* AWS graphql
+* JSX
 * draw.io
 ## Capstone Proposal 
 
@@ -27,9 +44,9 @@ _This project aims to make it easier to take your dog to the dog park by helping
 
 _&#8593; I will clean this up before final submission_
 
-# Research log
+## Research log
 
->## 9/16/22  3hr
+>### 9/16/22  3hr
 >
 >> 2p - 2:30
 >
@@ -47,7 +64,7 @@ _&#8593; I will clean this up before final submission_
 >
 >_Research NoSQL_
 >
->## 9/17/22 2hr / 5hr total
+>### 9/17/22 2hr / 5hr total
 >
 >> 9a - 10a 
 >
@@ -57,7 +74,7 @@ _&#8593; I will clean this up before final submission_
 >
 >_Read about differences between Firebase and AWS_
 >
->## 9/18/22 3hr / 8hr total
+>### 9/18/22 3hr / 8hr total
 >
 >> 930a - 10:15a
 >
@@ -75,23 +92,23 @@ _&#8593; I will clean this up before final submission_
 >
 >> _Build Dog, DogList, DogParkControl basic structure_
 >
->## 9/21/22 8hrs / 16 hrs total
+>### 9/21/22 8hrs / 16 hrs total
 >
 >> _Working in app, can create, new dogs with traits, and delete them, can send them to the park._
 >
->## 9/24/22 2hrs / 18 hrs total
+>### 9/24/22 2hrs / 18 hrs total
 >
 >2p - 4p
 >
 >> _AWS tutorial, add amplify, display list, use api to call to database, still working on this tutorial, should be able to host images but they are just popping up as broken img files._ 
 >
->## 9/27/22 1 hr / 19 hrs total
+>### 9/27/22 1 hr / 19 hrs total
 >
 >7p - 8p
 >
 >>Read about users in Amplify, set up at the park list.
 >
->## 9/30/22 3 hrs / 22 hrs total
+>### 9/30/22 3 hrs / 22 hrs total
 >
 >7:15a - 10:15a 
 >
@@ -105,14 +122,26 @@ _&#8593; I will clean this up before final submission_
 >   
 >   - [x] Add element to dogs that will take an array of the dog's friend's ids.
 >   - [x] Have a spot to display this array.
-<!-- >   - Only show dogs at the park that are friends with the selected dog?  -->
 >
->## 10/2/22 2 hrs/ 24 hrs total
+>
+>### 10/2/22 2 hrs/ 24 hrs total
 >
 > 8:15p - 10:15 
 >
->>_Impliment AWS, amplify, dynamodb, in process_
+> - [x] _Impliment AWS, amplify, dynamodb_
 
+## Known Bugs/ WIPs
+
+* Impliment owners for dogs. 
+* Add dog park information.
+
+## License
+
+[Copyright](LICENSE) (c) 10/05/2022 Liam Campbell
+
+## Contact Information 
+
+_Feel free to reach out via [github](https://github.com/lcmpbll)_
 
 
 
