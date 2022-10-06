@@ -7,6 +7,9 @@ function DogDetail(props){
   const displayedFriends = dogList.filter(function(dogFriends){
     return dog.friendsArray.indexOf(dogFriends.id) !== -1;
   });
+  
+  const displayLikes = dog.dogLikes.join(" ");
+  const dsiplayDislikes = dog.dogDislikes.join(" ");
  
   //Styling
   const detailsStyles = {
@@ -31,12 +34,12 @@ function DogDetail(props){
         <hr/>
         <div className='likes'>
           <h2>Likes</h2>
-          {dog.dogLikes}
+          {displayLikes}
           <hr/>
         </div>
         <div className='dislikes'>
           <h2>Dislikes</h2>
-          {dog.dogDislikes}
+          {dsiplayDislikes}
           <hr/>
         </div>
         <div className='friends'>
