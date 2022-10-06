@@ -66,7 +66,7 @@ function DogParkControl(){
     setMainDogList(newMainDogList);
     await API.graphql({
       query: deleteDogMutation,
-      variables: { input: { id }, "_version": "1"},
+      variables: { input: { id }, "_version": "_version"},
     });
     setSelectedDog(null);
   }
