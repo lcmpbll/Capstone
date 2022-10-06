@@ -4,6 +4,15 @@
 
 _A React webpage that helps users have a positive dog park experience._ 
 
+![Main app image.](src/Img/applicationDemo.png)
+
+### Background image Attribution
+
+<pre>
+<a href="https://www.vecteezy.com/free-vector/madeira">Madeira Vectors by Vecteezy</a>
+<a href="https://www.vecteezy.com/free-vector/dog-park">Dog Park Vectors by Vecteezy</a>
+</pre>
+
 ### Table of Contents
 
 [Technologies Used](#technologies-used)  
@@ -37,14 +46,6 @@ _A React webpage that helps users have a positive dog park experience._
 
 _This project aims to make it easier to take your dog to the dog park by helping your dog to make friends. Here is the full [capstone proposal](./CapstonePropsal.md)._
 
-![Main app image.](src/Img/applicationDemo.png)
-
-### Background image Attribution
-
-<pre>
-<a href="https://www.vecteezy.com/free-vector/madeira">Madeira Vectors by Vecteezy</a>
-<a href="https://www.vecteezy.com/free-vector/dog-park">Dog Park Vectors by Vecteezy</a>
-</pre>
 
 ## Description 
 
