@@ -25,7 +25,7 @@ function Park(props){
     } else if (youngAdults > adults && youngAdults > oldDogs){
       return 'Mostly younger dogs';
     } else if (adults > oldDogs){
-      return 'Lot of adult dogs here';
+      return 'Some adult dogs here';
     } else if(oldDogs > adults){
       return "It's practically the senior center";
     } else {

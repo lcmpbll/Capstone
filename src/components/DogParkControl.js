@@ -17,6 +17,7 @@ function DogParkControl(){
   const [selectedDog, setSelectedDog] = useState(null);
   const [mainAtTheParkList, setMainAtTheParkList] = useState([]);
   const [friendingDog, setFriendingDog] = useState(false);
+  const [ageError, setAgeError] = useState(null);
   
   
   //  AWS Api fetch 
@@ -55,10 +56,12 @@ function DogParkControl(){
       setFormVisibleOnPage(false);
       setSelectedDog(null);
       setFriendingDog(false);
+      setAgeError(null);
     } else {
       setFormVisibleOnPage(!formVisibleOnPage);
     }
   }
+  
   const handleDeletingDog = async (dogToDelete) => {
     let id = dogToDelete.id;
     console.log(id);
@@ -70,22 +73,30 @@ function DogParkControl(){
     });
     setSelectedDog(null);
   }
+  
   const handleChangingSelectedDog = (id) => {
     const selection = mainDogList.filter(dog=> dog.id === id)[0];
     setSelectedDog(selection);
     console.log(selection);
   }
+  
   const handleGoingToThePark = (id) => {
     const dogGoingToPark = mainDogList.filter(dog => dog.id === id);
-    const checkAtPark = mainAtTheParkList.filter(dog => dog.id === id)
-    if(checkAtPark.length === 0){
-      const newMainAtTheParkList = mainAtTheParkList.concat(dogGoingToPark);  
-      setMainAtTheParkList(newMainAtTheParkList);
+    if(dogGoingToPark[0].dogAgeGroup === 'Pre vaccinated puppy'){
+      setAgeError('Your dog is too young to be vaccinated. Please explore alternative exercise and socialization opportunities');
+      return ageError;
     } else {
-      const newMainAtTheParkList = mainAtTheParkList.filter(dog => dog.id !== id);
-      setMainAtTheParkList(newMainAtTheParkList);
+      const checkAtPark = mainAtTheParkList.filter(dog => dog.id === id);
+      if(checkAtPark.length === 0){
+        const newMainAtTheParkList = mainAtTheParkList.concat(dogGoingToPark);  
+        setMainAtTheParkList(newMainAtTheParkList);
+      } else {
+        const newMainAtTheParkList = mainAtTheParkList.filter(dog => dog.id !== id);
+        setMainAtTheParkList(newMainAtTheParkList);
+      }
     }
   }
+  
   //hoping I can reuse for actually editing dogs. 
   const handleEditingDogInList = (editedDog) => {
     const editedDogList = mainDogList
@@ -132,7 +143,7 @@ function DogParkControl(){
     currentlyVisibleState = <FriendingDog dog={selectedDog} dogList={mainDogList} onFriendsSelection={handleEditingDogInList} />
     buttonText="Return to dog list"
   } else if(selectedDog != null){
-    currentlyVisibleState = <DogDetail dog={selectedDog} dogList={mainDogList} onClickingFriend={handleFriendingClick} onClickingDelete={handleDeletingDog} onClickingGo={handleGoingToThePark}/>
+    currentlyVisibleState = <DogDetail dog={selectedDog} dogList={mainDogList} onClickingFriend={handleFriendingClick} onClickingDelete={handleDeletingDog} onClickingGo={handleGoingToThePark} error={ageError}/>
     buttonText= 'Return to dog list';
   } else if(formVisibleOnPage) {
     currentlyVisibleState = <NewDogForm onNewDogCreation={handleAddingNewDogToList} dogList={mainDogList} />

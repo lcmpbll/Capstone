@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 function DogDetail(props){
-  const {dog, dogList, onClickingDelete, onClickingFriend, onClickingGo} = props;
+  const {dog, dogList, onClickingDelete, onClickingFriend, onClickingGo, error} = props;
   const displayedFriends = dogList.filter(function(dogFriends){
     return dog.friendsArray.indexOf(dogFriends.id) !== -1;
   });
@@ -47,6 +47,7 @@ function DogDetail(props){
         <div className='parks'>
           <h2>Parks</h2>
           {dog.dogParks} &nbsp;
+          {error} &nbsp;
           <button onClick={() => onClickingGo(dog.id)} >{buttonText}</button>
           <hr />
         </div>
