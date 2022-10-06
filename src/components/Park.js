@@ -53,7 +53,7 @@ function Park(props){
   //Properties to caluclate
   const totalDogSize = calculateAverageSize(atTheParkList);
   const averageDogAge = calculateAverageAge(atTheParkList);
-  console.log(averageDogAge);
+  
   
   return(
     <React.Fragment>
