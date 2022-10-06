@@ -219,7 +219,8 @@ _This is a react based application that allows the user to create a dog, set it'
 
 * Impliment owners for dogs. 
 * Add dog park information.
-* Allow dogs to leave the dog park. 
+* Add aging
+* Add storage for vaccine records
 
 ## License
 
