@@ -59,12 +59,14 @@ function DogParkControl(){
       setFormVisibleOnPage(!formVisibleOnPage);
     }
   }
-  const handleDeletingDog = async ({id}) => {
+  const handleDeletingDog = async (dogToDelete) => {
+    let id = dogToDelete.id;
+    console.log(id);
     const newMainDogList = mainDogList.filter((dog) => dog.id !== id);
     setMainDogList(newMainDogList);
     await API.graphql({
       query: deleteDogMutation,
-      variables: { input: {id}},
+      variables: { input: { id }, "_version": "_version"},
     });
     setSelectedDog(null);
   }
@@ -76,13 +78,11 @@ function DogParkControl(){
   const handleGoingToThePark = (id) => {
     const dogGoingToPark = mainDogList.filter(dog => dog.id === id);
     const checkAtPark = mainAtTheParkList.filter(dog => dog.id === id)
-    console.log(checkAtPark.length);
     if(checkAtPark.length === 0){
       const newMainAtTheParkList = mainAtTheParkList.concat(dogGoingToPark);  
       setMainAtTheParkList(newMainAtTheParkList);
     } else {
       const newMainAtTheParkList = mainAtTheParkList.filter(dog => dog.id !== id);
-      console.log(newMainAtTheParkList);
       setMainAtTheParkList(newMainAtTheParkList);
     }
   }

@@ -53,7 +53,7 @@ function DogDetail(props){
         <br/>
         <div className='buttonControl'>
           <button onClick={() => onClickingFriend(dog.id)}>Make some Dog friends</button> &nbsp;
-          <button onClick={()=> onClickingDelete(dog.id)}>Remove Dog</button>
+          <button onClick={()=> onClickingDelete(dog)}>Remove Dog</button>
         </div>
       </div>
     </React.Fragment>
@@ -63,7 +63,11 @@ function DogDetail(props){
 DogDetail.propTypes = {
   dog: PropTypes.object,
   onClickingDelete: PropTypes.func,
-  onClickingEdit: PropTypes.func
+  onClickingEdit: PropTypes.func,
+  onClickingFriend: PropTypes.func,
+  displayedDogFriends: PropTypes.array,
+  dogList: PropTypes.array
+  
 }
 
 export default DogDetail;
