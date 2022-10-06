@@ -44,7 +44,7 @@ _A React webpage that helps users have a positive dog park experience._
 
 ## Capstone Proposal 
 
-_This project aims to make it easier to take your dog to the dog park by helping your dog to make friends. Here is the full [capstone proposal](./CapstonePropsal.md)._
+_This project aims to make it easier to take your dog to the dog park by showing the current make up of the dog park. Here is the full [capstone proposal](./CapstonePropsal.md)._
 
 
 ## Description 
