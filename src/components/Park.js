@@ -9,15 +9,14 @@ function Park(props){
     let puppies = 0; let youngAdults = 0;
     let adults = 0; let oldDogs = 0;
     for(let i = 0; i < atTheParkList.length; i ++){
-      if(atTheParkList[i].dogAge === 'Puppy' || atTheParkList[i].dogAge === 'Prevaccinated puppy'){
+      if(atTheParkList[i].dogAgeGroup === 'Puppy' || atTheParkList[i].dogAgeGroup === 'Prevaccinated puppy'){
         puppies ++;
         console.log(puppies);
-      } else if (atTheParkList[i].dogAge === 'Juvenile' || atTheParkList[i].dogAge === "Young Adult") {
+      } else if (atTheParkList[i].dogAgeGroup === 'Juvenile' || atTheParkList[i].dogAgeGroup === "Young Adult") {
         youngAdults ++;
-        console.log(youngAdults);
-      } else if ( atTheParkList[i].dogAge === 'Adult'){
+      } else if ( atTheParkList[i].dogAgeGroup === 'Adult'){
         adults ++;
-      } else if(atTheParkList[i].dogAge === 'Senior' || atTheParkList[i].dogAge === "Geriatric") {
+      } else if(atTheParkList[i].dogAgeGroup === 'Senior' || atTheParkList[i].dogAgeGroup === "Geriatric") {
         oldDogs ++;
       }
     }
