@@ -7,6 +7,7 @@ import FriendingDog from './FriendingDog';
 import { API } from 'aws-amplify';
 import { listDogSchemas } from '../graphql/queries';
 import { createDogSchema as createDogMutation, deleteDogSchema as deleteDogMutation } from '../graphql/mutations';
+import { ComponentPropsToStylePropsMap } from '@aws-amplify/ui-react';
 
 
 
@@ -35,6 +36,7 @@ function DogParkControl(){
   }
   
   const handleAddingNewDogToList = async (newDog) => {
+   
     await API.graphql({ query : createDogMutation, variables : { input: newDog}, });
     fetchDogs();
     setFormVisibleOnPage(false);
@@ -64,7 +66,7 @@ function DogParkControl(){
   
   const handleDeletingDog = async (dogToDelete) => {
     let id = dogToDelete.id;
-    console.log(id);
+    // console.log(id);
     const newMainDogList = mainDogList.filter((dog) => dog.id !== id);
     setMainDogList(newMainDogList);
     await API.graphql({
