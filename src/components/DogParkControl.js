@@ -6,8 +6,8 @@ import AtThePark from './AtThePark';
 import FriendingDog from './FriendingDog';
 import { API } from 'aws-amplify';
 import { listDogSchemas } from '../graphql/queries';
-import { createDogSchema as createDogMutation, deleteDogSchema as deleteDogMutation } from '../graphql/mutations';
-import { ComponentPropsToStylePropsMap } from '@aws-amplify/ui-react';
+import { createDogSchema as createDogMutation, deleteDogSchema } from '../graphql/mutations';
+
 
 
 
@@ -30,8 +30,8 @@ function DogParkControl(){
   
   async function fetchDogs() {
     const apiData =  await API.graphql({ query: listDogSchemas });
-    console.log(apiData);
-    const apiDogs = apiData.data.listDogSchemas.items;
+    console.log(apiData)
+    const apiDogs = apiData.data.listDogSchemas.items.filter(items => items._deleted !== true);
     setMainDogList(apiDogs);
   }
   
@@ -67,13 +67,25 @@ function DogParkControl(){
   const handleDeletingDog = async (dogToDelete) => {
     let id = dogToDelete.id;
     // console.log(id);
-    const newMainDogList = mainDogList.filter((dog) => dog.id !== id);
-    setMainDogList(newMainDogList);
+    // 
+    // 
     await API.graphql({
-      query: deleteDogMutation,
-      variables: { input: { id }, "_version": "_version"},
-    });
-    setSelectedDog(null);
+      query: deleteDogSchema,
+      variables: { input: { id: id, _version: dogToDelete._version}},
+    }).then(function(response) {
+      if(!response.ok) {
+        const newMainDogList = mainDogList.filter((dog) => dog.id !== id);
+        setMainDogList(newMainDogList);
+        return console.log(response.errors);
+      } else {
+        setSelectedDog(null); 
+        
+      }
+    }).catch(
+      
+      setSelectedDog(null)
+    );
+   
   }
   
   const handleChangingSelectedDog = (id) => {

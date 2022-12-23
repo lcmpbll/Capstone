@@ -120,7 +120,6 @@ function NewDogForm(props) {
       dogSex: handleSexValueChange(event),
       dogLikes: handleLikesListChange(event),
       friendsArray: [],
-      ownerId: v4(),
       dogDislikes: handleDislikesListChange(event),
       dogParks: 'Alberta Park',
       id: v4(),

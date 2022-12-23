@@ -89,13 +89,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "ownerId": {
-                    "name": "ownerId",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "friendsArray": {
                     "name": "friendsArray",
                     "isArray": true,

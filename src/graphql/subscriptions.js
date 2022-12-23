@@ -16,7 +16,6 @@ export const onCreateDogSchema = /* GraphQL */ `
       dogLikes
       dogDislikes
       dogParks
-      ownerId
       friendsArray
       createdAt
       updatedAt
@@ -41,7 +40,6 @@ export const onUpdateDogSchema = /* GraphQL */ `
       dogLikes
       dogDislikes
       dogParks
-      ownerId
       friendsArray
       createdAt
       updatedAt
@@ -66,7 +64,6 @@ export const onDeleteDogSchema = /* GraphQL */ `
       dogLikes
       dogDislikes
       dogParks
-      ownerId
       friendsArray
       createdAt
       updatedAt

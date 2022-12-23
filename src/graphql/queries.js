@@ -16,7 +16,6 @@ export const getDogSchema = /* GraphQL */ `
       dogLikes
       dogDislikes
       dogParks
-      ownerId
       friendsArray
       createdAt
       updatedAt
@@ -46,7 +45,6 @@ export const listDogSchemas = /* GraphQL */ `
         dogLikes
         dogDislikes
         dogParks
-        ownerId
         friendsArray
         createdAt
         updatedAt
@@ -85,7 +83,6 @@ export const syncDogSchemas = /* GraphQL */ `
         dogLikes
         dogDislikes
         dogParks
-        ownerId
         friendsArray
         createdAt
         updatedAt
