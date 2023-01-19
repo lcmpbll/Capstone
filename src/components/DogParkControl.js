@@ -66,9 +66,6 @@ function DogParkControl(){
   
   const handleDeletingDog = async (dogToDelete) => {
     let id = dogToDelete.id;
-    // console.log(id);
-    // 
-    // 
     await API.graphql({
       query: deleteDogSchema,
       variables: { input: { id: id, _version: dogToDelete._version}},
@@ -76,6 +73,7 @@ function DogParkControl(){
       if(!response.ok) {
         const newMainDogList = mainDogList.filter((dog) => dog.id !== id);
         setMainDogList(newMainDogList);
+        setSelectedDog(null); 
         return console.log(response.errors);
       } else {
         setSelectedDog(null); 
@@ -95,20 +93,29 @@ function DogParkControl(){
   }
   
   const handleGoingToThePark = (id) => {
+    
     const dogGoingToPark = mainDogList.filter(dog => dog.id === id);
-    if(dogGoingToPark[0].dogAgeGroup === 'Pre vaccinated puppy'){
-      setAgeError('Your dog is too young to be vaccinated. Please explore alternative exercise and socialization opportunities');
-      return ageError;
+    if(mainAtTheParkList.includes(dog => dog.id === id)){
+      sendDogHome(id);
     } else {
-      const checkAtPark = mainAtTheParkList.filter(dog => dog.id === id);
-      if(checkAtPark.length === 0){
-        const newMainAtTheParkList = mainAtTheParkList.concat(dogGoingToPark);  
-        setMainAtTheParkList(newMainAtTheParkList);
+      if(dogGoingToPark[0].dogAgeGroup === 'Pre vaccinated puppy'){
+        setAgeError('Your dog is too young to be vaccinated. Please explore alternative exercise and socialization opportunities');
+        return ageError;
       } else {
-        const newMainAtTheParkList = mainAtTheParkList.filter(dog => dog.id !== id);
-        setMainAtTheParkList(newMainAtTheParkList);
+        const checkAtPark = mainAtTheParkList.filter(dog => dog.id === id);
+        if(checkAtPark.length === 0){
+          const newMainAtTheParkList = mainAtTheParkList.concat(dogGoingToPark);  
+          setMainAtTheParkList(newMainAtTheParkList);
+        } else {
+          const newMainAtTheParkList = mainAtTheParkList.filter(dog => dog.id !== id);
+          setMainAtTheParkList(newMainAtTheParkList);
+        }
       }
     }
+  }
+  
+  const sendDogHome = (id) => {
+    setMainAtTheParkList(mainAtTheParkList.splice(mainAtTheParkList.indexOf(dog => dog.id === id), 1));
   }
   
   //hoping I can reuse for actually editing dogs. 
@@ -124,27 +131,7 @@ function DogParkControl(){
     setFriendingDog(true);
   }
   
-    // styles
-    const dogParkControlStyle = {
-      display: 'flex',
-    }
-    
-    const atTheParkStyle = {
-      position: 'absolute',
-      right: '30px',
-      
-    }
-    
-    const buttonStyle = {
-      position: 'absolute',
-      bottom: '30px',
-      left: '20px'
-    }
-    
-    const mainContentStyle = {
-      justifyContent: 'center',
-      marginLeft: '400px',
-    }
+
     
     
   
@@ -182,5 +169,27 @@ function DogParkControl(){
     </React.Fragment>
   );
 }
+
+    // styles
+    const dogParkControlStyle = {
+      display: 'flex',
+    }
+    
+    const atTheParkStyle = {
+      position: 'absolute',
+      right: '30px',
+      
+    }
+    
+    const buttonStyle = {
+      position: 'absolute',
+      bottom: '30px',
+      left: '20px'
+    }
+    
+    const mainContentStyle = {
+      justifyContent: 'center',
+      marginLeft: '400px',
+    }
 
 export default DogParkControl;
