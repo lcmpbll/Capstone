@@ -52,6 +52,20 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "atThePark": {
+                    "name": "atThePark",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "startTimeAtPark": {
+                    "name": "startTimeAtPark",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "dogAgeGroup": {
                     "name": "dogAgeGroup",
                     "isArray": false,
@@ -84,6 +98,13 @@ export const schema = {
                 },
                 "dogParks": {
                     "name": "dogParks",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "ownerId": {
+                    "name": "ownerId",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -143,5 +164,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.2",
-    "version": "737eee958e6610fa074ab3a2c35301dc"
+    "version": "2ee1dbff645462c1d6e5c39297f7bd7d"
 };
