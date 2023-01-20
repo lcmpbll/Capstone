@@ -17,10 +17,6 @@
         "cognitoUserPoolId": "authcapstone5492eb23"
       }
     ],
-    "conflictResolution": {
-      "defaultResolutionStrategy": {
-        "type": "OPTIMISTIC_CONCURRENCY"
-      }
-    }
+    "conflictResolution": {}
   }
 }
