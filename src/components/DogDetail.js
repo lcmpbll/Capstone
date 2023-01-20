@@ -2,15 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
+
 function DogDetail(props){
   const {dog, dogList, onClickingDelete, onClickingFriend, onClickingGo, error} = props;
   const displayedFriends = dogList.filter(function(dogFriends){
     return dog.friendsArray.indexOf(dogFriends.id) !== -1;
   });
   
+  
+  
   const displayLikes = dog.dogLikes.join(" ");
   const dsiplayDislikes = dog.dogDislikes.join(" ");
- 
+  
+  
   //Styling
   const detailsStyles = {
     display: 'flex',
@@ -20,11 +24,21 @@ function DogDetail(props){
     // marginLeft: '450px',
     fontWeight: 'bold',
   }
-  let buttonText = 'Switch Park Status!'
+  
+  let atTheParkStatus = null;
+  let buttonText = null;
+  if(dog.atThePark === true && error === null){
+    buttonText = "leave the park";
+    atTheParkStatus = '';
+  } else {
+    buttonText = "Go to the park";
+    atTheParkStatus = 'not'
+  }
   return(
     <React.Fragment>
       <div style={detailsStyles}>
         <h1>{dog.dogName}</h1>
+        <h2>Is {atTheParkStatus} at the park.</h2>
         <div>
           <h2>Stats:</h2>
           <p>Size: {dog.dogSize}</p>
@@ -51,7 +65,7 @@ function DogDetail(props){
           <h2>Parks</h2>
           {dog.dogParks} &nbsp;
           {error} &nbsp;
-          <button onClick={() => onClickingGo(dog.id)} >{buttonText}</button>
+          <button  onClick={() => {onClickingGo(dog.id) }} >{buttonText}</button>
           <hr />
         </div>
         <br/>
@@ -69,8 +83,10 @@ DogDetail.propTypes = {
   onClickingDelete: PropTypes.func,
   onClickingEdit: PropTypes.func,
   onClickingFriend: PropTypes.func,
+  onClickingGo: PropTypes.func,
   displayedDogFriends: PropTypes.array,
-  dogList: PropTypes.array
+  dogList: PropTypes.array,
+  
   
 }
 
