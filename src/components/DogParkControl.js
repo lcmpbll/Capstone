@@ -13,7 +13,6 @@ function DogParkControl(){
   const [mainDogList , setMainDogList ] = useState([]);
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
   const [selectedDog, setSelectedDog] = useState(null);
-  const [mainAtTheParkList, setMainAtTheParkList] = useState([]);
   const [friendingDog, setFriendingDog] = useState(false);
   const [ageError, setAgeError] = useState(null);
 
@@ -24,7 +23,7 @@ function DogParkControl(){
   
   useEffect(() => {
     update();
-  }, []);
+  },[]);
   
   const update = async () => {
     const newDogList = await fetchDogs();
@@ -143,7 +142,7 @@ function DogParkControl(){
     buttonText = 'Return to dog list';
   } else {
     currentlyVisibleState = <DogList onDogSelection={handleChangingSelectedDog} dogList={mainDogList} />
-      parkList = <AtThePark atTheParkList={mainAtTheParkList} />
+      parkList = <AtThePark mainDogList={mainDogList} />
     buttonText = 'Add Dog';
   }
   
