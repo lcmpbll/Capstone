@@ -19,9 +19,9 @@ export const getDogSchema = /* GraphQL */ `
       dogDislikes
       dogParks
       ownerId
-      friendsArray
       createdAt
       updatedAt
+      friendsArray
     }
   }
 `;
@@ -48,9 +48,9 @@ export const listDogSchemas = /* GraphQL */ `
         dogDislikes
         dogParks
         ownerId
-        friendsArray
         createdAt
         updatedAt
+        friendsArray
       }
       nextToken
     }

@@ -21,9 +21,9 @@ export const onCreateDogSchema = /* GraphQL */ `
       dogDislikes
       dogParks
       ownerId
-      friendsArray
       createdAt
       updatedAt
+      friendsArray
     }
   }
 `;
@@ -47,9 +47,9 @@ export const onUpdateDogSchema = /* GraphQL */ `
       dogDislikes
       dogParks
       ownerId
-      friendsArray
       createdAt
       updatedAt
+      friendsArray
     }
   }
 `;
@@ -73,9 +73,9 @@ export const onDeleteDogSchema = /* GraphQL */ `
       dogDislikes
       dogParks
       ownerId
-      friendsArray
       createdAt
       updatedAt
+      friendsArray
     }
   }
 `;
