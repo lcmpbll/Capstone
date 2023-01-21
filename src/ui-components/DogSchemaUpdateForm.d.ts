@@ -7,7 +7,7 @@
 import * as React from "react";
 import { DogSchema } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 export declare type ValidationResponse = {
     hasError: boolean;
     errorMessage?: string;
@@ -20,6 +20,8 @@ export declare type DogSchemaUpdateFormInputValues = {
     dogMonths?: number;
     dogWeight?: number;
     dogAge?: number;
+    atThePark?: boolean;
+    startTimeAtPark?: string;
     dogAgeGroup?: string;
     dogSex?: string;
     dogLikes?: string[];
@@ -35,6 +37,8 @@ export declare type DogSchemaUpdateFormValidationValues = {
     dogMonths?: ValidationFunction<number>;
     dogWeight?: ValidationFunction<number>;
     dogAge?: ValidationFunction<number>;
+    atThePark?: ValidationFunction<boolean>;
+    startTimeAtPark?: ValidationFunction<string>;
     dogAgeGroup?: ValidationFunction<string>;
     dogSex?: ValidationFunction<string>;
     dogLikes?: ValidationFunction<string>;
@@ -52,6 +56,8 @@ export declare type DogSchemaUpdateFormOverridesProps = {
     dogMonths?: FormProps<TextFieldProps>;
     dogWeight?: FormProps<TextFieldProps>;
     dogAge?: FormProps<TextFieldProps>;
+    atThePark?: FormProps<SwitchFieldProps>;
+    startTimeAtPark?: FormProps<TextFieldProps>;
     dogAgeGroup?: FormProps<TextFieldProps>;
     dogSex?: FormProps<TextFieldProps>;
     dogLikes?: FormProps<TextFieldProps>;

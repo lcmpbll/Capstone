@@ -14,6 +14,8 @@ type EagerDogSchema = {
   readonly dogMonths?: number | null;
   readonly dogWeight?: number | null;
   readonly dogAge?: number | null;
+  readonly atThePark?: boolean | null;
+  readonly startTimeAtPark?: string | null;
   readonly dogAgeGroup?: string | null;
   readonly dogSex?: string | null;
   readonly dogLikes?: (string | null)[] | null;
@@ -33,6 +35,8 @@ type LazyDogSchema = {
   readonly dogMonths?: number | null;
   readonly dogWeight?: number | null;
   readonly dogAge?: number | null;
+  readonly atThePark?: boolean | null;
+  readonly startTimeAtPark?: string | null;
   readonly dogAgeGroup?: string | null;
   readonly dogSex?: string | null;
   readonly dogLikes?: (string | null)[] | null;
