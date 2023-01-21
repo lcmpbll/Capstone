@@ -18,6 +18,8 @@ type DogSchema @model @auth(rules: [{ allow: public }]) {
   dogDislikes: [String]
   dogParks: String
   ownerId: String
+  createdAt: String
+  updatedAt: String
   friendsArray: [String]
   
 } 
