@@ -7,7 +7,8 @@ function FriendDogForm(props) {
   
   const handleFriendChange = (event) => {
     const {value} = event.target;
-    setFriendsArray(friendsArray => friendsArray.concat(value));
+    const newFriendsArray = dog.friendsArray.concat(value);
+    setFriendsArray(newFriendsArray);
     return friendsArray;
   }
   
