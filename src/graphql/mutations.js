@@ -14,17 +14,17 @@ export const createDogSchema = /* GraphQL */ `
       dogMonths
       dogWeight
       dogAge
+      atThePark
+      startTimeAtPark
       dogAgeGroup
       dogSex
       dogLikes
       dogDislikes
       dogParks
-      friendsArray
+      ownerId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      friendsArray
     }
   }
 `;
@@ -41,17 +41,17 @@ export const updateDogSchema = /* GraphQL */ `
       dogMonths
       dogWeight
       dogAge
+      atThePark
+      startTimeAtPark
       dogAgeGroup
       dogSex
       dogLikes
       dogDislikes
       dogParks
-      friendsArray
+      ownerId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      friendsArray
     }
   }
 `;
@@ -68,17 +68,17 @@ export const deleteDogSchema = /* GraphQL */ `
       dogMonths
       dogWeight
       dogAge
+      atThePark
+      startTimeAtPark
       dogAgeGroup
       dogSex
       dogLikes
       dogDislikes
       dogParks
-      friendsArray
+      ownerId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      friendsArray
     }
   }
 `;

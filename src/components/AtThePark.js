@@ -4,6 +4,8 @@ import Park from './Park';
 
 
 function AtThePark(props){
+  const { mainDogList } = props;
+  let atTheParkList = mainDogList.filter(dog=> dog.atThePark === true)
   //Styles
   const mainAtTheParkStyles = {
     display: 'flex',
@@ -24,8 +26,8 @@ function AtThePark(props){
         <div style={parkHeaderStyle}>
           <h1>Alberta Park</h1>
         </div>
-        <Park atTheParkList={props.atTheParkList} />
-        {props.atTheParkList.map((dog) =>
+        <Park atTheParkList={atTheParkList} />
+        {atTheParkList.map((dog) =>
         <div style={dogAtTheParkStyles} key={dog.id}>
         <h1>{dog.dogName}</h1>
         {/* <button onClick = {() => props.whenDogFriendClicked(dog.id)}>Add as a friend</button>

@@ -2,8 +2,10 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateDogSchema = /* GraphQL */ `
-  subscription OnCreateDogSchema {
-    onCreateDogSchema {
+  subscription OnCreateDogSchema(
+    $filter: ModelSubscriptionDogSchemaFilterInput
+  ) {
+    onCreateDogSchema(filter: $filter) {
       id
       dogName
       dogSize
@@ -11,23 +13,25 @@ export const onCreateDogSchema = /* GraphQL */ `
       dogMonths
       dogWeight
       dogAge
+      atThePark
+      startTimeAtPark
       dogAgeGroup
       dogSex
       dogLikes
       dogDislikes
       dogParks
-      friendsArray
+      ownerId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      friendsArray
     }
   }
 `;
 export const onUpdateDogSchema = /* GraphQL */ `
-  subscription OnUpdateDogSchema {
-    onUpdateDogSchema {
+  subscription OnUpdateDogSchema(
+    $filter: ModelSubscriptionDogSchemaFilterInput
+  ) {
+    onUpdateDogSchema(filter: $filter) {
       id
       dogName
       dogSize
@@ -35,23 +39,25 @@ export const onUpdateDogSchema = /* GraphQL */ `
       dogMonths
       dogWeight
       dogAge
+      atThePark
+      startTimeAtPark
       dogAgeGroup
       dogSex
       dogLikes
       dogDislikes
       dogParks
-      friendsArray
+      ownerId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      friendsArray
     }
   }
 `;
 export const onDeleteDogSchema = /* GraphQL */ `
-  subscription OnDeleteDogSchema {
-    onDeleteDogSchema {
+  subscription OnDeleteDogSchema(
+    $filter: ModelSubscriptionDogSchemaFilterInput
+  ) {
+    onDeleteDogSchema(filter: $filter) {
       id
       dogName
       dogSize
@@ -59,17 +65,17 @@ export const onDeleteDogSchema = /* GraphQL */ `
       dogMonths
       dogWeight
       dogAge
+      atThePark
+      startTimeAtPark
       dogAgeGroup
       dogSex
       dogLikes
       dogDislikes
       dogParks
-      friendsArray
+      ownerId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      friendsArray
     }
   }
 `;

@@ -17,6 +17,7 @@ import {
   Grid,
   Icon,
   ScrollView,
+  SwitchField,
   Text,
   TextField,
   useTheme,
@@ -173,6 +174,8 @@ export default function DogSchemaUpdateForm(props) {
     dogMonths: undefined,
     dogWeight: undefined,
     dogAge: undefined,
+    atThePark: false,
+    startTimeAtPark: undefined,
     dogAgeGroup: undefined,
     dogSex: undefined,
     dogLikes: [],
@@ -187,6 +190,10 @@ export default function DogSchemaUpdateForm(props) {
   const [dogMonths, setDogMonths] = React.useState(initialValues.dogMonths);
   const [dogWeight, setDogWeight] = React.useState(initialValues.dogWeight);
   const [dogAge, setDogAge] = React.useState(initialValues.dogAge);
+  const [atThePark, setAtThePark] = React.useState(initialValues.atThePark);
+  const [startTimeAtPark, setStartTimeAtPark] = React.useState(
+    initialValues.startTimeAtPark
+  );
   const [dogAgeGroup, setDogAgeGroup] = React.useState(
     initialValues.dogAgeGroup
   );
@@ -209,6 +216,8 @@ export default function DogSchemaUpdateForm(props) {
     setDogMonths(cleanValues.dogMonths);
     setDogWeight(cleanValues.dogWeight);
     setDogAge(cleanValues.dogAge);
+    setAtThePark(cleanValues.atThePark);
+    setStartTimeAtPark(cleanValues.startTimeAtPark);
     setDogAgeGroup(cleanValues.dogAgeGroup);
     setDogSex(cleanValues.dogSex);
     setDogLikes(cleanValues.dogLikes ?? []);
@@ -246,6 +255,8 @@ export default function DogSchemaUpdateForm(props) {
     dogMonths: [],
     dogWeight: [],
     dogAge: [],
+    atThePark: [],
+    startTimeAtPark: [],
     dogAgeGroup: [],
     dogSex: [],
     dogLikes: [],
@@ -278,6 +289,8 @@ export default function DogSchemaUpdateForm(props) {
           dogMonths,
           dogWeight,
           dogAge,
+          atThePark,
+          startTimeAtPark,
           dogAgeGroup,
           dogSex,
           dogLikes,
@@ -341,6 +354,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths,
               dogWeight,
               dogAge,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup,
               dogSex,
               dogLikes,
@@ -377,6 +392,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths,
               dogWeight,
               dogAge,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup,
               dogSex,
               dogLikes,
@@ -422,6 +439,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths,
               dogWeight,
               dogAge,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup,
               dogSex,
               dogLikes,
@@ -467,6 +486,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths: value,
               dogWeight,
               dogAge,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup,
               dogSex,
               dogLikes,
@@ -512,6 +533,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths,
               dogWeight: value,
               dogAge,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup,
               dogSex,
               dogLikes,
@@ -557,6 +580,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths,
               dogWeight,
               dogAge: value,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup,
               dogSex,
               dogLikes,
@@ -578,6 +603,82 @@ export default function DogSchemaUpdateForm(props) {
         hasError={errors.dogAge?.hasError}
         {...getOverrideProps(overrides, "dogAge")}
       ></TextField>
+      <SwitchField
+        label="At the park"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={atThePark}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              dogName,
+              dogSize,
+              dogYears,
+              dogMonths,
+              dogWeight,
+              dogAge,
+              atThePark: value,
+              startTimeAtPark,
+              dogAgeGroup,
+              dogSex,
+              dogLikes,
+              dogDislikes,
+              dogParks,
+              ownerId,
+              friendsArray,
+            };
+            const result = onChange(modelFields);
+            value = result?.atThePark ?? value;
+          }
+          if (errors.atThePark?.hasError) {
+            runValidationTasks("atThePark", value);
+          }
+          setAtThePark(value);
+        }}
+        onBlur={() => runValidationTasks("atThePark", atThePark)}
+        errorMessage={errors.atThePark?.errorMessage}
+        hasError={errors.atThePark?.hasError}
+        {...getOverrideProps(overrides, "atThePark")}
+      ></SwitchField>
+      <TextField
+        label="Start time at park"
+        isRequired={false}
+        isReadOnly={false}
+        defaultValue={startTimeAtPark}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              dogName,
+              dogSize,
+              dogYears,
+              dogMonths,
+              dogWeight,
+              dogAge,
+              atThePark,
+              startTimeAtPark: value,
+              dogAgeGroup,
+              dogSex,
+              dogLikes,
+              dogDislikes,
+              dogParks,
+              ownerId,
+              friendsArray,
+            };
+            const result = onChange(modelFields);
+            value = result?.startTimeAtPark ?? value;
+          }
+          if (errors.startTimeAtPark?.hasError) {
+            runValidationTasks("startTimeAtPark", value);
+          }
+          setStartTimeAtPark(value);
+        }}
+        onBlur={() => runValidationTasks("startTimeAtPark", startTimeAtPark)}
+        errorMessage={errors.startTimeAtPark?.errorMessage}
+        hasError={errors.startTimeAtPark?.hasError}
+        {...getOverrideProps(overrides, "startTimeAtPark")}
+      ></TextField>
       <TextField
         label="Dog age group"
         isRequired={false}
@@ -593,6 +694,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths,
               dogWeight,
               dogAge,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup: value,
               dogSex,
               dogLikes,
@@ -629,6 +732,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths,
               dogWeight,
               dogAge,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup,
               dogSex: value,
               dogLikes,
@@ -661,6 +766,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths,
               dogWeight,
               dogAge,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup,
               dogSex,
               dogLikes: values,
@@ -713,6 +820,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths,
               dogWeight,
               dogAge,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup,
               dogSex,
               dogLikes,
@@ -771,6 +880,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths,
               dogWeight,
               dogAge,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup,
               dogSex,
               dogLikes,
@@ -807,6 +918,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths,
               dogWeight,
               dogAge,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup,
               dogSex,
               dogLikes,
@@ -839,6 +952,8 @@ export default function DogSchemaUpdateForm(props) {
               dogMonths,
               dogWeight,
               dogAge,
+              atThePark,
+              startTimeAtPark,
               dogAgeGroup,
               dogSex,
               dogLikes,

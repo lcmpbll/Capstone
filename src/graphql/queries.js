@@ -11,17 +11,17 @@ export const getDogSchema = /* GraphQL */ `
       dogMonths
       dogWeight
       dogAge
+      atThePark
+      startTimeAtPark
       dogAgeGroup
       dogSex
       dogLikes
       dogDislikes
       dogParks
-      friendsArray
+      ownerId
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      friendsArray
     }
   }
 `;
@@ -40,58 +40,19 @@ export const listDogSchemas = /* GraphQL */ `
         dogMonths
         dogWeight
         dogAge
+        atThePark
+        startTimeAtPark
         dogAgeGroup
         dogSex
         dogLikes
         dogDislikes
         dogParks
-        friendsArray
+        ownerId
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncDogSchemas = /* GraphQL */ `
-  query SyncDogSchemas(
-    $filter: ModelDogSchemaFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncDogSchemas(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        dogName
-        dogSize
-        dogYears
-        dogMonths
-        dogWeight
-        dogAge
-        dogAgeGroup
-        dogSex
-        dogLikes
-        dogDislikes
-        dogParks
         friendsArray
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
   }
 `;

@@ -10,11 +10,16 @@ type DogSchema @model @auth(rules: [{ allow: public }]) {
   dogMonths: Int
   dogWeight: Int
   dogAge: Int
+  atThePark: Boolean
+  startTimeAtPark: String
   dogAgeGroup: String
   dogSex: String
   dogLikes: [String]
   dogDislikes: [String]
   dogParks: String
   ownerId: String
+  createdAt: String
+  updatedAt: String
   friendsArray: [String]
+  
 } 

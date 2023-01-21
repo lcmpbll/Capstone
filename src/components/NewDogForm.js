@@ -28,6 +28,7 @@ function NewDogForm(props) {
     }
     return dogSex;
   };
+  
   const handleDislikesListChange = (event) => {
     const { value, checked } = event.target;
     const {dogDislikes } = dogDislikesList;
@@ -60,6 +61,7 @@ function NewDogForm(props) {
     }
     return dogLikes;
   };
+  
   function calculateDogSize(dogLbs) {
     if(dogLbs <= 22){
       const dogSize = 'small';
@@ -75,11 +77,13 @@ function NewDogForm(props) {
       return dogSize;
     }
   }
+  
   function calculateDogAge(dogYears, dogMonths){
     const dogAge = (dogYears + (dogMonths/12));
     const dogIntAge = Math.floor(dogAge * 100);
     return dogIntAge;
   }
+  
   function calculateDogAgeGroup(dogYrs){
     if(dogYrs <= 35){
       const dogAgeGroup = 'Pre vaccinated puppy';
@@ -119,6 +123,8 @@ function NewDogForm(props) {
       dogAgeGroup: calculateDogAgeGroup(calculateDogAge(parseInt(event.target.dogYears.value), parseInt(event.target.dogMonths.value))),
       dogSex: handleSexValueChange(event),
       dogLikes: handleLikesListChange(event),
+      atThePark: false,
+      startTimeAtPark: null,
       friendsArray: [],
       dogDislikes: handleDislikesListChange(event),
       dogParks: 'Alberta Park',
