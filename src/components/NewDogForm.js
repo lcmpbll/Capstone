@@ -137,10 +137,11 @@ function NewDogForm(props) {
   
   const newDogFormStyle ={
     justifyContent: 'center',
-    // marginLeft: '100px',
-    marginTop: '20px',
+    border: 'solid 2px black',
+    padding: '10px',
+    background: 'rgba(219, 219, 219, 0.8)',
+    margin: '20px',
     width: '100%',
-    // backgroundColor: 'skyBlue'
   }
   const innerDogFormStyle = {
     marginTop: '10px',
