@@ -86,7 +86,7 @@ function NewDogForm(props) {
   
   function calculateDogAgeGroup(dogYrs){
     if(dogYrs <= 35){
-      const dogAgeGroup = 'Pre vaccinated puppy';
+      const dogAgeGroup = 'Young Puppy';
       return dogAgeGroup;
     }else if(dogYrs <= 50){
       const dogAgeGroup = 'Puppy';
