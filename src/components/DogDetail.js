@@ -21,7 +21,6 @@ function DogDetail(props){
     flexDirection: 'column',
     position: 'relative',
     justifyContent: 'center',
-    // marginLeft: '450px',
     fontWeight: 'bold',
   }
   
@@ -64,7 +63,7 @@ function DogDetail(props){
         <div className='parks'>
           <h2>Parks</h2>
           {dog.dogParks} &nbsp;
-          {error} &nbsp;
+          {error} <br/> 
           <button  onClick={() => {onClickingGo(dog.id) }} >{buttonText}</button>
           <hr />
         </div>

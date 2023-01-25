@@ -79,6 +79,12 @@ function NewDogForm(props) {
   }
   
   function calculateDogAge(dogYears, dogMonths){
+    if(dogYears === null){
+      dogYears = 0;
+    }
+    if(dogMonths === null){
+      dogMonths = 0;
+    }
     const dogAge = (dogYears + (dogMonths/12));
     const dogIntAge = Math.floor(dogAge * 100);
     return dogIntAge;
@@ -86,7 +92,7 @@ function NewDogForm(props) {
   
   function calculateDogAgeGroup(dogYrs){
     if(dogYrs <= 35){
-      const dogAgeGroup = 'Pre vaccinated puppy';
+      const dogAgeGroup = 'Young Puppy';
       return dogAgeGroup;
     }else if(dogYrs <= 50){
       const dogAgeGroup = 'Puppy';
@@ -137,10 +143,11 @@ function NewDogForm(props) {
   
   const newDogFormStyle ={
     justifyContent: 'center',
-    // marginLeft: '100px',
-    marginTop: '20px',
+    border: 'solid 2px black',
+    padding: '10px',
+    background: 'rgba(219, 219, 219, 0.8)',
+    margin: '20px',
     width: '100%',
-    // backgroundColor: 'skyBlue'
   }
   const innerDogFormStyle = {
     marginTop: '10px',
@@ -158,12 +165,12 @@ function NewDogForm(props) {
             <br/>
             <br/>
             <label htmlFor='dogWeight'>Dog's weight in lbs:</label> &nbsp;
-            <input type='number' name='dogWeight' placeholder='lbs'/>
+            <input type='number' name='dogWeight' placeholder='lbs' required/>
             <br/>
             <br/>
             <label htmlFor='dogYears'>Dog's age:</label> &nbsp;
-            <input type='number' name='dogMonths' placeholder='months'/> &nbsp;
-            <input type='number' name='dogYears' placeholder='years'/>
+            <input type='number' name='dogMonths' placeholder='months' required/> &nbsp;
+            <input type='number' name='dogYears' placeholder='years' required/>
             <br/>
             <br/>
             <div className='radioSection'>

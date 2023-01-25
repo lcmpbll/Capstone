@@ -92,7 +92,7 @@ function DogParkControl(){
   const handleGoingToThePark = (id) => {
     const dogGoingToPark = mainDogList.filter(dog => dog.id === id);
     console.log(dogGoingToPark, 'ln95');
-      if(dogGoingToPark.dogAgeGroup === 'Pre vaccinated puppy'){
+      if(dogGoingToPark[0].dogAgeGroup === 'Young Puppy'){
         setAgeError('Your dog is too young to be vaccinated. Please explore alternative exercise and socialization opportunities');
         return ageError;
       } else {
