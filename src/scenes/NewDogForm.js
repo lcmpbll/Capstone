@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import {v4} from 'uuid';
 
-function NewDogForm(props) {
+const  NewDogForm = (props) => {
   const [dogLikesList, setDogLikesList] = useState({
     dogLikes: [], likesResponse: [],
   });
@@ -143,20 +143,23 @@ function NewDogForm(props) {
   
   const newDogFormStyle ={
     justifyContent: 'center',
-    border: 'solid 2px black',
     padding: '10px',
-    background: 'rgba(219, 219, 219, 0.8)',
-    margin: '20px',
-    width: '100%',
+    
+    
+    margin:  'auto',
+    width: '50%',
   }
   const innerDogFormStyle = {
-    marginTop: '10px',
+    marginTop: '100px',
+    border: 'solid 2px black',
+    padding: '20px',
+    background: 'rgba(219, 219, 219, 0.8)',
     marginLeft: '100px',
     fontWeight: 'bold',
     position: 'relative',
   }
     return (
-      <React.Fragment>
+      <>
         <div style={newDogFormStyle}>
           <div style={innerDogFormStyle}>
           <form onSubmit={handleNewDogFormSubmission}>
@@ -225,7 +228,7 @@ function NewDogForm(props) {
             </form>
           </div>
         </div>
-      </React.Fragment>
+      </>
     );
   
 }
