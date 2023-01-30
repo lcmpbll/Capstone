@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import profileImg from '../Img/dogMedia.jpeg';
-function Dog(props){
+
+const Dog = (props) => {
   
   //Styles
   const mainDogStyles = {
@@ -35,7 +36,7 @@ function Dog(props){
   }
   
   return(
-    <React.Fragment>
+    <>
       <div style={mainDogStyles} onClick = {() => props.whenDogClicked(props.id)} >
         <div style={nameStyles}>
           <h3>{props.dogName}</h3>
@@ -79,7 +80,7 @@ function Dog(props){
           </ul>
         </div>
       </div> */}
-    </React.Fragment>
+    </>
   );
 }
 
