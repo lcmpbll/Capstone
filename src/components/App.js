@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './Header';
-import DogParkControl from './DogParkControl';
+import DogList from '../scenes/DogParkControl';
 import '@aws-amplify/ui-react/styles.css';
 import { withAuthenticator, Button} from '@aws-amplify/ui-react';
 import background from '../Img/background.jpg';
 import headerImg from '../Img/headerImg.jpg';
+import { Routes, Route } from 'react-router-dom';
+import NewDogForm from '../scenes/NewDogForm';
+import DogDetail from '../onHold/DogDetail';
+import { fetchDogs } from '../functions/apihelper';
+
 
 function App({signOut}) {
+
+  
+
+  //styles
   const landingPageStyle = {
     backgroundImage: `url(${background})`,
     backgroundPosition: 'center',
@@ -35,24 +44,32 @@ function App({signOut}) {
     
   }
   return (
-   <React.Fragment>
-    <div style={topStyle}>
-      <div style={headerStyle}>
-        <Header />
+   <>
+      <div style={topStyle}>
+        <div style={headerStyle}>
+          <Header />
+        </div>
+        <div style={signOutStyle}>
+          <Button onClick={signOut}>Sign Out</Button>
+        </div>
       </div>
-      <div style={signOutStyle}>
-        <Button onClick={signOut}>Sign Out</Button>
+      <div style={landingPageStyle}>
+        <Routes>
+          <Route exact path='/' element={<DogList dogList={dogs} />}/>
+          <Route exact path='/addDog' element={<NewDogForm/>}/>
+          <Route exact path='/dogDetails/:id' render={({ match }) => (
+              <DogDetail dog={dogList.filter((dog) => (dog.id) === (match.params.id))}/>
+            )} 
+          />
+          
+        </Routes>
+        
+        <br/>
+        <br/>
+        <br/>
+        <br/>
       </div>
-    </div>
-    <div style={landingPageStyle}>
-      <DogParkControl/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      
-    </div>
-    </React.Fragment>
+    </>
     
   );
 }
