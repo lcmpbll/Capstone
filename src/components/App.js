@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Header from './Header';
 import DogList from '../scenes/DogParkControl';
 import '@aws-amplify/ui-react/styles.css';
@@ -8,7 +8,8 @@ import headerImg from '../Img/headerImg.jpg';
 import { Routes, Route } from 'react-router-dom';
 import NewDogForm from '../scenes/NewDogForm';
 import DogDetail from '../onHold/DogDetail';
-import { fetchDogs } from '../functions/apihelper';
+import NotFound from '../scenes/NotFound';
+// import { fetchDogs } from '../functions/apihelper';
 
 
 function App({signOut}) {
@@ -55,12 +56,14 @@ function App({signOut}) {
       </div>
       <div style={landingPageStyle}>
         <Routes>
-          <Route exact path='/' element={<DogList dogList={dogs} />}/>
+          <Route exact path='/' element={<DogList  />}/>
           <Route exact path='/addDog' element={<NewDogForm/>}/>
-          <Route exact path='/dogDetails/:id' render={({ match }) => (
-              <DogDetail dog={dogList.filter((dog) => (dog.id) === (match.params.id))}/>
+          {/* <Route exact path={`${match.url}/:id`} render={({ match }) => (
+              <DogDetail />
             )} 
-          />
+          /> */}
+          <Route exact path="/dog/:id" element={<DogDetail/>}/>
+          <Route element={<NotFound/>}/>
           
         </Routes>
         
@@ -76,3 +79,4 @@ function App({signOut}) {
 
 export default withAuthenticator(App);
 //return to see if app can be wrapped and only accessed through sign in.
+// dog={dogList.filter((dog) => (dog.id) === (match.params.id))}
