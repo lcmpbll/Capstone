@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Dog from './Dog';
+import DogDetail from '../onHold/DogDetail';
 import PropTypes from 'prop-types';
 import { fetchDogs } from '../functions/apihelper';
 import AtThePark from './AtThePark';
+import { Link, Route } from 'react-router-dom';
 
 
-const DogList = (props) => {
+const DogList = ({match}) => {
   const [ dogList, setDogList ] = useState([]);
   useEffect(() => {
     getDogs();
@@ -45,17 +47,20 @@ const DogList = (props) => {
         <h1>All Dogs</h1>
         {dogList.map((dog) =>
         <div style={dogCardStyle} className='card' key={dog.id}>
-          <Dog 
-            whenDogClicked={props.onDogSelection}
-            dogName={dog.dogName}
-            dogSex={dog.dogSex}
-            dogSize={dog.dogSize}
-            dogAgeGroup={dog.dogAgeGroup}
-            id={dog.id}
-            key={dog.id}
-          />
+          <Link to={`dog/${dog.id}`}>
+            <Dog 
+              // whenDogClicked={ma.onDogSelection}
+              dogName={dog.dogName}
+              dogSex={dog.dogSex}
+              dogSize={dog.dogSize}
+              dogAgeGroup={dog.dogAgeGroup}
+              id={dog.id}
+              key={dog.id}
+            />
+          </Link>
         </div>
         )}
+        
       </div>
       <div style={dogParkStyle}>
         <AtThePark dogList={dogList}/>
