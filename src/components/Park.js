@@ -47,7 +47,7 @@ function Park(props){
         giantDogCount += 1
       }
     } 
-    return dogSizeString.concat('Small dogs: ' + smallDogCount + ' Medium dogs: ' + medDogCount + ' LargeDogs: ' + largeDogCount + ' GiantDogs: ' + giantDogCount);
+    return dogSizeString.concat('Small dogs: ' + smallDogCount + ' Medium dogs: ' + medDogCount + ' Large Dogs: ' + largeDogCount + ' Giant Dogs: ' + giantDogCount);
   }
   
   //Properties to caluclate
