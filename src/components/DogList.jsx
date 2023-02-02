@@ -30,7 +30,8 @@ const DogList = ({match}) => {
     margin: '13px',
     width: '400px',
     background: 'rgba(219, 219, 219, 0.6)',
-    padding: '3px'
+    padding: '3px',
+
   }
   const dogListStyle = {
     margin: '10px'
@@ -41,13 +42,18 @@ const DogList = ({match}) => {
     border: 'solid 2px #fffff',
     
   }
+  
+  const linkStyle = {
+    textDecoration: 'none',
+    color: 'black'
+  }
   return (
     <div style={dogsStyle}>
       <div style={dogListStyle}>
         <h1>All Dogs</h1>
         {dogList.map((dog) =>
         <div style={dogCardStyle} className='card' key={dog.id}>
-          <Link to={`dog/${dog.id}`}>
+          <Link to={`dog/${dog.id}`} style={linkStyle}>
             <Dog 
               // whenDogClicked={ma.onDogSelection}
               dogName={dog.dogName}
