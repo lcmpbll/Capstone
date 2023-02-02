@@ -11,7 +11,6 @@ const DogList = ({match}) => {
   const [ dogList, setDogList ] = useState([]);
   useEffect(() => {
     getDogs();
-    console.log(dogList);
 
   }, []);
   
