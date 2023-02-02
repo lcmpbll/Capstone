@@ -56,13 +56,13 @@ function Park(props){
   
   
   return(
-    <React.Fragment>
+    <>
       <div>
         <p>Total checked in dogs: {numberOfDogsAtThePark}</p>
         <p>{totalDogSize}</p>
         <p>Average Age: {averageDogAge}</p>
       </div>
-    </React.Fragment>
+    </>
   )
   
 }
