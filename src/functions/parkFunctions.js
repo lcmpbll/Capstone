@@ -3,7 +3,7 @@ import { updateDog } from './apihelper';
 
 export const getTime = () => {
   let now = new Date().toLocaleString();
-  console.log(now);
+  
   return now;
 }
 
