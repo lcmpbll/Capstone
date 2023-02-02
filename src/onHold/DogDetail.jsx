@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { updateDog, fetchDog } from '../functions/apihelper';
+import { switchParkStatus } from '../functions/parkFunctions';
 
 
 
@@ -10,47 +12,38 @@ const DogDetail = () => {
   const [ dog, setDog ] = useState(null);
   const [ageError, setAgeError] = useState(null);
   const { id } = useParams();
-  
+
+
   useEffect(() => {
     fetchDog(id)
     // .then((res) => res.json())
     .then((data) => setDog(data));
   }, [id])
   
-  console.log(id);
+ 
   if(!dog) return null;
   // const {dog, dogList, onClickingDelete, onClickingFriend, onClickingGo, error} = props;
   // const displayedFriends = dogList.filter(function(dogFriends){
   //   return dog.friendsArray.indexOf(dogFriends.id) !== -1;
   // });
   
-  const handleEditingDogInList = async (dog) => {
-    await updateDog(dog);
+  // const handleEditingDogInList = async (dog) => {
+  //   await updateDog(dog);
     
-  }
+  // }
   
   const onClickingGo = (dog) => {
-    // const dogGoingToPark = mainDogList.filter(dog => dog.id === id);
-    // console.log(dogGoingToPark, 'ln95');
-      if(dog.dogAgeGroup === 'Young Puppy'){
-        setAgeError('Your dog is too young to be vaccinated. Please explore alternative exercise and socialization opportunities');
-        return ageError;
-      } else {
-        if(dog.atThePark === true){
-          const dogLeavesPark = {
-            ...dog,
-            atThePark: false
-          }
-          handleEditingDogInList(dogLeavesPark);
-        } else {
-          const dogEntersPark = {
-            ...dog,
-            atThePark: true
-          }
-          handleEditingDogInList(dogEntersPark);
-        }
-      }
-    }
+    if(dog.dogAgeGroup === 'Young Puppy'){
+      setAgeError('Your dog is too young to be vaccinated. Please explore alternative exercise and socialization opportunities');
+      return ageError;
+    } else {
+      switchParkStatus(dog);
+    } 
+  }
+
+
+  
+ 
   
   
   
@@ -72,9 +65,11 @@ const DogDetail = () => {
     margin: '20px',
     padding: '20px',
     display: 'flex',
+    width: '50%',
     flexDirection: 'column',
     position: 'relative',
-    justifyContent: 'center',
+    // justifySelf: 'center',
+    // justifyContent: 'center',
     fontWeight: 'bold',
     background: 'rgba(219, 219, 219, 0.6)',
   }
@@ -90,7 +85,10 @@ const DogDetail = () => {
   }
   return(
     <div style={detailsPageStyle}>
-    <h1 style={headerStyle}>Dog Details</h1>
+      <div style={headerStyle}>
+        <h1 >Dog Details</h1>
+        <Link to={`/`}><button>Home</button></Link>
+      </div>
       <div style={detailsStyles}>
         <h1>{dog.dogName}</h1>
         <h2>Is {atTheParkStatus} at the park.</h2>
