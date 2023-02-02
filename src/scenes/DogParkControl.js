@@ -7,7 +7,7 @@ const DogParkCotrol = () => {
     <>
       <DogList/>
    
-      <button><a href="/addDog">Add new Dog</a></button>
+      <button><a href="/addDog" style={{textDecoration: 'none', color: 'black'}}>Add new Dog</a></button>
     </>
   )
 }
