@@ -58,10 +58,6 @@ function App({signOut}) {
         <Routes>
           <Route exact path='/' element={<DogList  />}/>
           <Route exact path='/addDog' element={<NewDogForm/>}/>
-          {/* <Route exact path={`${match.url}/:id`} render={({ match }) => (
-              <DogDetail />
-            )} 
-          /> */}
           <Route exact path="/dog/:id" element={<DogDetail/>}/>
           <Route element={<NotFound/>}/>
           
