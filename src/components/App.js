@@ -7,7 +7,7 @@ import background from '../Img/background.jpg';
 import headerImg from '../Img/headerImg.jpg';
 import { Routes, Route } from 'react-router-dom';
 import NewDogForm from '../scenes/NewDogForm';
-import DogDetail from '../onHold/DogDetail';
+import DogDetail from '../scenes/DogDetail';
 import NotFound from '../scenes/NotFound';
 
 
