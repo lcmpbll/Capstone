@@ -9,7 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import NewDogForm from '../scenes/NewDogForm';
 import DogDetail from '../onHold/DogDetail';
 import NotFound from '../scenes/NotFound';
-// import { fetchDogs } from '../functions/apihelper';
+
 
 
 function App({signOut}) {
