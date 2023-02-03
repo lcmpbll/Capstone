@@ -33,7 +33,7 @@ function FriendDogForm(props) {
   }
   
   return (
-    <React.Fragment>
+    <>
       <form onSubmit={handleFriendDogFormSubmission}>
         <h1>Find Friends for {dog.dogName}:</h1>
         <select onChange={handleFriendChange} >
@@ -43,7 +43,7 @@ function FriendDogForm(props) {
         <br/>
         <button type="submit" className='btn btn-default'>Submit</button>
       </form>
-    </React.Fragment>
+    </>
   );
 }
 
