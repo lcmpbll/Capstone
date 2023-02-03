@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import DogList from '../components/DogList';
 
 
@@ -7,7 +8,7 @@ const DogParkCotrol = () => {
     <>
       <DogList/>
    
-      <button><a href="/addDog" style={{textDecoration: 'none', color: 'black'}}>Add new Dog</a></button>
+      <button><Link to={"/addDog"} style={{textDecoration: 'none', color: 'black'}}>Add new Dog</Link></button>
     </>
   )
 }
