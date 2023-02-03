@@ -56,17 +56,14 @@ function App({signOut}) {
       </div>
       <div style={landingPageStyle}>
         <Routes>
-          <Route exact path='/' element={<DogList  />}/>
+          <Route exact path='/' element={<DogList/>}/>
           <Route exact path='/addDog' element={<NewDogForm/>}/>
           <Route exact path="/dog/:id" element={<DogDetail/>}/>
           <Route element={<NotFound/>}/>
           
         </Routes>
         
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+      
       </div>
     </>
     
