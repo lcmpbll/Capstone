@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Dog from './Dog';
-import DogDetail from '../onHold/DogDetail';
+import DogDetail from '../scenes/DogDetail';
 import PropTypes from 'prop-types';
 import { fetchDogs } from '../functions/apihelper';
 import AtThePark from './AtThePark';
