@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {v4} from 'uuid';
 
@@ -158,6 +159,11 @@ const  NewDogForm = (props) => {
     fontWeight: 'bold',
     position: 'relative',
   }
+
+  const homeButtonStyle = {
+    marginLeft: '20%',
+    
+  }
     return (
       <>
         <div style={newDogFormStyle}>
@@ -228,6 +234,7 @@ const  NewDogForm = (props) => {
             </form>
           </div>
         </div>
+        <button style={homeButtonStyle}><Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>Home</Link></button>
       </>
     );
   
