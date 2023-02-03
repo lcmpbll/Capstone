@@ -38,7 +38,7 @@ const Dog = (props) => {
   
   return(
     <>
-      <div style={mainDogStyles} onClick = {() => props.whenDogClicked(props.id)} >
+      <div style={mainDogStyles}  >
         <div style={nameStyles}>
           <h3>{props.dogName}</h3>
         </div>
