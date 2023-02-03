@@ -21,24 +21,36 @@ const DogList = ({match}) => {
   
   //styles
   const dogsStyle = {
+    width: '100%',
     display: 'grid',
-    gridTemmplateColumns: '1fr 1fr'
+    gridTemplateColumns: '1fr 1fr',
+    padding: '0px, 90px',
+    border: '20px solid transparent'
+    
   }
   const dogCardStyle = {
-    border: 'solid 2px #fffff',
+    border: 'solid 2px #4986e8',
     margin: '13px',
     width: '400px',
-    background: 'rgba(219, 219, 219, 0.6)',
-    padding: '3px',
+    background: 'rgba(219, 219, 219)',
+    padding: '13px',
 
   }
   const dogListStyle = {
-    margin: '10px'
+    margin: '10px, 60px',
+    paddingLeft: '150px',
+    justifyContent: 'center',
+    
   }
   const dogParkStyle = {
-    margin: '10px',
+    
+    padding: '20px',
     background: 'rgba(219, 219, 219, 0.6)',
-    border: 'solid 2px #fffff',
+    border: 'solid 2px black',
+    width: '60%',
+    // margin: '100px, 60px, 0px, 60px',
+    // position: 'relative',
+    marginLeft: '15%',
     
   }
   
@@ -48,13 +60,13 @@ const DogList = ({match}) => {
   }
   return (
     <div style={dogsStyle}>
+      
       <div style={dogListStyle}>
-        <h1>All Dogs</h1>
+        <h1 style={{marginLeft: '150px'}}>All Dogs</h1>
         {dogList.map((dog) =>
         <div style={dogCardStyle} className='card' key={dog.id}>
           <Link to={`dog/${dog.id}`} style={linkStyle}>
             <Dog 
-              // whenDogClicked={ma.onDogSelection}
               dogName={dog.dogName}
               dogSex={dog.dogSex}
               dogSize={dog.dogSize}
@@ -65,7 +77,6 @@ const DogList = ({match}) => {
           </Link>
         </div>
         )}
-        
       </div>
       <div style={dogParkStyle}>
         <AtThePark dogList={dogList}/>
@@ -76,7 +87,7 @@ const DogList = ({match}) => {
 
 DogList.propTypes = {
   dogList: PropTypes.array,
-  onDogSelection: PropTypes.func
+ 
 };
 
 export default DogList;
