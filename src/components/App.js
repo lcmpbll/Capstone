@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import DogList from '../scenes/DogParkControl';
+import DogList from '../scenes/DogList';
 import '@aws-amplify/ui-react/styles.css';
 import { withAuthenticator, Button} from '@aws-amplify/ui-react';
 import background from '../Img/background.jpg';
