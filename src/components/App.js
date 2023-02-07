@@ -9,6 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import NewDogForm from '../scenes/NewDogForm';
 import DogDetail from '../scenes/DogDetail';
 import NotFound from '../scenes/NotFound';
+import Sidebar from '../components/navigation';
 
 
 
@@ -27,6 +28,8 @@ function App({signOut}) {
   }
   const headerStyle = {
     textAlign: 'center',
+    justifyContent: 'center',
+    margin: 'auto',
   }
   
   const signOutStyle = {
@@ -36,13 +39,16 @@ function App({signOut}) {
     right: '10px',
   }
   const topStyle = {
-    display: 'flex',
-    justifyContent: 'center',
+    display: 'grid',
+    gridTemplateColums: '1fr 2fr 1fr',
     backgroundImage: `url(${headerImg})`,
     width: '100vw',
-   
-    
-    
+    padding: '20px'
+  }
+  const sidebarStyle = {
+    position: 'absolute',
+    top: '30px',
+    margin: '20px',
   }
   return (
    <>
@@ -50,6 +56,7 @@ function App({signOut}) {
         <div style={headerStyle}>
           <Header />
         </div>
+          <Sidebar style={sidebarStyle} />
         <div style={signOutStyle}>
           <Button onClick={signOut}>Sign Out</Button>
         </div>
