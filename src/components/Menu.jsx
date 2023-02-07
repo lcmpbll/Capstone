@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { AiOutlineMenu } from 'react-icons/ai';
+import FullMenu from './FullMenu';
+
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState('dogPark');
   
+  let fullMenu = null;
+  if(isCollapsed){
+    fullMenu = <FullMenu/>
+  }
   return (
+    
     <div collapsed={isCollapsed}>
       <div >
         <AiOutlineMenu onClick={() => setIsCollapsed(!isCollapsed)}/>
       </div> 
       <div>
-        <div>
-          <Link to={"/addDog"} style={{ color: 'black'}}>Add new Dog</Link>
-        </div>
+        {fullMenu}
       </div>
-    </div>
+    </div>  
+    
   )
 }
 

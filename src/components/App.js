@@ -9,7 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import NewDogForm from '../scenes/NewDogForm';
 import DogDetail from '../scenes/DogDetail';
 import NotFound from '../scenes/NotFound';
-import Sidebar from '../components/navigation';
+import Sidebar from './Menu';
 
 
 
