@@ -41,7 +41,6 @@ export const deleteDog = async (dogToDelete) => {
 
 
 export const updateDog = async(editedDog) => {
-  console.log(editedDog)
   await API.graphql({ 
     query : updateDogInList, variables : { input: editedDog}}
     ).then(function(response) {
