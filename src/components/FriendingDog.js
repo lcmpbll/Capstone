@@ -41,7 +41,7 @@ function FriendDogForm(props) {
           <option value='none'>--Select a friend for your dog--</option>
           {(dogList).filter(dogs => dogs.id !== props.dog.id).map((dogs) => <option key={dogs.id} value={dogs.id}>{dogs.dogName}</option>)}
         </select>
-
+        <br/>
         <button type="submit" className='btn btn-default'>Submit</button> 
       </form>
     </>
