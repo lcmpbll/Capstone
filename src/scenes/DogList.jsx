@@ -77,7 +77,6 @@ const DogList = ({match}) => {
           </Link>
         </div>
         )}
-        <button><Link to={"/addDog"} style={{textDecoration: 'none', color: 'black'}}>Add new Dog</Link></button>
       </div>
       <div style={dogParkStyle}>
         <AtThePark dogList={dogList}/>
