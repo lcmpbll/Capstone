@@ -1,8 +1,13 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { fetchDogs, updateDog } from '../functions/apihelper';
 
 function FriendDogForm(props) {
   const {dog, dogList} = props;
+  
+
+  
+  
   const [friendsArray, setFriendsArray] = useState([]);
   
   const handleFriendChange = (event) => {
@@ -12,36 +17,32 @@ function FriendDogForm(props) {
     return friendsArray;
   }
   
-  function handleFriendDogFormSubmission(event){
+  const handleFriendDogFormSubmission = async(event) => {
     event.preventDefault();
-    props.onFriendsSelection({
-      dogName: dog.dogName,
-      dogWeight: dog.dogWeight,
-      dogSize: dog.dogSize,
-      dogYears: dog.dogYears,
-      dogMonths: dog.dogMonths,
-      dogAge: dog.dogAge,
-      dogAgeGroup: dog.dogAgeGroup,
-      dogSex: dog.dogSex,
-      dogLikes: dog.dogLikes,
-      dogDislikes: dog.dogDislikes,
-      dogParks: dog.dogParks,
-      atThePark: dog.atThePark,
-      id: dog.id,
-      friendsArray: handleFriendChange(event),
-    })
+    const dogWithNewFriend = {
+      ...dog,
+      friendsArray: handleFriendChange(event)
+    }
+    console.log(dogWithNewFriend);
+    await updateDog(dogWithNewFriend);
+  }
+  
+  const dogFormStyle = {
+    height: '200px',
+    width: 'container'
   }
   
   return (
     <>
-      <form onSubmit={handleFriendDogFormSubmission}>
-        <h1>Find Friends for {dog.dogName}:</h1>
+    <hr/>
+      <form onSubmit={handleFriendDogFormSubmission} style={dogFormStyle}>
+        <h2>Find Friends for {dog.dogName}:</h2>
         <select onChange={handleFriendChange} >
           <option value='none'>--Select a friend for your dog--</option>
           {(dogList).filter(dogs => dogs.id !== props.dog.id).map((dogs) => <option key={dogs.id} value={dogs.id}>{dogs.dogName}</option>)}
         </select>
         <br/>
-        <button type="submit" className='btn btn-default'>Submit</button>
+        <button type="submit" className='btn btn-default'>Submit</button> 
       </form>
     </>
   );

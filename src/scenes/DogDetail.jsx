@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import { updateDog, fetchDog } from '../functions/apihelper';
+import { fetchDog, fetchDogs } from '../functions/apihelper';
 import { switchParkStatus } from '../functions/parkFunctions';
+import FriendDogForm from '../components/FriendingDog';
+
 
 
 
@@ -11,7 +13,21 @@ import { switchParkStatus } from '../functions/parkFunctions';
 const DogDetail = () => {
   const [ dog, setDog ] = useState(null);
   const [ageError, setAgeError] = useState(null);
+  const [friending, setFriending] = useState(null);
   const { id } = useParams();
+  
+  const [ dogList, setDogList ] = useState([]);
+  
+  useEffect(() => {
+    getDogs();
+    console.log('fetching');
+  }, []);
+  
+  const getDogs = async () => {
+    const newDogList = await fetchDogs();
+    console.log(newDogList, 'fd')
+    setDogList(newDogList);
+  }
 
 
   useEffect(() => {
@@ -23,9 +39,10 @@ const DogDetail = () => {
  
   if(!dog) return null;
   // const {dog, dogList, onClickingDelete, onClickingFriend, onClickingGo, error} = props;
-  // const displayedFriends = dogList.filter(function(dogFriends){
-  //   return dog.friendsArray.indexOf(dogFriends.id) !== -1;
-  // });
+  const displayedFriends = dogList.filter(function(dogFriends){
+    let dogsFriends = dog.friendsArray.indexOf(dogFriends.id) !== -1;
+    return dogsFriends;
+  });
   
   // const handleEditingDogInList = async (dog) => {
   //   await updateDog(dog);
@@ -41,12 +58,6 @@ const DogDetail = () => {
     } 
   }
 
-
-  
- 
-  
-  
-  
   
   const displayLikes = dog.dogLikes.join(" ");
   const dsiplayDislikes = dog.dogDislikes.join(" ");
@@ -73,9 +84,20 @@ const DogDetail = () => {
     fontWeight: 'bold',
     background: 'rgba(219, 219, 219, 0.6)',
   }
+  const friendsListStyle = {
+    margin: '4px', 
+    display: 'flex',
+    
+  }
   
+  let friendForm = null;
   let atTheParkStatus = null;
   let buttonText = null;
+  const dogPotentialFriendsList = dogList.filter(dogs => !dog.friendsArray.includes(dogs.id));
+ 
+  if(friending){
+    friendForm = <FriendDogForm  dog={dog} dogList={dogPotentialFriendsList} />
+  }
   if(dog.atThePark === true && ageError === null){
     buttonText = "leave the park";
     atTheParkStatus = '';
@@ -111,7 +133,15 @@ const DogDetail = () => {
         </div>
         <div className='friends'>
           <h2>Friends</h2>
-          {/* {displayedFriends.map((dog) => dog.dogName)} */}
+          <p style={friendsListStyle}>
+            {displayedFriends ? displayedFriends.map((dog) => <FriendedDog
+               dogName={dog.dogName}
+               key={dog.dogId} />
+               ): null}
+          </p>
+          <br/>
+          <button onClick={() => (setFriending(!friending))}>{friending ? `Close Friend Form` : `Make Some Friends`}</button>
+          {friendForm}
           <hr/>
         </div>
         <div className='parks'>
@@ -128,12 +158,21 @@ const DogDetail = () => {
         </div> */}
       </div>
     </div>
-  )
+  );
 
   
 }
 
-
+const FriendedDog = (props) => {
+  const dogsFriendsStyle = {
+    margin: '4px'
+  }
+  return (
+    <div style={dogsFriendsStyle}>
+      <p>{props.dogName}</p>
+    </div>
+  );
+};
 
 DogDetail.propTypes = {
   dog: PropTypes.object,

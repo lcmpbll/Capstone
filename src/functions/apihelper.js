@@ -6,14 +6,13 @@ import { createDogSchema as addNewDog, deleteDogSchema as deleteDogFromList, upd
 export async function fetchDogs() {
   const apiData =  await API.graphql({ query: listDogSchemas });
   const apiDogs = apiData.data.listDogSchemas.items.filter(items => items._deleted !== true);
-  console.log(apiDogs)
-  return apiDogs
+  return apiDogs;
   
 }
 
 export async function fetchDog(id) {
   const apiData = await API.graphql({ query: getDog, variables: {id: id} });
-  const apiDog = apiData.data.getDogSchema
+  const apiDog = apiData.data.getDogSchema;
   console.log(apiData);
   return apiDog;
 }
@@ -37,12 +36,11 @@ export const deleteDog = async (dogToDelete) => {
       // setSelectedDog(null); 
       console.log(response.errors);
     }
-  })
+  });
 }
 
 
 export const updateDog = async(editedDog) => {
-
   await API.graphql({ 
     query : updateDogInList, variables : { input: editedDog}}
     ).then(function(response) {
@@ -50,5 +48,5 @@ export const updateDog = async(editedDog) => {
      
         console.log(response.errors);
       };
-  })
+  });
 }

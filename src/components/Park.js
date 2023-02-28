@@ -6,7 +6,7 @@ function Park(props){
   const { atTheParkList } = props;
   const oneHour = 60 * 60 * 1000;
   let numberOfDogsAtThePark = atTheParkList.length;
-  console.log(atTheParkList, 'ln 9');
+  
   
   const sendDogsHome = (atTheParkList) => {
     //checks for dogs that have been at the park for greater than an hour
