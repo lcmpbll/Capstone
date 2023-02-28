@@ -1,9 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getTime, switchParkStatus } from '../functions/parkFunctions';
 
 function Park(props){
   const { atTheParkList } = props;
+  const oneHour = 60 * 60 * 1000;
   let numberOfDogsAtThePark = atTheParkList.length;
+  console.log(atTheParkList, 'ln 9');
+  
+  const sendDogsHome = (atTheParkList) => {
+    //checks for dogs that have been at the park for greater than an hour
+    let dogsGoingHome = atTheParkList.filter(dog => ((Date.parse(getTime()) - Date.parse(dog.startTimeAtPark)) >= oneHour));
+    dogsGoingHome.forEach(dog => switchParkStatus(dog));
+    
+  }
+  
+  const hourlyCheck = (atTheParkList) => {
+    setInterval(sendDogsHome(atTheParkList), oneHour);
+    
+  }
+  
+  let nextDate = new Date();
+  if (nextDate.getMinutes() === 0) { 
+      hourlyCheck(atTheParkList)
+  } else {
+      
+      nextDate.setHours(nextDate.getHours() + 1);
+      nextDate.setMinutes(0);
+      nextDate.setSeconds(0);
+
+      let difference = nextDate - new Date();
+      
+      setTimeout(hourlyCheck(atTheParkList), difference);
+  }
   
   const calculateAverageAge = (atTheParkList) => {
     let puppies = 0; let youngAdults = 0;
@@ -47,7 +76,7 @@ function Park(props){
         giantDogCount += 1
       }
     } 
-    return dogSizeString.concat('Small dogs: ' + smallDogCount + ' Medium dogs: ' + medDogCount + ' LargeDogs: ' + largeDogCount + ' GiantDogs: ' + giantDogCount);
+    return dogSizeString.concat('Small dogs: ' + smallDogCount + ' Medium dogs: ' + medDogCount + ' Large Dogs: ' + largeDogCount + ' Giant Dogs: ' + giantDogCount);
   }
   
   //Properties to caluclate
@@ -56,13 +85,13 @@ function Park(props){
   
   
   return(
-    <React.Fragment>
+    <>
       <div>
         <p>Total checked in dogs: {numberOfDogsAtThePark}</p>
         <p>{totalDogSize}</p>
         <p>Average Age: {averageDogAge}</p>
       </div>
-    </React.Fragment>
+    </>
   )
   
 }

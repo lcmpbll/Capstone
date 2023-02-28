@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {v4} from 'uuid';
+import { addDog } from '../functions/apihelper';
 
-function NewDogForm(props) {
+const  NewDogForm = (props) => {
+  const navigate = useNavigate();
+  
   const [dogLikesList, setDogLikesList] = useState({
     dogLikes: [], likesResponse: [],
   });
@@ -115,27 +119,40 @@ function NewDogForm(props) {
     }
   }
   
+  const handleAddingNewDogToList = async (newDog) => {
+    await addDog(newDog)
+     
+    
+  };
+  
+  const onNewDogCreation = (event) => {
+    const newDog = {
+       dogName: event.target.dogName.value,
+       dogWeight: parseInt(event.target.dogWeight.value),
+       dogSize: calculateDogSize(parseInt(event.target.dogWeight.value)),
+       dogYears: parseInt(event.target.dogYears.value),
+       dogMonths: parseInt(event.target.dogMonths.value),
+       dogAge: calculateDogAge(parseInt(event.target.dogYears.value), parseInt(event.target.dogMonths.value)),
+       dogAgeGroup: calculateDogAgeGroup(calculateDogAge(parseInt(event.target.dogYears.value), parseInt(event.target.dogMonths.value))),
+       dogSex: handleSexValueChange(event),
+       dogLikes: handleLikesListChange(event),
+       atThePark: false,
+       startTimeAtPark: null,
+       friendsArray: [],
+       dogDislikes: handleDislikesListChange(event),
+       dogParks: 'Alberta Park',
+       id: v4(),
+     }
+     return newDog;
+ };
+  
   //Gather input from form
   
   function handleNewDogFormSubmission(event) {
     event.preventDefault();
-    props.onNewDogCreation({
-      dogName: event.target.dogName.value,
-      dogWeight: parseInt(event.target.dogWeight.value),
-      dogSize: calculateDogSize(parseInt(event.target.dogWeight.value)),
-      dogYears: parseInt(event.target.dogYears.value),
-      dogMonths: parseInt(event.target.dogMonths.value),
-      dogAge: calculateDogAge(parseInt(event.target.dogYears.value), parseInt(event.target.dogMonths.value)),
-      dogAgeGroup: calculateDogAgeGroup(calculateDogAge(parseInt(event.target.dogYears.value), parseInt(event.target.dogMonths.value))),
-      dogSex: handleSexValueChange(event),
-      dogLikes: handleLikesListChange(event),
-      atThePark: false,
-      startTimeAtPark: null,
-      friendsArray: [],
-      dogDislikes: handleDislikesListChange(event),
-      dogParks: 'Alberta Park',
-      id: v4(),
-    });
+    const newDog = onNewDogCreation(event);
+    handleAddingNewDogToList(newDog);
+    navigate('/');
     
   }
   
@@ -143,20 +160,28 @@ function NewDogForm(props) {
   
   const newDogFormStyle ={
     justifyContent: 'center',
-    border: 'solid 2px black',
     padding: '10px',
-    background: 'rgba(219, 219, 219, 0.8)',
-    margin: '20px',
-    width: '100%',
+    
+    
+    margin:  'auto',
+    width: '50%',
   }
   const innerDogFormStyle = {
-    marginTop: '10px',
+    marginTop: '100px',
+    border: 'solid 2px black',
+    padding: '20px',
+    background: 'rgba(219, 219, 219, 0.8)',
     marginLeft: '100px',
     fontWeight: 'bold',
     position: 'relative',
   }
+
+  const homeButtonStyle = {
+    marginLeft: '20%',
+    
+  }
     return (
-      <React.Fragment>
+      <>
         <div style={newDogFormStyle}>
           <div style={innerDogFormStyle}>
           <form onSubmit={handleNewDogFormSubmission}>
@@ -225,7 +250,8 @@ function NewDogForm(props) {
             </form>
           </div>
         </div>
-      </React.Fragment>
+        <button style={homeButtonStyle}><Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>Home</Link></button>
+      </>
     );
   
 }

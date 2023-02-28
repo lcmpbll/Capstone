@@ -5,9 +5,9 @@ function Header(){
     textAlign: 'center',
   }
   return(
-    <React.Fragment>
+    <>
       <h1 style={headerStyles}>Dog Bark</h1>
-    </React.Fragment>
+    </>
   );
 }
 

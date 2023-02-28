@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DogList from './DogList';
-import NewDogForm from './NewDogForm';
+import NewDogForm from '../scenes/NewDogForm';
 import DogDetail from './DogDetail';
 import AtThePark from './AtThePark';
 import FriendingDog from './FriendingDog';
@@ -66,29 +66,6 @@ function DogParkControl(){
     console.log(selection);
   }
   
-  // const handleGoingToThePark = (id) => {
-  //   const dogGoingToPark = mainDogList.filter(dog => dog.id === id);
-    
-  //   console.log(dogGoingToPark[0].atThePark)
-  //   if(mainAtTheParkList.includes(dog => dog.id === id)){
-  //     sendDogHome(id);
-  //   } else {
-  //     if(dogGoingToPark[0].dogAgeGroup === 'Pre vaccinated puppy'){
-  //       setAgeError('Your dog is too young to be vaccinated. Please explore alternative exercise and socialization opportunities');
-  //       return ageError;
-  //     } else {
-  //       const checkAtPark = mainAtTheParkList.filter(dog => dog.id === id);
-  //       if(checkAtPark.length === 0){
-  //         const newMainAtTheParkList = mainAtTheParkList.concat(dogGoingToPark);  
-  //         setMainAtTheParkList(newMainAtTheParkList);
-  //       } else {
-  //         const newMainAtTheParkList = mainAtTheParkList.filter(dog => dog.id !== id);
-  //         setMainAtTheParkList(newMainAtTheParkList);
-  //       }
-  //     }
-  //   }
-  // }
-  
   const handleGoingToThePark = (id) => {
     const dogGoingToPark = mainDogList.filter(dog => dog.id === id);
     console.log(dogGoingToPark, 'ln95');
@@ -122,43 +99,48 @@ function DogParkControl(){
     setFriendingDog(true);
   }
   
-
+  return ( 
+    <>
+      <DogList/>
+      <AtThePark/>
+    </>
+  )
     
     
   
   //display ifs and elses
   
-  let parkList = null;
-  let currentlyVisibleState = null;
-  let buttonText = null;
-  if(friendingDog === true){
-    currentlyVisibleState = <FriendingDog dog={selectedDog} dogList={mainDogList} onFriendsSelection={handleConfirmingFriend} />
-    buttonText="Return to dog list"
-  } else if(selectedDog != null){
-    currentlyVisibleState = <DogDetail dog={selectedDog} dogList={mainDogList} onClickingFriend={handleFriendingClick} onClickingDelete={handleDeletingDog} onClickingGo={handleGoingToThePark}  error={ageError}/>
-    buttonText= 'Return to dog list';
-  } else if(formVisibleOnPage) {
-    currentlyVisibleState = <NewDogForm onNewDogCreation={handleAddingNewDogToList} dogList={mainDogList} />
-    buttonText = 'Return to dog list';
-  } else {
-    currentlyVisibleState = <DogList onDogSelection={handleChangingSelectedDog} dogList={mainDogList} />
-      parkList = <AtThePark mainDogList={mainDogList} />
-    buttonText = 'Add Dog';
-  }
+  // let parkList = null;
+  // let currentlyVisibleState = null;
+  // let buttonText = null;
+  // if(friendingDog === true){
+  //   currentlyVisibleState = <FriendingDog dog={selectedDog} dogList={mainDogList} onFriendsSelection={handleConfirmingFriend} />
+  //   buttonText="Return to dog list"
+  // } else if(selectedDog != null){
+  //   currentlyVisibleState = <DogDetail dog={selectedDog} dogList={mainDogList} onClickingFriend={handleFriendingClick} onClickingDelete={handleDeletingDog} onClickingGo={handleGoingToThePark}  error={ageError}/>
+  //   buttonText= 'Return to dog list';
+  // // } else if(formVisibleOnPage) {
+  // //   currentlyVisibleState = <NewDogForm onNewDogCreation={handleAddingNewDogToList} dogList={mainDogList} />
+  // //   buttonText = 'Return to dog list';
+  // } else {
+  //   currentlyVisibleState = <DogList onDogSelection={handleChangingSelectedDog} dogList={mainDogList} />
+  //     parkList = <AtThePark mainDogList={mainDogList} />
+  //   buttonText = 'Add Dog';
+  // }
   
-  return(
-    <React.Fragment>
-      <div style={dogParkControlStyle} >
-        <div style={mainContentStyle}>
-          {currentlyVisibleState}
-        </div>
-        <div style={atTheParkStyle}>
-          {parkList}
-        </div>
-        <button style={buttonStyle} onClick={handleClick}>{buttonText}</button>
-      </div>
-    </React.Fragment>
-  );
+  // return(
+  //   <>
+  //     <div style={dogParkControlStyle} >
+  //       <div style={mainContentStyle}>
+  //         {currentlyVisibleState}
+  //       </div>
+  //       <div style={atTheParkStyle}>
+  //         {parkList}
+  //       </div>
+  //       <button to='/addDog' style={buttonStyle} onClick={handleClick}>{buttonText}</button>
+  //     </div>
+  //   </>
+  // );
 }
 
     // styles

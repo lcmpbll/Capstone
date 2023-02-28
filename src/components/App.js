@@ -1,12 +1,22 @@
 import React from 'react';
 import Header from './Header';
-import DogParkControl from './DogParkControl';
+import DogList from '../scenes/DogList';
 import '@aws-amplify/ui-react/styles.css';
 import { withAuthenticator, Button} from '@aws-amplify/ui-react';
 import background from '../Img/background.jpg';
 import headerImg from '../Img/headerImg.jpg';
+import { Routes, Route } from 'react-router-dom';
+import NewDogForm from '../scenes/NewDogForm';
+import DogDetail from '../scenes/DogDetail';
+import NotFound from '../scenes/NotFound';
+
+
 
 function App({signOut}) {
+
+  
+
+  //styles
   const landingPageStyle = {
     backgroundImage: `url(${background})`,
     backgroundPosition: 'center',
@@ -35,27 +45,31 @@ function App({signOut}) {
     
   }
   return (
-   <React.Fragment>
-    <div style={topStyle}>
-      <div style={headerStyle}>
-        <Header />
+   <>
+      <div style={topStyle}>
+        <div style={headerStyle}>
+          <Header />
+        </div>
+        <div style={signOutStyle}>
+          <Button onClick={signOut}>Sign Out</Button>
+        </div>
       </div>
-      <div style={signOutStyle}>
-        <Button onClick={signOut}>Sign Out</Button>
-      </div>
-    </div>
-    <div style={landingPageStyle}>
-      <DogParkControl/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+      <div style={landingPageStyle}>
+        <Routes>
+          <Route exact path='/' element={<DogList/>}/>
+          <Route exact path='/addDog' element={<NewDogForm/>}/>
+          <Route exact path="/dog/:id" element={<DogDetail/>}/>
+          <Route element={<NotFound/>}/>
+          
+        </Routes>
+        
       
-    </div>
-    </React.Fragment>
+      </div>
+    </>
     
   );
 }
 
 export default withAuthenticator(App);
 //return to see if app can be wrapped and only accessed through sign in.
+// dog={dogList.filter((dog) => (dog.id) === (match.params.id))}

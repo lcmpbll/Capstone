@@ -1,5 +1,5 @@
 import { API } from 'aws-amplify';
-import { listDogSchemas } from '../graphql/queries';
+import { listDogSchemas, getDogSchema as getDog } from '../graphql/queries';
 import { createDogSchema as addNewDog, deleteDogSchema as deleteDogFromList, updateDogSchema as updateDogInList  } from '../graphql/mutations';
 
 
@@ -9,6 +9,13 @@ export async function fetchDogs() {
   console.log(apiDogs)
   return apiDogs
   
+}
+
+export async function fetchDog(id) {
+  const apiData = await API.graphql({ query: getDog, variables: {id: id} });
+  const apiDog = apiData.data.getDogSchema
+  console.log(apiData);
+  return apiDog;
 }
 
 export const addDog = async (newDog) => {
@@ -35,17 +42,12 @@ export const deleteDog = async (dogToDelete) => {
 
 
 export const updateDog = async(editedDog) => {
-  // const editedDogList = mainDogList
-  //   .filter(dog => dog.id !== editedDog.id)
-  //   .concat(editedDog);
-  // setMainDogList(editedDogList);
+
   await API.graphql({ 
     query : updateDogInList, variables : { input: editedDog}}
     ).then(function(response) {
       if(!response.ok) {
-        // const newMainDogList = mainDogList.filter((dog) => dog.id !== id);
-        // setMainDogList(newMainDogList);
-        // setSelectedDog(null); 
+     
         console.log(response.errors);
       };
   })

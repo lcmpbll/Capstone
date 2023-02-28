@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Park from './Park';
 
 
 
-function AtThePark(props){
-  const { mainDogList } = props;
-  let atTheParkList = mainDogList.filter(dog=> dog.atThePark === true)
+
+const AtThePark = (props) => {
+ const { dogList } = props;
+  let atTheParkList = dogList.filter(dog=> dog.atThePark === true)
   //Styles
   const mainAtTheParkStyles = {
     display: 'flex',
@@ -21,7 +22,7 @@ function AtThePark(props){
   }
   
   return(
-    <React.Fragment>
+    <>
       <div style={mainAtTheParkStyles}>
         <div style={parkHeaderStyle}>
           <h1>Alberta Park</h1>
@@ -36,7 +37,7 @@ function AtThePark(props){
         </div>
         )}
       </div>
-    </React.Fragment>
+    </>
   );
 }
 
