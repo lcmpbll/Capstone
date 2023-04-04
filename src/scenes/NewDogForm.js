@@ -3,9 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {v4} from 'uuid';
 import { addDog } from '../functions/apihelper';
+import {useAuthenticator} from '@aws-amplify/ui-react';
 
 const  NewDogForm = (props) => {
   const navigate = useNavigate();
+  const { route } = useAuthenticator((context) => [context.route]);
   
   const [dogLikesList, setDogLikesList] = useState({
     dogLikes: [], likesResponse: [],

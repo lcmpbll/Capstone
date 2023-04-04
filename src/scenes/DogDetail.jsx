@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuthenticator, Heading } from '@aws-amplify/ui-react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { fetchDog, fetchDogs } from '../functions/apihelper';
@@ -15,9 +16,9 @@ const DogDetail = () => {
   const [ageError, setAgeError] = useState(null);
   const [friending, setFriending] = useState(null);
   const { id } = useParams();
-  
   const [ dogList, setDogList ] = useState([]);
-  
+  const { route } = useAuthenticator((context) => [context.route]);
+ 
   useEffect(() => {
     getDogs();
     console.log('fetching');
@@ -133,12 +134,12 @@ const DogDetail = () => {
         </div>
         <div className='friends'>
           <h2>Friends</h2>
-          <p style={friendsListStyle}>
+          <div style={friendsListStyle}>
             {displayedFriends ? displayedFriends.map((dog) => <FriendedDog
                dogName={dog.dogName}
                key={dog.dogId} />
                ): null}
-          </p>
+          </div>
           <br/>
           <button onClick={() => (setFriending(!friending))}>{friending ? `Close Friend Form` : `Make Some Friends`}</button>
           {friendForm}
