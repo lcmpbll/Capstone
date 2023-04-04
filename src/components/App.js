@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import DogList from '../scenes/DogList';
+import { RequireAuth } from '../components/RequireAuth';
+import Login from '../scenes/Login';
 import '@aws-amplify/ui-react/styles.css';
-import { withAuthenticator, Button} from '@aws-amplify/ui-react';
+import { Authenticator, useAuthenticator, Button} from '@aws-amplify/ui-react';
 import { Auth } from 'aws-amplify';
 import background from '../Img/background.jpg';
 import headerImg from '../Img/headerImg.jpg';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import NewDogForm from '../scenes/NewDogForm';
 import DogDetail from '../scenes/DogDetail';
 import NotFound from '../scenes/NotFound';
@@ -14,13 +16,18 @@ import Sidebar from './Menu';
 
 
 
-function App({signOut}) {
+function MyRoutes() {
 const [currentUser, setCurrentUser] = useState(null);
 const [error, setError] = useState(null);
-
+const {route, signOut} = useAuthenticator((context) => [
+  context.route,
+  context.signOut
+]);
+const navigate = useNavigate();
   useEffect(() =>{
     getCurrentUser();
   }, []);
+  
   const getCurrentUser = async () => {
     
     await Auth.currentUserInfo().then(response => {
@@ -38,23 +45,7 @@ const [error, setError] = useState(null);
     });
   };
   
-  // .then(response => {
-  //   console.log(response);
-  //   if(!response.ok) {
-  //     throw new Error(`${response.status}: ${response.statusText}`);
-  //   } else {
-  //     return response.json()
-  //   }
-  // })
-  // .then((jsonifiedResponse) => {
-  //   setAllParks(jsonifiedResponse)
-  //   console.log(jsonifiedResponse);
-  //   setIsLoaded(true)
-  // })
-  // .catch((error) => {
-  //   setError(error.message)
-  //   setIsLoaded(true)
-  // });
+  
   
  console.log(currentUser, 'ln 31');
   //styles
@@ -91,32 +82,56 @@ const [error, setError] = useState(null);
     margin: '20px',
   }
   return (
-   <>
-      <div style={topStyle}>
-        <div style={headerStyle}>
-          <Header />
-        </div>
-          <Sidebar style={sidebarStyle} />
-        <div style={signOutStyle}>
-          <Button onClick={signOut}>Sign Out</Button>
-        </div>
-      </div>
-      <div style={landingPageStyle}>
-        <Routes>
-          <Route exact path='/' element={<DogList/>}/>
-          <Route exact path='/addDog' element={<NewDogForm/>}/>
-          <Route exact path="/dog/:id" element={<DogDetail/>}/>
-          <Route element={<NotFound/>}/>
+ 
+      <>
+          <div style={topStyle}>
+            <div style={headerStyle}>
+              <Header />
+            </div>
+              <Sidebar style={sidebarStyle} />
+            <div style={signOutStyle}>
+              {route === 'authenticated' ? (
+                  <Button onClick={signOut}>Sign Out</Button>
+                ):(
+                  <Button onClick={() => navigate('/login')}>Login</Button> 
+                )
+              }
+            </div>
+          </div>
+          <div style={landingPageStyle}>
+            <Routes>
+              <Route exact path='/' element={<DogList/>}/>
+              <Route exact path='/addDog' element={
+                <RequireAuth>
+                  <NewDogForm/>
+                </RequireAuth>
+              }/>
+              <Route exact path="/dog/:id" element={
+                <RequireAuth>
+                  <DogDetail/>
+                </RequireAuth>
+              }/>
+              <Route path='/login' element={<Login/>} />
+              <Route element={<NotFound/>}/>
+              
+            </Routes>
+            
           
-        </Routes>
-        
-      
-      </div>
-    </>
+          </div>
+        </>
+
     
   );
 }
 
-export default withAuthenticator(App);
+function App() {
+  return(
+    <Authenticator.Provider>
+      <MyRoutes/>
+    </Authenticator.Provider>
+  )
+}
+
+export default App;
 //return to see if app can be wrapped and only accessed through sign in.
 // dog={dogList.filter((dog) => (dog.id) === (match.params.id))}
