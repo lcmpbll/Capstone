@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import DogList from '../scenes/DogList';
 import '@aws-amplify/ui-react/styles.css';
 import { withAuthenticator, Button} from '@aws-amplify/ui-react';
+import { Auth } from 'aws-amplify';
 import background from '../Img/background.jpg';
 import headerImg from '../Img/headerImg.jpg';
 import { Routes, Route } from 'react-router-dom';
@@ -14,9 +15,48 @@ import Sidebar from './Menu';
 
 
 function App({signOut}) {
+const [currentUser, setCurrentUser] = useState(null);
+const [error, setError] = useState(null);
 
+  useEffect(() =>{
+    getCurrentUser();
+  }, []);
+  const getCurrentUser = async () => {
+    
+    await Auth.currentUserInfo().then(response => {
+      console.log(response, 'response');
+      if(!response.ok){
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }else{
+        return response.json();
+      }
+    }).then((jsonifiedResponse) => {
+      setCurrentUser(jsonifiedResponse);
+      console.log(jsonifiedResponse);
+    }).catch((error) => {
+      setError(error.message)
+    });
+  };
   
-
+  // .then(response => {
+  //   console.log(response);
+  //   if(!response.ok) {
+  //     throw new Error(`${response.status}: ${response.statusText}`);
+  //   } else {
+  //     return response.json()
+  //   }
+  // })
+  // .then((jsonifiedResponse) => {
+  //   setAllParks(jsonifiedResponse)
+  //   console.log(jsonifiedResponse);
+  //   setIsLoaded(true)
+  // })
+  // .catch((error) => {
+  //   setError(error.message)
+  //   setIsLoaded(true)
+  // });
+  
+ console.log(currentUser, 'ln 31');
   //styles
   const landingPageStyle = {
     backgroundImage: `url(${background})`,
