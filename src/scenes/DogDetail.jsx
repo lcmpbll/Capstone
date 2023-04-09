@@ -27,7 +27,7 @@ const DogDetail = () => {
   
   const getDogs = async () => {
     const newDogList = await fetchDogs();
-    console.log(newDogList, 'fd')
+    
     setDogList(newDogList);
   }
 
@@ -139,8 +139,8 @@ const DogDetail = () => {
               <h2>Friends</h2>
               <div style={friendsListStyle}>
                 {displayedFriends ? displayedFriends.map((dog) => <FriendedDog
-                  dogName={dog.dogName}
-                  key={dog.dogId} />
+                  key={dog.dogId}
+                  dogName={dog.dogName} />
                   ): null}
               </div>
               

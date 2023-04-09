@@ -40,7 +40,7 @@ function Park(props){
     for(let i = 0; i < atTheParkList.length; i ++){
       if(atTheParkList[i].dogAgeGroup === 'Puppy' || atTheParkList[i].dogAgeGroup === 'Pre vaccinated puppy'){
         puppies ++;
-        console.log(puppies);
+        // console.log(puppies);
       } else if (atTheParkList[i].dogAgeGroup === 'Juvenile' || atTheParkList[i].dogAgeGroup === "Young Adult") {
         youngAdults ++;
       } else if ( atTheParkList[i].dogAgeGroup === 'Adult'){
