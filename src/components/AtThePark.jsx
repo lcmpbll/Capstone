@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
-import Park from './Park';
+import React, { useEffect } from 'react';
+import {Park, sendDogsHome} from './Park';
 
 
 
 
 const AtThePark = (props) => {
- const { dogList } = props;
-  let atTheParkList = dogList.filter(dog=> dog.atThePark === true)
+  const { dogList } = props;
+  let atTheParkList = dogList.filter(dog=> dog.atThePark === true);
+  const oneHour = 60 * 60 * 1000;
+  useEffect(()=> {
+    sendDogsHome(atTheParkList, oneHour)
+  })
   //Styles
   const mainAtTheParkStyles = {
     display: 'flex',
