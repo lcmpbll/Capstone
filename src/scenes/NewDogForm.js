@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
+import { AppContext } from '../components/App'
 import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {v4} from 'uuid';
@@ -8,7 +9,14 @@ import {useAuthenticator} from '@aws-amplify/ui-react';
 const  NewDogForm = (props) => {
   const navigate = useNavigate();
   const { route } = useAuthenticator((context) => [context.route]);
-  
+  const { currentUser } = useContext(AppContext);
+  const [isLoading, setIsLoading] = useState(true);
+  setTimeout(() => {
+    
+    if(currentUser?.id !== undefined){
+      setIsLoading(false);
+    }   
+  }, 3000)
   const [dogLikesList, setDogLikesList] = useState({
     dogLikes: [], likesResponse: [],
   });
@@ -144,6 +152,7 @@ const  NewDogForm = (props) => {
        dogDislikes: handleDislikesListChange(event),
        dogParks: 'Alberta Park',
        id: v4(),
+       ownerId: currentUser?.id,
      }
      return newDog;
  };
