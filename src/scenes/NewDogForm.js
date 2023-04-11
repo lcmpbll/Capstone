@@ -1,4 +1,6 @@
 import React, {useState, useContext, useEffect} from 'react';
+import {Box, Button, TextField, FormControl, FormControlLabel, FormGroup, FormLabel, RadioGroup, Radio, Checkbox } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { AppContext } from '../components/App'
 import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -8,6 +10,7 @@ import {useAuthenticator} from '@aws-amplify/ui-react';
 
 const  NewDogForm = (props) => {
   const navigate = useNavigate();
+  const isNonMobile = useMediaQuery('min-width: 600px');
   const { route } = useAuthenticator((context) => [context.route]);
   const { currentUser } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -130,6 +133,7 @@ const  NewDogForm = (props) => {
   }
   
   const handleAddingNewDogToList = async (newDog) => {
+    // console.log(newDog);
     await addDog(newDog)
      
     
@@ -172,10 +176,9 @@ const  NewDogForm = (props) => {
   const newDogFormStyle ={
     justifyContent: 'center',
     padding: '10px',
-    
-    
+    background: 'rgba(190, 190, 190, 0.6)',
     margin:  'auto',
-    width: '50%',
+ 
   }
   const innerDogFormStyle = {
     marginTop: '100px',
@@ -188,81 +191,94 @@ const  NewDogForm = (props) => {
   }
 
   const homeButtonStyle = {
-    marginLeft: '20%',
+    marginLeft: '90%',
     
   }
     return (
-      <>
+      <Box>
         <div style={newDogFormStyle}>
-          <div style={innerDogFormStyle}>
+          <Box display='grid' gap='30px' gridTemplateColumns='repeat(4 minmax(0, 1frs))' 
+          sx={{
+            '& > div': {gridColumn: isNonMobile ? undefined : "span 4" },
+            
+          }}>
           <form onSubmit={handleNewDogFormSubmission}>
-            <label htmlFor="dogName">Dog's Name:</label> &nbsp;
-            <input type='text' name='dogName' placeholder="Your dog's name" />
+            {/* <label htmlFor="dogName">Dog's Name:</label> &nbsp; */}
+            {/* <input type='text' name='dogName' placeholder="Your dog's name" />
             <br/>
-            <br/>
-            <label htmlFor='dogWeight'>Dog's weight in lbs:</label> &nbsp;
-            <input type='number' name='dogWeight' placeholder='lbs' required/>
-            <br/>
-            <br/>
-            <label htmlFor='dogYears'>Dog's age:</label> &nbsp;
-            <input type='number' name='dogMonths' placeholder='months' required/> &nbsp;
-            <input type='number' name='dogYears' placeholder='years' required/>
-            <br/>
-            <br/>
-            <div className='radioSection'>
-              <label htmlFor='dogSex'>Dog's gender:</label>
-              <div className='radioButton'>
-                <input type='radio' value='Female' name='dogSex' onChange={handleSexValueChange}/>Female
-              </div>
-              <div className='radioButton'>
-                <input type='radio' value='Male' name='dogSex'  onChange={handleSexValueChange}/>Male
-              </div>
-            </div>
-            <br />
-            <div className='checkBoxSelectionLikes row'>
-              <label htmlFor="DogLikes"> Dog's likes:</label>
-                <div className='col-md-6'>
-                  <div className='form-check m-3'>
-                    <input className='form-check-likes' type='checkbox' name='dogLikes' value='puppies' onChange={handleLikesListChange}/>
-                    <label className='form-check-label'>Puppies</label>
-                  </div>
-                  <div className='form-check m-3'>
-                    <input className='form-check-likes' type='checkbox' name='dogLikes' value='children' onChange={handleLikesListChange}/>
-                    <label className='form-check-label'>Children</label>
-                  </div>
-                </div>
-              </div>
-              <br />
-              <div className='checkBoxSelectionDislikes row'>
-                <label htmlFor="DogDislikes">Dog's dislikes:</label>
-                <div className='col-md-6'>
-                  <div className='form-check m-3'>
-                    <input className='form-check-dislikes' type='checkbox' name='dogDislikes' value='puppies' onChange={handleDislikesListChange}/>
-                    <label className='form-check-label'>Puppies</label>
-                  </div>
-                  <div className='form-check m-3'>
-                    <input className='form-check-dislikes' type='checkbox' name='dogDislikes' value='children' onChange={handleDislikesListChange}/>
-                    <label className='form-check-label'>Children</label>
-                  </div>
-                </div>
-                <br/>
-                {/* <div className='form-check m-3'>
-                  <label>Add your dog's friends:</label> &nbsp;
-                  <select onChange={handleFriendChange}>
-                    <option value='none'>--Select a friend for your dog--</option>
-                    {Object.entries(dogList).map((dogs) => <option key={dogs.id} value={dogs.id}>{dogs.dogName}</option>)}
-                  </select>
-                </div> */}
-              </div>
-              <br />
-              {/* <label htmlFor='dogParks'>My dog's favorite Park:</label>
-              <input type='text' name='dogParks' placeholder='Alberta Park' /> */} 
-              <button type='submit' className='btn btn-default'>Submit</button>
+            <br/> */}
+            <TextField
+              fullWidth
+              variant='filled'
+              type='text'
+              label='Name'
+              // onBlur={handleBlur}
+              name='dogName'
+              sx={{gridColumn: 'span 2', margin: '1rem'}}
+              required
+            />
+            <TextField
+              fullWidth
+              variant='filled'
+              type='number'
+              label='Weight (lbs)'
+              // onBlur={handleBlur}
+              name='dogWeight'
+              sx={{gridColumn: 'span 2', margin: '1rem'}}
+              required
+            />
+            <TextField
+              fullWidth
+              variant='filled'
+              type='number'
+              label='Age Months'
+              // onBlur={handleBlur}
+              name='dogMonths'
+              sx={{gridColumn: 'span 1', margin: '1rem'}}
+              required
+            />
+            <TextField
+              fullWidth
+              variant='filled'
+              type='number'
+              label='Age Years'
+              // onBlur={handleBlur}
+              name='dogYears'
+              sx={{gridColumn: 'span 1', margin: '1rem'}}
+              required
+            />
+            <Box display='grid' gridTemplateColumns='1fr' 
+          sx={{
+            '& > div': {gridColumn: isNonMobile ? undefined : "span 2" },
+          }}>
+              <FormControl sx={{margin: '1rem'}}>
+                <FormLabel id="radio-gender-group-label">Dog's Gender</FormLabel>
+                <RadioGroup
+                  aria-labelledby='radio-gender-group-label'
+                  defaultValue='female'
+                  name='dogSex'
+                >
+                  <FormControlLabel value='female' control={<Radio/>} label="Female" onChange={handleSexValueChange} />
+                  <FormControlLabel value='male' control={<Radio/>} label="Male" onChange={handleSexValueChange} />
+                </RadioGroup>
+              </FormControl>
+              <FormGroup sx={{margin: '1rem'}}>
+              <FormLabel id="dog-likesList-label">Dog's Likes</FormLabel>
+                <FormControlLabel control={<Checkbox value='puppies' name='dogLikes' onChange={handleLikesListChange}/>} label='Puppies'/>
+                <FormControlLabel control={<Checkbox value='children' name='dogLikes' onChange={handleLikesListChange}/>} label='Children'/>
+              </FormGroup>
+              <FormGroup sx={{margin: '1rem'}}>
+                <FormLabel id="dog-disLikesList-label">Dog's DisLikes</FormLabel>
+                <FormControlLabel control={<Checkbox value='puppies' name='dogDislikes' onChange={handleDislikesListChange}/>} label='Puppies'/>
+                <FormControlLabel control={<Checkbox value='children' name='dogDislikes' onChange={handleDislikesListChange}/>} label='Children'/>
+              </FormGroup>
+            </Box>
+              <Button type='submit' variant='contained' className='btn btn-default'>Submit</Button>
             </form>
-          </div>
+          </Box>
         </div>
-        <button style={homeButtonStyle}><Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>Home</Link></button>
-      </>
+        <Button variant='contained' style={homeButtonStyle}><Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>Home</Link></Button>
+      </Box>
     );
   
 }
