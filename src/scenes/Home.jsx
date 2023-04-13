@@ -14,7 +14,7 @@ export const Home = () => {
   
   const getDogs = async () => {
     const newDogList = await fetchDogs();
-    console.log(newDogList)
+   
     setDogList(newDogList);
   }
  
