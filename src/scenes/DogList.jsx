@@ -1,10 +1,7 @@
-import React, { useEffect, useState} from 'react';
+import React from 'react';
 import Dog from '../components/Dog';
 // import { AppContext } from '../components/App';
-import PropTypes from 'prop-types';
-import { fetchDogs } from '../functions/apihelper';
-import AtThePark from '../components/AtThePark';
-import { Link, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';import { Link, Route } from 'react-router-dom';
 
 
 const DogList = (props, {match}) => {
