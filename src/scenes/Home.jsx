@@ -17,7 +17,7 @@ export const Home = () => {
     console.log(newDogList)
     setDogList(newDogList);
   }
-  console.log(dogList, 'home')
+ 
   return (
  
       <SplitScreen
@@ -32,12 +32,5 @@ export const Home = () => {
     );
 }
 
-const RightHandComponent = ({name}) => {
-  return(
-    <h1 style={{backgroundColor: 'green'}}>{name}</h1>
-  );
-}
-const LeftHandComponent = ({message}) => {
-  return <p style={{backgroundColor: 'red'}}>{message}</p>
-}
+
 
