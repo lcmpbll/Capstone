@@ -5,6 +5,7 @@ import {Park, sendDogsHome} from './Park';
 
 
 const AtThePark = (props) => {
+  
   const { dogList } = props;
   let atTheParkList = dogList.filter(dog=> dog.atThePark === true);
   const oneHour = 60 * 60 * 1000;
@@ -14,16 +15,26 @@ const AtThePark = (props) => {
   //Styles
   const mainAtTheParkStyles = {
     display: 'flex',
-    marginRight: '20px',
+    margin: 'auto',
     flexDirection: 'column',
+    justifyContent: 'center',
+    padding: '10% 20%',
+    
+  
+      
+   
   }
   const dogAtTheParkStyles = {
     marginTop: '2px',
     margin: 'auto',
+ 
   }
   const parkHeaderStyle = {
     margin: 'auto',
   }
+  
+  // background: 'rgba(219, 219, 219, 0.6)',
+  // border: 'solid 2px black',
   
   return(
     <>

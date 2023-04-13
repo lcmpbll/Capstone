@@ -1,6 +1,5 @@
 import React, { useState, createContext } from 'react';
 import Header from './Header';
-import DogList from '../scenes/DogList';
 import { RequireAuth } from '../components/RequireAuth';
 import Login from '../scenes/Login';
 import '@aws-amplify/ui-react/styles.css';
@@ -13,6 +12,7 @@ import NewDogForm from '../scenes/NewDogForm';
 import DogDetail from '../scenes/DogDetail';
 import NotFound from '../scenes/NotFound';
 import Sidebar from './Menu';
+import {Home} from '../scenes/Home'
 
 export const AppContext = createContext();
 
@@ -98,7 +98,7 @@ const navigate = useNavigate();
           <div style={landingPageStyle}>
             <AppContext.Provider value={{currentUser}}>
               <Routes>
-                <Route exact path='/' element={<DogList/>}/>
+                <Route exact path='/' element={<Home/>}/>
                 <Route exact path='/addDog' element={
                   <RequireAuth>
                     <NewDogForm/>
