@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import {Park, sendDogsHome} from './Park';
+import { Box } from '@mui/material'
 
 
 
@@ -38,20 +39,20 @@ const AtThePark = (props) => {
   
   return(
     <>
-      <div style={mainAtTheParkStyles}>
-        <div style={parkHeaderStyle}>
+      <Box style={mainAtTheParkStyles}>
+        <Box style={parkHeaderStyle}>
           <h1>Alberta Park</h1>
-        </div>
+        </Box>
         <Park atTheParkList={atTheParkList} />
         {atTheParkList.map((dog) =>
-        <div style={dogAtTheParkStyles} key={dog.id}>
+        <Box style={dogAtTheParkStyles} key={dog.id}>
         <h1>{dog.dogName}</h1>
         {/* <button onClick = {() => props.whenDogFriendClicked(dog.id)}>Add as a friend</button>
         May add this back in, but for now going to use edit dog to add to dogFriends */}
-        <br/>
-        </div>
+        
+        </Box>
         )}
-      </div>
+      </Box>
     </>
   );
 }
