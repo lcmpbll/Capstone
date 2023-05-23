@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 import Header from './Header';
 import { RequireAuth } from '../components/RequireAuth';
 import Login from '../scenes/Login';
@@ -26,6 +26,12 @@ const {route, signOut} = useAuthenticator((context) => [
 const navigate = useNavigate();
 
   
+useEffect(() => {
+  
+  if(currentUser === null){
+    getCurrentUser();
+  }
+}, [currentUser]);
   
   const getCurrentUser = async () => {
     
@@ -39,9 +45,8 @@ const navigate = useNavigate();
     });
   };
   
-  if (currentUser === null) {
-    getCurrentUser()
-  }
+ 
+  
   
   
 
@@ -97,21 +102,21 @@ const navigate = useNavigate();
           </div>
           <div style={landingPageStyle}>
             <AppContext.Provider value={{currentUser}}>
+              
               <Routes>
-                <Route exact path='/' element={<Home/>}/>
+                <Route exact path="/dog/:id" element={
+                  // <RequireAuth>
+                    <DogDetail/>
+                  // {/* </RequireAuth> */}
+                }/>
+                <Route path='/login' element={<Login/>} />
+                <Route element={<NotFound/>}/>
                 <Route exact path='/addDog' element={
                   <RequireAuth>
                     <NewDogForm/>
                   </RequireAuth>
                 }/>
-                <Route exact path="/dog/:id" element={
-                  <RequireAuth>
-                    <DogDetail/>
-                  </RequireAuth>
-                }/>
-                <Route path='/login' element={<Login/>} />
-                <Route element={<NotFound/>}/>
-                
+                <Route exact path='/' element={<Home/>}/>
               </Routes>
             </AppContext.Provider>
             
