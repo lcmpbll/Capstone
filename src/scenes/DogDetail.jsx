@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuthenticator, Heading } from '@aws-amplify/ui-react';
+import { useAuthenticator } from '@aws-amplify/ui-react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { fetchDog, fetchDogs } from '../functions/apihelper';
@@ -26,7 +26,7 @@ const DogDetail = () => {
   
   const getDogs = async () => {
     const newDogList = await fetchDogs();
-    console.log(newDogList, 'fd')
+
     setDogList(newDogList);
   }
 
