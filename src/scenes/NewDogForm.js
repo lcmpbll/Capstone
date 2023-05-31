@@ -6,6 +6,8 @@ import { addDog } from '../functions/apihelper';
 import {useAuthenticator} from '@aws-amplify/ui-react';
 
 const  NewDogForm = (props) => {
+  const { currentUser } = props;
+  
   const navigate = useNavigate();
   const { route } = useAuthenticator((context) => [context.route]);
   
@@ -143,6 +145,7 @@ const  NewDogForm = (props) => {
        friendsArray: [],
        dogDislikes: handleDislikesListChange(event),
        dogParks: 'Alberta Park',
+       ownerId: currentUser.id,
        id: v4(),
      }
      return newDog;
