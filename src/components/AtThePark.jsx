@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Park from './Park';
+import {Link} from 'react-router-dom';
 
 
 
@@ -20,6 +21,10 @@ const AtThePark = (props) => {
   const parkHeaderStyle = {
     margin: 'auto',
   }
+  const linkStyle = {
+    textDecoration: 'none',
+    color: 'black'
+  }
   
   return(
     <>
@@ -30,7 +35,9 @@ const AtThePark = (props) => {
         <Park atTheParkList={atTheParkList} />
         {atTheParkList.map((dog) =>
         <div style={dogAtTheParkStyles} key={dog.id}>
-        <h1>{dog.dogName}</h1>
+        <Link to={`dog/${dog.id}`} style={linkStyle}>
+          <h1>{dog.dogName}</h1>
+        </Link>
         {/* <button onClick = {() => props.whenDogFriendClicked(dog.id)}>Add as a friend</button>
         May add this back in, but for now going to use edit dog to add to dogFriends */}
         <br/>
