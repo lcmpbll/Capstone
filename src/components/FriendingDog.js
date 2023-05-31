@@ -23,7 +23,7 @@ function FriendDogForm(props) {
       ...dog,
       friendsArray: handleFriendChange(event)
     }
-    console.log(dogWithNewFriend);
+    
     await updateDog(dogWithNewFriend);
   }
   

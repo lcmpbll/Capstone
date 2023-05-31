@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 import Header from './Header';
-import DogList from '../scenes/DogList';
 import { RequireAuth } from '../components/RequireAuth';
 import Login from '../scenes/Login';
 import '@aws-amplify/ui-react/styles.css';
@@ -13,8 +12,9 @@ import NewDogForm from '../scenes/NewDogForm';
 import DogDetail from '../scenes/DogDetail';
 import NotFound from '../scenes/NotFound';
 import Sidebar from './Menu';
+import {Home} from '../scenes/Home'
 
-
+export const AppContext = createContext();
 
 function MyRoutes() {
 const [currentUser, setCurrentUser] = useState(null);
@@ -24,30 +24,32 @@ const {route, signOut} = useAuthenticator((context) => [
   context.signOut
 ]);
 const navigate = useNavigate();
-  useEffect(() =>{
+
+  
+useEffect(() => {
+  
+  if(currentUser === null){
     getCurrentUser();
-  }, []);
+  }
+}, [currentUser]);
   
   const getCurrentUser = async () => {
     
     await Auth.currentUserInfo().then(response => {
-      console.log(response, 'response');
+      setCurrentUser(response);
       if(!response.ok){
         throw new Error(`${response.status}: ${response.statusText}`);
-      }else{
-        return response.json();
       }
-    }).then((jsonifiedResponse) => {
-      setCurrentUser(jsonifiedResponse);
-      console.log(jsonifiedResponse);
     }).catch((error) => {
       setError(error.message)
     });
   };
   
+ 
   
   
- console.log(currentUser, 'ln 31');
+  
+
   //styles
   const landingPageStyle = {
     backgroundImage: `url(${background})`,
@@ -99,22 +101,24 @@ const navigate = useNavigate();
             </div>
           </div>
           <div style={landingPageStyle}>
-            <Routes>
-              <Route exact path='/' element={<DogList/>}/>
-              <Route exact path='/addDog' element={
-                <RequireAuth>
-                  <NewDogForm/>
-                </RequireAuth>
-              }/>
-              <Route exact path="/dog/:id" element={
-                <RequireAuth>
-                  <DogDetail/>
-                </RequireAuth>
-              }/>
-              <Route path='/login' element={<Login/>} />
-              <Route element={<NotFound/>}/>
+            <AppContext.Provider value={{currentUser}}>
               
-            </Routes>
+              <Routes>
+                <Route exact path="/dog/:id" element={
+                  // <RequireAuth>
+                    <DogDetail/>
+                  // {/* </RequireAuth> */}
+                }/>
+                <Route path='/login' element={<Login/>} />
+                <Route element={<NotFound/>}/>
+                <Route exact path='/addDog' element={
+                  <RequireAuth>
+                    <NewDogForm/>
+                  </RequireAuth>
+                }/>
+                <Route exact path='/' element={<Home/>}/>
+              </Routes>
+            </AppContext.Provider>
             
           
           </div>
@@ -124,7 +128,7 @@ const navigate = useNavigate();
   );
 }
 
-function App() {
+export function App() {
   return(
     <Authenticator.Provider>
       <MyRoutes/>
@@ -132,6 +136,6 @@ function App() {
   )
 }
 
-export default App;
+
 //return to see if app can be wrapped and only accessed through sign in.
 // dog={dogList.filter((dog) => (dog.id) === (match.params.id))}

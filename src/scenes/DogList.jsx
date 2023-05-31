@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Dog from '../components/Dog';
+// import { AppContext } from '../components/App';
+import PropTypes from 'prop-types';import { Link, Route } from 'react-router-dom';
 
-import PropTypes from 'prop-types';
-import { fetchDogs } from '../functions/apihelper';
-import AtThePark from '../components/AtThePark';
-import { Link, Route } from 'react-router-dom';
+
+const DogList = (props, {match}) => {
+  const {dogList} = props;
 
 
 const DogList = ({match}) => {
@@ -45,8 +46,9 @@ const DogList = ({match}) => {
   
 
 
-  // console.log(dogList)
+
   
+
   //styles
   const dogsStyle = {
     width: '100%',
@@ -71,17 +73,7 @@ const DogList = ({match}) => {
     justifyContent: 'center',
     
   }
-  const dogParkStyle = {
-    
-    padding: '20px',
-    background: 'rgba(219, 219, 219, 0.6)',
-    border: 'solid 2px black',
-    width: '70%',
-    // margin: '100px, 60px, 0px, 60px',
-    // position: 'relative',
-    marginLeft: '15%',
-    
-  }
+
   
   const sortButtonStyle = {
     margin: '5px',
@@ -95,8 +87,9 @@ const DogList = ({match}) => {
     textDecoration: 'none',
     color: 'black'
   }
-  
-  return (
+
+  return dogList ?(
+
     <div style={dogsStyle}>
       
       <div style={dogListStyle}>
@@ -131,18 +124,20 @@ const DogList = ({match}) => {
         </div>
         )}
       </div>
-      <div style={dogParkStyle}>
-        <AtThePark dogList={dogList}/>
-      </div>
+     
     </div>
-  )
+
+  ): null;
+
 }
 
 
 
 DogList.propTypes = {
   dogList: PropTypes.array,
- 
+  Dog: PropTypes.object,
 };
 
 export default DogList;
+
+
