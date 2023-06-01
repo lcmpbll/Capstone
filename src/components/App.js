@@ -13,8 +13,8 @@ import NewDogForm from '../scenes/NewDogForm';
 import DogDetail from '../scenes/DogDetail';
 import NotFound from '../scenes/NotFound';
 import Sidebar from './Menu';
-import MyDogs from '../scenes/MyDogs';
-import {Home} from '../scenes/Home'
+import { DogListWrappedMyDogs } from '../WrappedComponents/DogListWrapped';
+import { Home } from '../scenes/Home'
 
 export const AppContext = createContext();
 
@@ -108,19 +108,19 @@ useEffect(() => {
               <Routes>
                 <Route exact path="/dog/:id" element={
                   // <RequireAuth>
-                    <DogDetail/>
+                  <DogDetail/>
                   // {/* </RequireAuth> */}
+                }/>
+                <Route exact path='/myDogs' element={
+                  <RequireAuth>
+                    <DogListWrappedMyDogs/>
+                  </RequireAuth>
                 }/>
                 <Route path='/login' element={<Login/>} />
                 <Route element={<NotFound/>}/>
                 <Route exact path='/addDog' element={
                   <RequireAuth>
                     <NewDogForm/>
-                  </RequireAuth>
-                }/>
-                <Route exact path='/myDogs' element={
-                  <RequireAuth>
-                    <MyDogs/>
                   </RequireAuth>
                 }/>
                 <Route exact path='/' element={<Home/>}/>
