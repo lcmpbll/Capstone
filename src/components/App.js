@@ -4,6 +4,7 @@ import { RequireAuth } from '../components/RequireAuth';
 import Login from '../scenes/Login';
 import '@aws-amplify/ui-react/styles.css';
 import { Authenticator, useAuthenticator, Button} from '@aws-amplify/ui-react';
+// import { getCurrentUser } from '../functions/apihelper';
 import { Auth } from 'aws-amplify';
 import background from '../Img/background.jpg';
 import headerImg from '../Img/headerImg.jpg';
@@ -12,7 +13,8 @@ import NewDogForm from '../scenes/NewDogForm';
 import DogDetail from '../scenes/DogDetail';
 import NotFound from '../scenes/NotFound';
 import Sidebar from './Menu';
-import {Home} from '../scenes/Home'
+import { DogListWrappedMyDogs } from '../WrappedComponents/DogListWrapped';
+import { Home } from '../scenes/Home'
 
 export const AppContext = createContext();
 
@@ -106,8 +108,13 @@ useEffect(() => {
               <Routes>
                 <Route exact path="/dog/:id" element={
                   // <RequireAuth>
-                    <DogDetail/>
+                  <DogDetail/>
                   // {/* </RequireAuth> */}
+                }/>
+                <Route exact path='/myDogs' element={
+                  <RequireAuth>
+                    <DogListWrappedMyDogs/>
+                  </RequireAuth>
                 }/>
                 <Route path='/login' element={<Login/>} />
                 <Route element={<NotFound/>}/>
@@ -120,9 +127,10 @@ useEffect(() => {
               </Routes>
             </AppContext.Provider>
             
-          
-          </div>
-        </>
+
+
+      </div>
+    </>
 
     
   );

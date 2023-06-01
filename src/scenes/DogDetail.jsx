@@ -27,7 +27,6 @@ const DogDetail = () => {
   
   const getDogs = async () => {
     const newDogList = await fetchDogs();
-    
     setDogList(newDogList);
   }
 

@@ -1,34 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Dog from '../components/Dog';
-// import { AppContext } from '../components/App';
+
 import PropTypes from 'prop-types';import { Link, Route } from 'react-router-dom';
 
-
+//shade sort buttons if sort type is selected. 
 const DogList = (props, {match}) => {
   const {dogList} = props;
 
-
-const DogList = ({match}) => {
-  const [ dogList, setDogList ] = useState([]);
-  useEffect(() => {
-    getDogs();
-
-  }, []);
-  
-  const getDogs = async () => {
-    const newDogList = await fetchDogs();
-    setDogList(newDogList);
-  }
    
   const [sortBy, setSortBy] = useState(null);
   const [smallest, setSmallest] = useState(true);
   const [filterBy, setFilterBy] = useState(null);
+  
   const handleSortClick = (option, smallest) => {
     if(sortBy === option){
       setSmallest(!smallest);
     }
     setSortBy(option);
-    console.log(sortBy, smallest)
+  
     sortDogList(sortBy, smallest)
   }
   const sortDogList = (sortBy, smallest) => {
@@ -44,11 +33,6 @@ const DogList = ({match}) => {
     
   }
   
-
-
-
-  
-
   //styles
   const dogsStyle = {
     width: '100%',
@@ -79,7 +63,9 @@ const DogList = ({match}) => {
     margin: '5px',
     width: 'content',
     border: '2px solid',
-    // borderRadius: '50%',
+    borderRadius: '10%',
+    shadow: '0',
+    cursor: 'pointer',
     
   }
   
@@ -88,10 +74,8 @@ const DogList = ({match}) => {
     color: 'black'
   }
 
-  return dogList ?(
-
+  return dogList ? (
     <div style={dogsStyle}>
-      
       <div style={dogListStyle}>
         <h1 style={{marginLeft: '150px'}}>All Dogs</h1>
         <div>
@@ -99,7 +83,6 @@ const DogList = ({match}) => {
           <div>
             <button  onClick={() => handleSortClick(`dogAge`, smallest)} style={sortButtonStyle}>Age</button>
             <button  onClick={() => handleSortClick(`dogWeight`, smallest)} style={sortButtonStyle}>Size</button>
-         
           </div>
           {/* <div>
             <h4>Filter Dogs:</h4>
@@ -111,7 +94,7 @@ const DogList = ({match}) => {
         </div>
         {dogList.map((dog) => 
         <div style={dogCardStyle} className='card' key={dog.id}>
-          <Link to={`dog/${dog.id}`} style={linkStyle}>
+          <Link to={`/dog/${dog.id}`} style={linkStyle}>
             <Dog 
               dogName={dog.dogName}
               dogSex={dog.dogSex}
@@ -129,6 +112,7 @@ const DogList = ({match}) => {
 
   ): null;
 
+  
 }
 
 

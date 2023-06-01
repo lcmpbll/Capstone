@@ -8,7 +8,7 @@ export const withDogList = (Component) => {
     const [dogList, setDogList] = useState(null);
     useEffect(() => {
       (async () => {
-        const response = fetchDogs();
+        const response = await fetchDogs();
         setDogList(response);
       })();
     }, [])
