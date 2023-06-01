@@ -2,21 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getTime, switchParkStatus } from '../functions/parkFunctions';
 
-function Park(props){
+export const sendDogsHome = (atTheParkList, oneHour) => {
+  //checks for dogs that have been at the park for greater than an hour
+  let dogsGoingHome = atTheParkList.filter(dog => ((Date.parse(getTime()) - Date.parse(dog.startTimeAtPark)) >= oneHour));
+  dogsGoingHome.forEach(dog => switchParkStatus(dog));
+  
+}
+
+export function Park(props){
   const { atTheParkList } = props;
   const oneHour = 60 * 60 * 1000;
   let numberOfDogsAtThePark = atTheParkList.length;
   
   
-  const sendDogsHome = (atTheParkList) => {
-    //checks for dogs that have been at the park for greater than an hour
-    let dogsGoingHome = atTheParkList.filter(dog => ((Date.parse(getTime()) - Date.parse(dog.startTimeAtPark)) >= oneHour));
-    dogsGoingHome.forEach(dog => switchParkStatus(dog));
-    
-  }
+
   
   const hourlyCheck = (atTheParkList) => {
-    setInterval(sendDogsHome(atTheParkList), oneHour);
+    setInterval(sendDogsHome(atTheParkList, oneHour), oneHour);
     
   }
   
@@ -40,7 +42,7 @@ function Park(props){
     for(let i = 0; i < atTheParkList.length; i ++){
       if(atTheParkList[i].dogAgeGroup === 'Puppy' || atTheParkList[i].dogAgeGroup === 'Pre vaccinated puppy'){
         puppies ++;
-        console.log(puppies);
+        // console.log(puppies);
       } else if (atTheParkList[i].dogAgeGroup === 'Juvenile' || atTheParkList[i].dogAgeGroup === "Young Adult") {
         youngAdults ++;
       } else if ( atTheParkList[i].dogAgeGroup === 'Adult'){
@@ -96,7 +98,7 @@ function Park(props){
   
 }
 
-export default Park;
+
 
 Park.propTypes = {
   atTheParkList: PropTypes.array,

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuthenticator } from '@aws-amplify/ui-react';
+import { useAuthenticator, Heading } from '@aws-amplify/ui-react';
+import {AppContext} from '../components/App';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { fetchDog, fetchDogs } from '../functions/apihelper';
@@ -18,7 +19,7 @@ const DogDetail = () => {
   const { id } = useParams();
   const [ dogList, setDogList ] = useState([]);
   const { route } = useAuthenticator((context) => [context.route]);
- 
+  const { currentUser } = useContext(AppContext);
   useEffect(() => {
     getDogs();
     console.log('fetching');
@@ -26,7 +27,6 @@ const DogDetail = () => {
   
   const getDogs = async () => {
     const newDogList = await fetchDogs();
-
     setDogList(newDogList);
   }
 
@@ -132,27 +132,33 @@ const DogDetail = () => {
           {dsiplayDislikes}
           <hr/>
         </div>
-        <div className='friends'>
-          <h2>Friends</h2>
-          <div style={friendsListStyle}>
-            {displayedFriends ? displayedFriends.map((dog) => <FriendedDog
-               dogName={dog.dogName}
-               key={dog.dogId} />
-               ): null}
+        {currentUser?.id === dog.ownerId || dog.ownerId === null? 
+          <div className='owner_functions'>
+            <div className='friends'>
+              <h2>Friends</h2>
+              <div style={friendsListStyle}>
+                {displayedFriends ? displayedFriends.map((dog) => <FriendedDog
+                  key={dog.dogId}
+                  dogName={dog.dogName} />
+                  ): null}
+              </div>
+              
+              <br/>
+              <button onClick={() => (setFriending(!friending))}>{friending ? `Close Friend Form` : `Make Some Friends`}</button>
+              {friendForm}
+              <hr/>
+              
+            </div>
+            <div className='parks'>
+              <h2>Parks</h2>
+              {dog.dogParks} &nbsp;
+              {ageError} <br/> 
+              <button  onClick={() => {onClickingGo(dog) }} >{buttonText}</button>
+              <hr />
+            </div>
+            <br/>
           </div>
-          <br/>
-          <button onClick={() => (setFriending(!friending))}>{friending ? `Close Friend Form` : `Make Some Friends`}</button>
-          {friendForm}
-          <hr/>
-        </div>
-        <div className='parks'>
-          <h2>Parks</h2>
-          {dog.dogParks} &nbsp;
-          {ageError} <br/> 
-          <button  onClick={() => {onClickingGo(dog) }} >{buttonText}</button>
-          <hr />
-        </div>
-        <br/>
+        : null }
         {/* <div className='buttonControl'>
           <button onClick={() => onClickingFriend(dog.id)}>Make some Dog friends</button> &nbsp;
           <button onClick={()=> onClickingDelete(dog)}>Remove Dog</button>

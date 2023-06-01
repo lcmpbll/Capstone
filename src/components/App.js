@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 import Header from './Header';
-import DogList from '../scenes/DogList';
 import { RequireAuth } from '../components/RequireAuth';
 import Login from '../scenes/Login';
 import '@aws-amplify/ui-react/styles.css';
@@ -15,8 +14,9 @@ import DogDetail from '../scenes/DogDetail';
 import NotFound from '../scenes/NotFound';
 import Sidebar from './Menu';
 import MyDogs from '../scenes/MyDogs';
+import {Home} from '../scenes/Home'
 
-
+export const AppContext = createContext();
 
 function MyRoutes() {
 const [currentUser, setCurrentUser] = useState(null);
@@ -26,6 +26,8 @@ const {route, signOut} = useAuthenticator((context) => [
   context.signOut
 ]);
 const navigate = useNavigate();
+
+  
 useEffect(() => {
   
   if(currentUser === null){
@@ -44,6 +46,9 @@ useEffect(() => {
       setError(error.message)
     });
   };
+  
+ 
+  
   
   
 
@@ -82,43 +87,47 @@ useEffect(() => {
   }
   return (
  
-    <>
-      <div style={topStyle}>
-        <div style={headerStyle}>
-          <Header />
-        </div>
-          <Sidebar style={sidebarStyle} />
-        <div style={signOutStyle}>
-          {route === 'authenticated' ? (
-            <Button onClick={signOut}>Sign Out</Button>
-          ):(
-            <Button onClick={() => navigate('/login')}>Login</Button> 
-          )}
-        </div>
-      </div>
-      <div style={landingPageStyle}>
-        <Routes>
-          <Route exact path='/' element={<DogList/>}/>
-          <Route exact path='/addDog' element={
-            <RequireAuth>
-              <NewDogForm currentUser={currentUser}/>
-            </RequireAuth>
-          }/>
-          <Route exact path="/dog/:id" element={
-            <RequireAuth>
-              <DogDetail/>
-            </RequireAuth>
-          }/>
-          <Route exact path="/myDogs" element={
-            <RequireAuth>
-              <MyDogs currentUser={currentUser} />
-            </RequireAuth>
-          }/>
-
-          <Route path='/login' element={<Login/>} />
-          <Route element={<NotFound/>}/>
+      <>
+          <div style={topStyle}>
+            <div style={headerStyle}>
+              <Header />
+            </div>
+              <Sidebar style={sidebarStyle} />
+            <div style={signOutStyle}>
+              {route === 'authenticated' ? (
+                  <Button onClick={signOut}>Sign Out</Button>
+                ):(
+                  <Button onClick={() => navigate('/login')}>Login</Button> 
+                )
+              }
+            </div>
+          </div>
+          <div style={landingPageStyle}>
+            <AppContext.Provider value={{currentUser}}>
+              
+              <Routes>
+                <Route exact path="/dog/:id" element={
+                  // <RequireAuth>
+                    <DogDetail/>
+                  // {/* </RequireAuth> */}
+                }/>
+                <Route path='/login' element={<Login/>} />
+                <Route element={<NotFound/>}/>
+                <Route exact path='/addDog' element={
+                  <RequireAuth>
+                    <NewDogForm/>
+                  </RequireAuth>
+                }/>
+                <Route exact path='/myDogs' element={
+                  <RequireAuth>
+                    <MyDogs/>
+                  </RequireAuth>
+                }/>
+                <Route exact path='/' element={<Home/>}/>
+              </Routes>
+            </AppContext.Provider>
             
-        </Routes>
+
 
       </div>
     </>
@@ -127,7 +136,7 @@ useEffect(() => {
   );
 }
 
-function App() {
+export function App() {
   return(
     <Authenticator.Provider>
       <MyRoutes/>
@@ -135,6 +144,6 @@ function App() {
   )
 }
 
-export default App;
+
 //return to see if app can be wrapped and only accessed through sign in.
 // dog={dogList.filter((dog) => (dog.id) === (match.params.id))}

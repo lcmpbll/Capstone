@@ -13,7 +13,7 @@ export async function fetchDogs() {
 export async function fetchDog(id) {
   const apiData = await API.graphql({ query: getDog, variables: {id: id} });
   const apiDog = apiData.data.getDogSchema;
-  console.log(apiData);
+  // console.log(apiData);
   return apiDog;
 }
 

@@ -28,7 +28,7 @@ function DogParkControl(){
   const update = async () => {
     const newDogList = await fetchDogs();
     setMainDogList(newDogList);
-    console.log(mainDogList)
+    // console.log(mainDogList)
   }
 
   const handleAddingNewDogToList = async (newDog) => {
@@ -63,12 +63,12 @@ function DogParkControl(){
   const handleChangingSelectedDog = (id) => {
     const selection = mainDogList.filter(dog=> dog.id === id)[0];
     setSelectedDog(selection);
-    console.log(selection);
+    // console.log(selection);
   }
   
   const handleGoingToThePark = (id) => {
     const dogGoingToPark = mainDogList.filter(dog => dog.id === id);
-    console.log(dogGoingToPark, 'ln95');
+    // console.log(dogGoingToPark, 'ln95');
       if(dogGoingToPark[0].dogAgeGroup === 'Young Puppy'){
         setAgeError('Your dog is too young to be vaccinated. Please explore alternative exercise and socialization opportunities');
         return ageError;
