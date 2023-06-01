@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import {Box, Button, TextField, FormControl, FormControlLabel, FormGroup, FormLabel, RadioGroup, Radio, Checkbox } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { AppContext } from '../components/App'
@@ -9,7 +9,7 @@ import { addDog } from '../functions/apihelper';
 import {useAuthenticator} from '@aws-amplify/ui-react';
 
 const  NewDogForm = (props) => {
-  const { currentUser } = props;
+
   
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery('min-width: 600px');
@@ -158,7 +158,6 @@ const  NewDogForm = (props) => {
        friendsArray: [],
        dogDislikes: handleDislikesListChange(event),
        dogParks: 'Alberta Park',
-       ownerId: currentUser.id,
        id: v4(),
        ownerId: currentUser?.id,
      }
@@ -287,6 +286,18 @@ const  NewDogForm = (props) => {
 NewDogForm.propTypes = {
   onNewDogCreation: PropTypes.func,
   mainDogList: PropTypes.array,
+  currentUser: PropTypes.object,
+  handleDislikesListChange: PropTypes.func,
+  handleLikesListChange: PropTypes.func,
+  handleSexValueChange: PropTypes.func,
+  handleNewDogFormSubmission: PropTypes.func,
+  handleAddingNewDogToList: PropTypes.func,
+  calculateDogSize: PropTypes.func,
+  calculateDogAge: PropTypes.func,
+  calculateDogAgeGroup: PropTypes.func,
+  
+  
+  
 }
 
 
