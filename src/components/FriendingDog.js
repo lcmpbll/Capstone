@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { fetchDogs, updateDog } from '../functions/apihelper';
+import { updateDog } from '../functions/apihelper';
 
 function FriendDogForm(props) {
   const {dog, dogList} = props;
