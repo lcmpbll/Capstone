@@ -92,7 +92,7 @@ const DogList = (props, {match}) => {
         </div>
         {dogList.map((dog) => 
         <div style={dogCardStyle} className='card' key={dog.id}>
-          <Link to={`dog/${dog.id}`} style={linkStyle}>
+          <Link to={`/dog/${dog.id}`} style={linkStyle}>
             <Dog 
               dogName={dog.dogName}
               dogSex={dog.dogSex}
