@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import Dog from '../components/Dog';
 
-import PropTypes from 'prop-types';import { Link, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';import { Link} from 'react-router-dom';
 
 //shade sort buttons if sort type is selected. 
 const DogList = (props, {match}) => {
