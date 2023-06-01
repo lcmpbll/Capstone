@@ -8,8 +8,7 @@ import { Box } from '@mui/material';
 
 
 const AtThePark = (props) => {
-  
-  const { dogList } = props;
+  const {dogList} = props;
   let atTheParkList = dogList.filter(dog=> dog.atThePark === true);
   const oneHour = 60 * 60 * 1000;
   useEffect(()=> {
@@ -43,7 +42,7 @@ const AtThePark = (props) => {
   // background: 'rgba(219, 219, 219, 0.6)',
   // border: 'solid 2px black',
   
-  return(
+  return dogList ? (
     <>
       <Box style={mainAtTheParkStyles}>
         <Box style={parkHeaderStyle}>
@@ -62,7 +61,7 @@ const AtThePark = (props) => {
         )}
       </Box>
     </>
-  );
+  ) : null;
 }
 
 export default AtThePark;
