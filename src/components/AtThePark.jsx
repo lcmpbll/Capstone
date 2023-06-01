@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Park, sendDogsHome} from './Park';
 import {Link} from 'react-router-dom';
 import { Box } from '@mui/material';
@@ -9,11 +9,17 @@ import { Box } from '@mui/material';
 
 const AtThePark = (props) => {
   const {dogList} = props;
-  let atTheParkList = dogList.filter(dog=> dog.atThePark === true);
+  const [atTheParkList, setAtTheParkList] = useState([]);
   const oneHour = 60 * 60 * 1000;
+
   useEffect(()=> {
+    if(dogList !== null){
+      const newAtTheParkList = dogList.filter(dog=> dog.atThePark === true);
+      setAtTheParkList(newAtTheParkList);
+    }
     sendDogsHome(atTheParkList, oneHour)
-  })
+    
+  }, [dogList, oneHour])
   //Styles
   const mainAtTheParkStyles = {
     display: 'flex',
