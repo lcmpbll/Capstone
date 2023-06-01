@@ -6,17 +6,7 @@ import PropTypes from 'prop-types';import { Link, Route } from 'react-router-dom
 
 const DogList = (props, {match}) => {
   const {dogList} = props;
-  // const DogList = ({match}) => {
-  //   const [ dogList, setDogList ] = useState([]);
-  //   useEffect(() => {
-  //     getDogs();
-  
-  //   }, []);
-    
-  //   const getDogs = async () => {
-  //     const newDogList = await fetchDogs();
-  //     setDogList(newDogList);
-  //   }
+
    
   const [sortBy, setSortBy] = useState(null);
   const [smallest, setSmallest] = useState(true);
