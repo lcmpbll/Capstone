@@ -1,28 +1,27 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Dog from '../components/Dog';
-// import { AppContext } from '../components/App';
+import { fetchDogs } from '../functions/apihelper';
 import PropTypes from 'prop-types';import { Link, Route } from 'react-router-dom';
 
 
 const DogList = (props, {match}) => {
   const {dogList} = props;
-
-
-const DogList = ({match}) => {
-  const [ dogList, setDogList ] = useState([]);
-  useEffect(() => {
-    getDogs();
-
-  }, []);
+  // const DogList = ({match}) => {
+  //   const [ dogList, setDogList ] = useState([]);
+  //   useEffect(() => {
+  //     getDogs();
   
-  const getDogs = async () => {
-    const newDogList = await fetchDogs();
-    setDogList(newDogList);
-  }
+  //   }, []);
+    
+  //   const getDogs = async () => {
+  //     const newDogList = await fetchDogs();
+  //     setDogList(newDogList);
+  //   }
    
   const [sortBy, setSortBy] = useState(null);
   const [smallest, setSmallest] = useState(true);
   const [filterBy, setFilterBy] = useState(null);
+  
   const handleSortClick = (option, smallest) => {
     if(sortBy === option){
       setSmallest(!smallest);
@@ -44,11 +43,6 @@ const DogList = ({match}) => {
     
   }
   
-
-
-
-  
-
   //styles
   const dogsStyle = {
     width: '100%',
@@ -88,10 +82,8 @@ const DogList = ({match}) => {
     color: 'black'
   }
 
-  return dogList ?(
-
+  return dogList ? (
     <div style={dogsStyle}>
-      
       <div style={dogListStyle}>
         <h1 style={{marginLeft: '150px'}}>All Dogs</h1>
         <div>
@@ -99,7 +91,6 @@ const DogList = ({match}) => {
           <div>
             <button  onClick={() => handleSortClick(`dogAge`, smallest)} style={sortButtonStyle}>Age</button>
             <button  onClick={() => handleSortClick(`dogWeight`, smallest)} style={sortButtonStyle}>Size</button>
-         
           </div>
           {/* <div>
             <h4>Filter Dogs:</h4>
@@ -129,6 +120,7 @@ const DogList = ({match}) => {
 
   ): null;
 
+  
 }
 
 
