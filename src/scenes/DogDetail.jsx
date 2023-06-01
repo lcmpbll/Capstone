@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuthenticator, Heading } from '@aws-amplify/ui-react';
+import { useAuthenticator } from '@aws-amplify/ui-react';
 import {AppContext} from '../components/App';
 import PropTypes from 'prop-types';
 import { useParams, useNavigate } from 'react-router-dom';
