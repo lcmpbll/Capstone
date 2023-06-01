@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import Dog from '../components/Dog';
-import { fetchDogs } from '../functions/apihelper';
+
 import PropTypes from 'prop-types';import { Link, Route } from 'react-router-dom';
 
-
+//shade sort buttons if sort type is selected. 
 const DogList = (props, {match}) => {
   const {dogList} = props;
 
@@ -17,7 +17,7 @@ const DogList = (props, {match}) => {
       setSmallest(!smallest);
     }
     setSortBy(option);
-    console.log(sortBy, smallest)
+  
     sortDogList(sortBy, smallest)
   }
   const sortDogList = (sortBy, smallest) => {
@@ -63,7 +63,9 @@ const DogList = (props, {match}) => {
     margin: '5px',
     width: 'content',
     border: '2px solid',
-    // borderRadius: '50%',
+    borderRadius: '10%',
+    shadow: '0',
+    cursor: 'pointer',
     
   }
   
