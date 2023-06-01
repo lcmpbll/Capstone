@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { useAuthenticator, Heading } from '@aws-amplify/ui-react';
 import {AppContext} from '../components/App';
 import PropTypes from 'prop-types';
-import { useParams } from 'react-router-dom';
-import { fetchDog, fetchDogs } from '../functions/apihelper';
+import { useParams, useNavigate } from 'react-router-dom';
+import { fetchDog, fetchDogs, deleteDog } from '../functions/apihelper';
 import { switchParkStatus } from '../functions/parkFunctions';
 import FriendDogForm from '../components/FriendingDog';
+
 
 
 
@@ -16,7 +17,10 @@ const DogDetail = () => {
   const [ dog, setDog ] = useState(null);
   const [ageError, setAgeError] = useState(null);
   const [friending, setFriending] = useState(null);
+  const [areYouSure, setAreYouSure] = useState(false);
+  const [sureResponse, setSureResponse] = useState(false);
   const { id } = useParams();
+  const navigate = useNavigate();
   const [ dogList, setDogList ] = useState([]);
   const { route } = useAuthenticator((context) => [context.route]);
   const { currentUser } = useContext(AppContext);
@@ -36,6 +40,26 @@ const DogDetail = () => {
     // .then((res) => res.json())
     .then((data) => setDog(data));
   }, [id])
+  
+  const onClickingDelete = (dog) => {
+    console.log('click')
+    if(currentUser.id === dog.ownerId || currentUser.username === 'liam22campbell@gmail.com'){
+      setAreYouSure(true);
+      console.log(areYouSure)
+      if(areYouSure === true && sureResponse === true){
+        deleteDog(dog);
+      }
+      
+    }
+  }
+  
+ const handleClickingConfirm = (dog) => {
+  setSureResponse(true);
+  if(areYouSure === true && sureResponse === true){
+    deleteDog(dog);
+    navigate('/');
+  }
+ }
   
  
   if(!dog) return null;
@@ -132,7 +156,7 @@ const DogDetail = () => {
           {dsiplayDislikes}
           <hr/>
         </div>
-        {currentUser?.id === dog.ownerId || dog.ownerId === null? 
+        {currentUser?.id === dog.ownerId || (dog.ownerId === null && currentUser?.username === 'liam22campbell@gmail.com') ? 
           <div className='owner_functions'>
             <div className='friends'>
               <h2>Friends</h2>
@@ -142,8 +166,8 @@ const DogDetail = () => {
                   dogName={dog.dogName} />
                   ): null}
               </div>
-              
               <br/>
+              
               <button onClick={() => (setFriending(!friending))}>{friending ? `Close Friend Form` : `Make Some Friends`}</button>
               {friendForm}
               <hr/>
@@ -159,15 +183,32 @@ const DogDetail = () => {
             <br/>
           </div>
         : null }
-        {/* <div className='buttonControl'>
-          <button onClick={() => onClickingFriend(dog.id)}>Make some Dog friends</button> &nbsp;
-          <button onClick={()=> onClickingDelete(dog)}>Remove Dog</button>
-        </div> */}
+      
+        <div className='buttonControl'>
+          {areYouSure ? 
+            <div className='dogDetails__buttonControl-deleteModal'>
+              <DeleteModal handleClickingConfirm={handleClickingConfirm} dog={dog}/>
+            </div>
+          :
+            <button onClick={()=> onClickingDelete(dog)}>Remove Dog</button>
+          }
+        </div>
       </div>
     </div>
   );
 
   
+}
+
+
+const DeleteModal = (props) => {
+  const {handleClickingConfirm, dog} = props;
+  
+  return(
+    <div sx={{height: '20%', width: '50%', margin: 'auto', padding: '10px'}}>
+      <button sx={{cursor: 'pointer'}} onClick={() => handleClickingConfirm(dog)} >Confirm deleting {dog.name}</button>
+    </div>
+  )
 }
 
 const FriendedDog = (props) => {
