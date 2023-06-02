@@ -1,5 +1,5 @@
 import React from 'react';
-import {DogListWrappedPark, DogListWrappedDogs} from '../WrappedComponents/DogListWrapped';
+import {DogListWrappedPark, DogListWrappedDogs, DogListWrappedMyDogs} from '../WrappedComponents/DogListWrapped';
 import { SplitScreen } from '../components/SplitScreen';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import SwipeScreen from '../components/SwipeScreen';
@@ -22,6 +22,7 @@ export const Home = () => {
         <SwipeScreen>
           <DogListWrappedDogs/>
           <DogListWrappedPark />
+          <DogListWrappedMyDogs />
         </SwipeScreen>
       }
     </>

@@ -22,7 +22,7 @@ const SwipeScreen = ({
         <Box sx={{display: 'flex', justifyContent: 'center'}}>
           {currentView}
         </Box>
-        <Box sx={{position: 'fixed', bottom: '0', width: '100%'}}>
+        <Box sx={{position: 'fixed', bottom: '0', width: '100%', marginBottom: '1rem'}}>
          <ScreenSlider sx={{position: 'fixed', bottom: '0'}}currentViewIndex={currentViewIndex} handleSwipe={handleSwipe} totalScenes={totalScenes} />
         </Box>
       </Box>
