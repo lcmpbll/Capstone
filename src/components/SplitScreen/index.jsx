@@ -8,8 +8,8 @@ export const SplitScreen = ({
 }) => {
   const [left, right] = children;
   return (
-    <Box sx={{display: 'flex', flexDirection: 'row'}}>
-      <Box sx={{flex: leftWeight}} >
+    <Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+      <Box sx={{flex: leftWeight, margin: 'auto'}} >
         {left}
       </Box>
       <Box sx={{flex: rightWeight}}>
