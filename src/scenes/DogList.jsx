@@ -37,7 +37,9 @@ const DogList = (props, {match}) => {
   //styles
   const dogsStyle = {
     display: 'flex',
-    justifyContent: 'center'
+    flexDirection: 'column', 
+    // padding: '1rem'
+    // justifyContent: 'center'
     // width: '100%',
     // display: 'grid',
     // gridTemplateColumns: '1fr 1fr',
@@ -58,7 +60,7 @@ const DogList = (props, {match}) => {
     margin: 'auto',
     // margin: '10px, 60px',
     // paddingLeft: '150px',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     
   }
 
@@ -80,8 +82,8 @@ const DogList = (props, {match}) => {
 
   return dogList ? (
     <div style={dogsStyle}>
+        <h1 style={{ display: 'flex', justifySelf: 'flex-start', padding: '1rem'}}>All Dogs</h1>
       <div style={dogListStyle}>
-        <h1 style={{marginLeft: '150px'}}>All Dogs</h1>
         <div>
           <h4>Sort Dogs:</h4>
           <div>
