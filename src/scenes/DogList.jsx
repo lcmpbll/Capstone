@@ -82,7 +82,7 @@ const DogList = (props, {match}) => {
 
   return dogList ? (
     <div style={dogsStyle}>
-        <h1 style={{ display: 'flex', justifySelf: 'flex-start', padding: '1rem'}}>All Dogs</h1>
+        <h1 style={{ display: 'flex', justifyContent: isNonMobile ? 'center' : 'flex-start', padding: '1rem'}}>All Dogs</h1>
       <div style={dogListStyle}>
         <div>
           <h4>Sort Dogs:</h4>
