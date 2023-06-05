@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import {AppContext} from '../components/App';
+import { useMediaQuery } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchDog, fetchDogs, deleteDog } from '../functions/apihelper';
@@ -24,9 +25,10 @@ const DogDetail = () => {
   const [ dogList, setDogList ] = useState([]);
   const { route } = useAuthenticator((context) => [context.route]);
   const { currentUser } = useContext(AppContext);
+  const isNonMobile = useMediaQuery('(min-width:600px)')
   useEffect(() => {
     getDogs();
-    console.log('fetching');
+    
   }, []);
   
   const getDogs = async () => {
@@ -104,8 +106,6 @@ const DogDetail = () => {
     width: '50%',
     flexDirection: 'column',
     position: 'relative',
-    // justifySelf: 'center',
-    // justifyContent: 'center',
     fontWeight: 'bold',
     background: 'rgba(219, 219, 219, 0.6)',
   }
