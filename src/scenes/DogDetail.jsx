@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import {AppContext} from '../components/App';
+import { useMediaQuery } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchDog, fetchDogs, deleteDog } from '../functions/apihelper';
@@ -24,9 +25,10 @@ const DogDetail = () => {
   const [ dogList, setDogList ] = useState([]);
   const { route } = useAuthenticator((context) => [context.route]);
   const { currentUser } = useContext(AppContext);
+  const isNonMobile = useMediaQuery('(min-width:600px)')
   useEffect(() => {
     getDogs();
-    console.log('fetching');
+    
   }, []);
   
   const getDogs = async () => {
@@ -92,20 +94,23 @@ const DogDetail = () => {
   const detailsPageStyle = {
     border: '2px solid black',
     display: 'grid',
-    gridTemplateColumns: '1fr 2fr'
+    gridTemplateColumns: isNonMobile ? '1fr 2fr' : '1fr',
   }
   const headerStyle = {
-    marginLeft: '25%'
+    // marginLeft: '25%'
+    display: 'flex',
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    padding: '1rem',
   }
   const detailsStyles = {
     margin: '20px',
     padding: '20px',
     display: 'flex',
-    width: '50%',
+    width: '80%',
     flexDirection: 'column',
     position: 'relative',
-    // justifySelf: 'center',
-    // justifyContent: 'center',
     fontWeight: 'bold',
     background: 'rgba(219, 219, 219, 0.6)',
   }

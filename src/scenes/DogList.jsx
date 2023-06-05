@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import Dog from '../components/Dog';
+import Dog from '../components/Dog.jsx';
+import {useMediaQuery} from '@mui/material';
 
-import PropTypes from 'prop-types';import { Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Link} from 'react-router-dom';
 
 //shade sort buttons if sort type is selected. 
 const DogList = (props, {match}) => {
   const {dogList} = props;
-
-   
+  const isNonMobile = useMediaQuery('(min-width:600px)');
   const [sortBy, setSortBy] = useState(null);
   const [smallest, setSmallest] = useState(true);
   const [filterBy, setFilterBy] = useState(null);
@@ -35,26 +36,31 @@ const DogList = (props, {match}) => {
   
   //styles
   const dogsStyle = {
-    width: '100%',
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    padding: '0px, 90px',
-    border: '20px solid transparent'
+    display: 'flex',
+    flexDirection: 'column', 
+    // padding: '1rem'
+    // justifyContent: 'center'
+    // width: '100%',
+    // display: 'grid',
+    // gridTemplateColumns: '1fr 1fr',
+    // padding: '0px, 90px',
+    // border: '20px solid transparent'
     
   }
   const dogCardStyle = {
     border: 'solid 2px #4986e8',
-    margin: '13px',
-    width: '400px',
+    margin: '13px auto',
+    width:  isNonMobile ? '400px' : '200px',
     background: 'rgba(219, 219, 219)',
     padding: '13px',
 
   }
   
   const dogListStyle = {
-    margin: '10px, 60px',
-    paddingLeft: '150px',
-    justifyContent: 'center',
+    margin: 'auto',
+    // margin: '10px, 60px',
+    // paddingLeft: '150px',
+    // justifyContent: 'center',
     
   }
 
@@ -76,8 +82,8 @@ const DogList = (props, {match}) => {
 
   return dogList ? (
     <div style={dogsStyle}>
+        <h1 style={{ display: 'flex', justifyContent: isNonMobile ? 'center' : 'flex-start', padding: '1rem'}}>All Dogs</h1>
       <div style={dogListStyle}>
-        <h1 style={{marginLeft: '150px'}}>All Dogs</h1>
         <div>
           <h4>Sort Dogs:</h4>
           <div>
@@ -93,9 +99,10 @@ const DogList = (props, {match}) => {
           </div> */}
         </div>
         {dogList.map((dog) => 
-        <div style={dogCardStyle} className='card' key={dog.id}>
+        <div style={dogCardStyle} key={dog.id}>
           <Link to={`/dog/${dog.id}`} style={linkStyle}>
             <Dog 
+              isNonMobile={isNonMobile}
               dogName={dog.dogName}
               dogSex={dog.dogSex}
               dogSize={dog.dogSize}
