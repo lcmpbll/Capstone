@@ -19,7 +19,7 @@ const MyDogs = (props) => {
       setMyDogs(myDogsList);
     }
   }, [dogList, currentUser])
-  console.log(myDogs, currentUser);
+
   // const myDogs = dogList.filter(dog => dog.ownerId === currentUser.id)
   const { route } = useAuthenticator((context) => [context.route]);
 
