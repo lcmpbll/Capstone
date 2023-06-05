@@ -94,16 +94,21 @@ const DogDetail = () => {
   const detailsPageStyle = {
     border: '2px solid black',
     display: 'grid',
-    gridTemplateColumns: '1fr 2fr'
+    gridTemplateColumns: isNonMobile ? '1fr 2fr' : '1fr',
   }
   const headerStyle = {
-    marginLeft: '25%'
+    // marginLeft: '25%'
+    display: 'flex',
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    padding: '1rem',
   }
   const detailsStyles = {
     margin: '20px',
     padding: '20px',
     display: 'flex',
-    width: '50%',
+    width: '80%',
     flexDirection: 'column',
     position: 'relative',
     fontWeight: 'bold',
