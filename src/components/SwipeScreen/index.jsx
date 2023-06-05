@@ -10,20 +10,31 @@ const SwipeScreen = ({
    })
     const totalScenes = children.length;
     const [currentViewIndex, setCurrentViewIndex] = useState(0);
-    
+    const [nextViewIndex, setNextViewIndex] = useState(1);
+    const [prevViewIndex, setPrevViewIndex] = useState(totalScenes -1);
     const currentView =  children[currentViewIndex];
-    
+    const prevView = children[prevViewIndex];
+    const nextView = children[nextViewIndex];
     console.log(currentViewIndex)
-    const handleSwipe = (swipeDir) => {
-      if(currentViewIndex + swipeDir < totalScenes && currentViewIndex + swipeDir > -1){
-        setCurrentViewIndex(currentViewIndex + swipeDir);
-
-      }else if(currentViewIndex + swipeDir <= -1 ){
-        setCurrentViewIndex(totalScenes -1)
+    
+    const getNextSceneIndex = (viewIndex, swipeDir) => {
+      const nextIndex = viewIndex + swipeDir;
+      if(nextIndex >= totalScenes){
+        return 0;
+      } else if(nextIndex < 0) {
+        return totalScenes -1;
       } else {
-        setCurrentViewIndex(0);
+        return nextIndex;
       }
     }
+    
+    const handleSwipe = (swipeDir) => {
+      setNextViewIndex(getNextSceneIndex(nextViewIndex, swipeDir));
+      setPrevViewIndex(getNextSceneIndex(prevViewIndex, swipeDir));
+      setCurrentViewIndex(getNextSceneIndex(currentViewIndex, swipeDir));
+    }
+    
+
  
     return (
       <Box sx={{display: 'flex', flexDirection: 'row', flex: 8}}>
