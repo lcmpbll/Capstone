@@ -35,7 +35,6 @@ export default SwipeScreen;
 
 const ScreenSlider = (props) => {
   const {currentViewIndex, handleSwipe, totalScenes} = props;
-  console.log(totalScenes, 'totaa')
   let scenes = new Array(totalScenes).fill(0);
   scenes[currentViewIndex] = 1;
  
@@ -54,7 +53,7 @@ const ScreenSlider = (props) => {
 
 const SceneCircle = (props) => {
   const {scene} = props
-  console.log(props)
+
   return (
     <Box sx={{display: 'flex', border: 'solid 2px #4986e8', background: scene === 1 ? 'rgba(219, 219, 219)': 'rgba(23, 100, 219)', width: '20px', height: '20px', borderRadius: '100%'}} >
     
