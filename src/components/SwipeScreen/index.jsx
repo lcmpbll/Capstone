@@ -38,7 +38,7 @@ const SwipeScreen = ({
  
     return (
       <Box sx={{display: 'flex', flexDirection: 'row', flex: 8}}>
-        <Box sx={{flex: 1, height: '100vh'}} onClick={() => handleSwipe(-1)}></Box>
+        <Box sx={{ flex: 1, height: '100vh'}} onClick={() => handleSwipe(-1)}></Box>
         <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', flex: 6}}>
           <Box sx={{display: 'flex', justifyContent: 'flex-start', margin: '0 auto'}}>
       
@@ -85,3 +85,13 @@ const SceneCircle = (props) => {
     </Box>
   )
 }
+
+
+// #theMenu {
+//   position: fixed;
+//   left: 0;
+//   top: 0;
+//   transform: translate3d(-100vw, 0, 0);
+       
+//   width: 100vw;
+//   height: 100vh;
