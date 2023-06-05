@@ -27,9 +27,9 @@ const SwipeScreen = ({
  
     return (
       <Box sx={{display: 'flex', flexDirection: 'row', flex: 8}}>
-        <Box sx={{flex: 1}} onClick={() => handleSwipe(-1)}> <h1>left</h1></Box>
+        <Box sx={{flex: 1, height: '100vh'}} onClick={() => handleSwipe(-1)}></Box>
         <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', flex: 6}}>
-          <Box sx={{display: 'flex', justifyContent: 'center', }}>
+          <Box sx={{display: 'flex', justifyContent: 'flex-start', margin: '0 auto'}}>
       
             {currentView}
 
@@ -38,7 +38,7 @@ const SwipeScreen = ({
           <ScreenSlider sx={{position: 'fixed', bottom: '0'}}currentViewIndex={currentViewIndex} handleSwipe={handleSwipe} totalScenes={totalScenes} />
           </Box>
         </Box>
-        <Box sx={{flex: 1}} onClick={() => handleSwipe(1)}><h1>right</h1></Box>
+        <Box sx={{flex: 1, height: '100vh'}} onClick={() => handleSwipe(1)}></Box>
       </Box>
     );
   }
