@@ -1,16 +1,10 @@
 import React from 'react';
 
 
-function Header(){
-  const headerStyles = {
-    textAlign: 'center',
-    
-  }
-
-  return(
+const Header = () => {
+   return(
     <>
-      
-      <h1 style={headerStyles}>Dog Bark</h1>
+      <h1>Dog Bark</h1>
     </>
   );
 }
