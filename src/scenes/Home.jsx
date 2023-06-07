@@ -6,7 +6,7 @@ import SwipeScreen from '../components/SwipeScreen';
 
 export const Home = () => {
   const isNonMobile = useMediaQuery('(min-width:600px)');
-  console.log(isNonMobile)
+
   return (
     <>
       { isNonMobile ? 

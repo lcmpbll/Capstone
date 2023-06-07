@@ -15,7 +15,7 @@ const SwipeScreen = ({
     const currentView =  children[currentViewIndex];
     const prevView = children[prevViewIndex];
     const nextView = children[nextViewIndex];
-    console.log(currentViewIndex)
+
     
     const getNextSceneIndex = (viewIndex, swipeDir) => {
       const nextIndex = viewIndex + swipeDir;
