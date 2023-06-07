@@ -38,13 +38,9 @@ const DogList = (props, {match}) => {
   const dogsStyle = {
     display: 'flex',
     flexDirection: 'column', 
-    // padding: '1rem'
-    // justifyContent: 'center'
-    // width: '100%',
-    // display: 'grid',
-    // gridTemplateColumns: '1fr 1fr',
-    // padding: '0px, 90px',
-    // border: '20px solid transparent'
+    justifyContent: 'center',
+    margin: '0 auto'
+  
     
   }
   const dogCardStyle = {
@@ -57,19 +53,20 @@ const DogList = (props, {match}) => {
   }
   
   const dogListStyle = {
+    display: 'flex',
+    justifyContent:'center',
+    flexDirection: 'column',
     margin: 'auto',
-    // margin: '10px, 60px',
-    // paddingLeft: '150px',
-    // justifyContent: 'center',
-    
+ 
   }
 
   
   const sortButtonStyle = {
     margin: '5px',
     width: 'content',
-    border: '2px solid',
-    borderRadius: '10%',
+    // background: 'rgba(219, 219, 219)',
+    border: 'solid 2px #4986e8',
+    borderRadius: '8px',
     shadow: '0',
     cursor: 'pointer',
     
