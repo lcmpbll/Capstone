@@ -5,7 +5,7 @@ import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useMediaQuery } from '@mui/material';
 import {AppContext} from '../components/App';
 import Dog from '../components/Dog';
-import { switchParkStatus } from '../functions/parkFunctions';
+import { switchParkStatus, sendDogToPark, sendDogHome } from '../functions/parkFunctions';
 
 
 
@@ -14,18 +14,44 @@ const MyDogs = (props) => {
   const { currentUser } = useContext(AppContext);
   const [myDogs, setMyDogs] = useState([]);
   const isNonMobile = useMediaQuery('(min-width:600px)');
+  const [allDogsAtPark, setAllDogsAtPark] = useState(false);
+  
   useEffect(() => {
     if(dogList !== null){
       const myDogsList = dogList.filter(dog => dog.ownerId === currentUser.id);
       setMyDogs(myDogsList);
+      setAllDogsAtPark(checkIfAllAtPark(myDogsList));
     }
-  }, [dogList, currentUser])
+  }, [currentUser])
 
   // const myDogs = dogList.filter(dog => dog.ownerId === currentUser.id)
   const { route } = useAuthenticator((context) => [context.route]);
   
   const handleSendingAllDogs = () => {
-    myDogs.map((dog) => switchParkStatus(dog))
+    myDogs.map((dog) => sendDogToPark(dog))
+  }
+  
+  const handleAllDogsLeaving = () => {
+    myDogs.map((dog) => sendDogHome(dog));
+    
+   
+  }
+  
+  const handleDogParkClick = () => {
+    if(allDogsAtPark === true){
+      handleAllDogsLeaving();
+    } else {
+      handleSendingAllDogs();
+    }
+  }
+  
+  const checkIfAllAtPark = (dogsList) => {
+    const dogsAtThePark = dogsList.filter((dog) => dog.atThePark === true);
+    if(dogsAtThePark.length === dogsList.length){
+      return true;
+    } else {
+      return false;
+    }
   }
   
 
@@ -47,7 +73,7 @@ const MyDogs = (props) => {
   <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
     <div style={{margin: '0px auto', display: 'flex'}}>
       <h1>Your dogs</h1>
-      <button onClick={() => handleSendingAllDogs()} style={{
+      <button onClick={() => handleDogParkClick()} style={{
         margin: '15px',
         width: 'content',
         height: '30px',
@@ -56,7 +82,7 @@ const MyDogs = (props) => {
         shadow: '0',
         cursor: 'pointer',
         alignSelf: 'center'
-      }}>All Dogs to the Park</button>
+      }}>{allDogsAtPark ? 'Send All Dogs Home' : 'All Dogs to the Park'}</button>
     </div>
     <div style={{margin: '0px auto'}}>
       {myDogs.map((dog) => 
