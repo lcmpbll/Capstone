@@ -82,7 +82,7 @@ const DogList = (props, {match}) => {
     } else {
 
       const newDogView = dogList.filter((dog) => dog[property].includes(filterBy) === include);
-      console.log(newDogView);
+     
       setDogView(newDogView);
       setInclude(!include);
  
