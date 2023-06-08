@@ -21,7 +21,6 @@ _A React webpage that helps users have a positive dog park experience._
  
 [Description](#description)
  
-[React Map](#react-map)
 
 [Setup/Installation Requirements](#setup-and-installation-requirements)
 
@@ -34,13 +33,16 @@ _A React webpage that helps users have a positive dog park experience._
 [License](#License)
 
 ## Technologies used
-* React
-* Javascript
-* AWS DynamoDB
-* AWS amplify
-* AWS graphql
-* JSX
-* draw.io
+* [React](https://react.dev/)
+* [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [AWS DynamoDB](https://aws.amazon.com/)
+* [AWS amplify](https://aws.amazon.com/)
+* [AWS graphql](https://aws.amazon.com/)
+* [Formik](https://formik.org/)
+* [Yup](https://github.com/jquense/yup)
+* [MaterialUI](https://mui.com/)
+* [React-Icons](https://react-icons.github.io/react-icons/)
+<!-- * [draw.io](https://app.diagrams.net/?src=about) -->
 
 ## Capstone Proposal 
 
@@ -51,9 +53,7 @@ _This project aims to make it easier to take your dog to the dog park by showing
 
 _This is a react based application that allows the user to create a dog, set it's traits such as weight, name, gender, age, likes and dislikes. The information is then stored in a AWS dynamodb table. The dog can then be interacted with, it can name other dogs as it's friends and declare it is going to the park. Other users can then see which dogs are at the park and decide wether to take their dogs as well._ 
 
-## React Map
 
-![project diagram](Capstonediagram.drawio.png)
 
 ## Setup and installation Requirements
 
@@ -218,11 +218,11 @@ _This is a react based application that allows the user to create a dog, set it'
 
 ## Known Bugs/ WIPs
 
-* Impliment owners for dogs. 
+* Impliment owners for dogs. - Done, dogs can only be deleted by owners
 * Add dog park information.
 * Add aging
 * Add storage for vaccine records
-* Dogs can only be deleted locally currently.
+* Dogs can only be deleted locally currently. - Done dogs can be deleted in the database
 
 ## License
 

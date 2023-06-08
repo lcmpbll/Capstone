@@ -70,8 +70,8 @@ useEffect(() => {
   const signOutStyle = {
     
     position: 'absolute',
-    top: '30px',
-    right: '10px',
+    top: '10px',
+    left: '10px',
   }
   const topStyle = {
     display: 'grid',

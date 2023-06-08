@@ -15,7 +15,7 @@ const Sidebar = () => {
       <div >
         <AiOutlineMenu onClick={() => setIsCollapsed(!isCollapsed)}/>
       </div> 
-      <div>
+      <div sx={{position: 'fixed', width: '30%', height: '100vh'}}>
         {fullMenu}
       </div>
     </div>  
