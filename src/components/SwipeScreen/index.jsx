@@ -39,7 +39,7 @@ const SwipeScreen = ({
     return (
       <Box sx={{display: 'flex', flexDirection: 'row', flex: 8}}>
         <Box sx={{ flex: 1, height: '100vh'}} onClick={() => handleSwipe(-1)}></Box>
-        <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', flex: 6}}>
+        <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', flex: 6}}>
           <Box sx={{display: 'flex', justifyContent: 'flex-start', margin: '0 auto'}}>
       
             {currentView}
