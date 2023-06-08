@@ -22,7 +22,7 @@ const MyDogs = (props) => {
       setMyDogs(myDogsList);
       setAllDogsAtPark(checkIfAllAtPark(myDogsList));
     }
-  }, [currentUser])
+  }, [currentUser, dogList])
 
   // const myDogs = dogList.filter(dog => dog.ownerId === currentUser.id)
   const { route } = useAuthenticator((context) => [context.route]);
