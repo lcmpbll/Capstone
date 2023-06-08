@@ -14,9 +14,7 @@ const Dog = (props) => {
       <div >
         <div> 
         <div sx={{flex: 1}}>
-        {/* <Link to={`/dog/${props.dog.id}`} style={{textDecoration: 'none'}}> */}
-          <h3>{props.dogName}</h3>
-        {/* </Link> */}
+         <h3>{props.dogName}</h3>
         </div>
         <div style={{flex: 2, display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
           <div style={{margin: 0, padding: 0}}>
@@ -42,7 +40,9 @@ const Dog = (props) => {
           :     
           <div onClick={() => setIsFlipped(!isFlipped)} style={{display: 'flex', flexDirection: 'row', flex: 3, alignItems: 'center', height: '100px', justifyContent: 'space-between'}}>
             <div style={{margin: '2px', padding: '3px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignContent: 'space-between'}}>
-              <h4 style={{ margin: '0px 10px 10px 0px'}}>{props.dogName}</h4>
+              <Link to={`/dog/${props.id}`} style={{color: 'black'}}>
+                <h4 style={{ margin: '0px 10px 10px 0px'}}>{props.dogName}</h4>
+              </Link>
               <img src={profileImg}  width='50px' height='50px' alt="Dog profile placeholder."/>
             </div>
             <div style={{flex: 1, fontSize: '10px', margin: '2px', width: '100%', textOverflow: 'noWrap'}}>
