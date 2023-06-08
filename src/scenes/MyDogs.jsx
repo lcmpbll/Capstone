@@ -29,11 +29,12 @@ const MyDogs = (props) => {
   
   const handleSendingAllDogs = () => {
     myDogs.map((dog) => sendDogToPark(dog))
+    setAllDogsAtPark(true);
   }
   
   const handleAllDogsLeaving = () => {
     myDogs.map((dog) => sendDogHome(dog));
-    
+    setAllDogsAtPark(false);
    
   }
   
@@ -73,16 +74,7 @@ const MyDogs = (props) => {
   <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
     <div style={{display: 'flex', justifyContent: 'center'}}>
       <h1>Your dogs</h1>
-      <button onClick={() => handleDogParkClick()} style={{
-        margin: '15px',
-        width: 'content',
-        height: '30px',
-        border: 'solid 2px #4986e8',
-        borderRadius: '8px',
-        shadow: '0',
-        cursor: 'pointer',
-        alignSelf: 'center'
-      }}>{allDogsAtPark ? 'Send All Dogs Home' : 'All Dogs to the Park'}</button>
+  
     </div>
     <div style={{margin: '0px auto'}}>
       {myDogs.map((dog) => 
@@ -102,6 +94,16 @@ const MyDogs = (props) => {
         </div>
         )}
       </div>
+      <button onClick={() => handleDogParkClick()} style={{
+        margin: '15px',
+        width: 'content',
+        height: '30px',
+        border: 'solid 2px #4986e8',
+        borderRadius: '8px',
+        shadow: '0',
+        cursor: 'pointer',
+        alignSelf: 'center'
+      }}>{allDogsAtPark ? 'Send All Dogs Home' : 'All Dogs to the Park'}</button>
     </div>
   
   ) : null;
