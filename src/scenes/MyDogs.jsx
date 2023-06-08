@@ -71,7 +71,7 @@ const MyDogs = (props) => {
   
   return dogList ? (
   <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-    <div style={{margin: '0px auto', display: 'flex'}}>
+    <div style={{display: 'flex', justifyContent: 'center'}}>
       <h1>Your dogs</h1>
       <button onClick={() => handleDogParkClick()} style={{
         margin: '15px',
