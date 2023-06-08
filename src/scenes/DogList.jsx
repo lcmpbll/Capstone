@@ -57,12 +57,11 @@ const DogList = (props, {match}) => {
   
   
   const handleFilterSelectClick = (property, filter, include) => {
-    if(filter === filterBy){
-      setInclude(!include);
-    }else{
-      setFilterBy(filter);
+    if(filter !== filterBy){
+     setFilterBy(filter);
     }
-    filterDogList(property, filterBy, include);
+    
+    filterDogList(property, filter, include);
   }
   
   const filterDogList = (property, filterBy, include) => {
@@ -72,16 +71,19 @@ const DogList = (props, {match}) => {
       if(include === true){
         const newDogView = dogList.filter((dog) => dog[property] === filterBy)
         setDogView(newDogView);
+        setInclude(!include);
       } else {
         
         const newDogView = dogList.filter((dog) => dog[property] !== filterBy) 
         setDogView(newDogView);
+        setInclude(!include);
       }
     } else {
 
       const newDogView = dogList.filter((dog) => dog[property].includes(filterBy) === include);
       console.log(newDogView);
       setDogView(newDogView);
+      setInclude(!include);
  
     }
     
