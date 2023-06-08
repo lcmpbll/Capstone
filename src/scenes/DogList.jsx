@@ -138,7 +138,7 @@ const DogList = (props, {match}) => {
 
   return dogList ? (
     <div style={dogsStyle}>
-      <div style={{display: 'flex', alignItems: 'center', marginBottom: '0'}}>
+      <div style={{display: 'flex', alignItems: 'center', marginBottom: '0', justifyContent: 'center'}}>
         <h1 style={{ display: 'flex', justifyContent: isNonMobile ? 'center' : 'flex-start', padding: '1rem', marginBottom: '0px'}}>All Dogs</h1>
         <div  onClick={() => handleMainFilterClick()} style={{ border: 'solid 2px  #4986e8', background: filterApplied ? '#4986e8': 'none', width: '2rem', justifyContent: 'center', alignItems: 'center', height: '2rem', padding: '6px', borderRadius: '50%', marginTop: '10px'}} aria-label={filterApplied ? 'Remove all filters and close filter selection.': 'View filter and sort selection.'}>
           {filterApplied ? <RiFilterOffLine/> : <RiFilterLine/> }
