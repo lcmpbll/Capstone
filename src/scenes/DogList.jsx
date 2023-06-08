@@ -171,7 +171,7 @@ const DogList = (props, {match}) => {
         : null }
         {dogView?.map((dog) => 
         <div style={dogCardStyle} key={dog.id}>
-          <Link to={`/dog/${dog.id}`} style={linkStyle}>
+          {isNonMobile ? <Link to={`/dog/${dog.id}`} style={linkStyle}>
             <Dog 
               isNonMobile={isNonMobile}
               dogName={dog.dogName}
@@ -181,7 +181,7 @@ const DogList = (props, {match}) => {
               id={dog.id}
               key={dog.id}
             />
-          </Link>
+          </Link> : <MobileDogCard dog={dog} isNonMobile={isNonMobile} /> }
         </div>
         )}
       </div>
@@ -193,7 +193,21 @@ const DogList = (props, {match}) => {
   
 }
 
-
+const MobileDogCard = ({dog, isNonMobile}) => {
+  return (
+    <div style={{}}>
+      <Dog 
+      isNonMobile={isNonMobile}
+      dogName={dog.dogName}
+      dogSex={dog.dogSex}
+      dogSize={dog.dogSize}
+      dogAgeGroup={dog.dogAgeGroup}
+      id={dog.id}
+      key={dog.id}
+    />
+  </div>
+  )
+}
 
 DogList.propTypes = {
   dogList: PropTypes.array,
