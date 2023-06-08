@@ -22,7 +22,7 @@ const DogList = (props, {match}) => {
     setDogView(dogList)
   }, [dogList]);
   
-  
+
   const handleSortClick = (option, smallest) => {
     if(sortBy === option){
       setSmallest(!smallest);
@@ -42,9 +42,10 @@ const DogList = (props, {match}) => {
   }
   const sortDogList = (sortBy, smallest) => {
     if(smallest === true){
-      return dogView.sort((a, b) => {
+      const newDogView = dogView.sort((a, b) => {
         return a[sortBy] - b[sortBy]
       })
+      setDogView(newDogView);
      
     } else {
       return dogView.sort((a, b) => {
@@ -146,16 +147,24 @@ const DogList = (props, {match}) => {
       <div style={dogListStyle}>
         {filterApplied ? 
         <div>
-          <h4 sx={{margin: '0px'}}>Sort Dogs:</h4>
+          <h4 style={{margin: '0px'}}>Sort Dogs:</h4>
           <div>
-            <button  onClick={() => handleSortClick(`dogAge`, smallest)} style={sortButtonStyle}>{smallest ? <AiOutlineArrowUp/> : <AiOutlineArrowDown/> } Age</button>
-            <button  onClick={() => handleSortClick(`dogWeight`, smallest)} style={sortButtonStyle}>{smallest ? <AiOutlineArrowUp/> : <AiOutlineArrowDown/> } Size</button>
+            <button  onClick={() => handleSortClick(`dogAge`, smallest)} style={{  margin: '5px', width: 'content', background: sortBy === 'dogAge' ? '#4986e8' : '', border: 'solid 2px #4986e8', borderRadius: '8px', shadow: '0', cursor: 'pointer',
+              alignItems: 'center'
+            }}>{smallest ? <AiOutlineArrowUp/> : <AiOutlineArrowDown/> } Age</button>
+            <button  onClick={() => handleSortClick(`dogWeight`, smallest)} style={{  margin: '5px', width: 'content', background: sortBy === 'dogWeight' ? '#4986e8' : '', border: 'solid 2px #4986e8', borderRadius: '8px', shadow: '0', cursor: 'pointer',
+              alignItems: 'center'
+            }}>{smallest ? <AiOutlineArrowUp/> : <AiOutlineArrowDown/> } Size</button>
           </div>
           <div>
             <h4>Filter Dogs:</h4>
             <div>
-              <button  onClick={() => handleFilterSelectClick(`dogLikes`, `puppies`, include)} style={sortButtonStyle}>Likes Pupppies</button>
-              <button  onClick={() => handleFilterSelectClick(`dogSex`, `Female`, include)} style={sortButtonStyle}>{include ? "Female" : "Male"}</button>
+              <button  onClick={() => handleFilterSelectClick(`dogLikes`, `puppies`, include)} style={{  margin: '5px', width: 'content', background: filterBy === 'puppies' ? '#4986e8' : '', border: 'solid 2px #4986e8', borderRadius: '8px', shadow: '0', cursor: 'pointer',
+              alignItems: 'center'
+            }}>Likes Pupppies</button>
+              <button  onClick={() => handleFilterSelectClick(`dogSex`, `Female`, include)} style={{  margin: '5px', width: 'content', background: filterBy === 'Female' ? '#4986e8' : '', border: 'solid 2px #4986e8', borderRadius: '8px', shadow: '0', cursor: 'pointer',
+              alignItems: 'center'
+            }}>{include ? "Female" : "Male"}</button>
             </div>
           </div>
         </div>
