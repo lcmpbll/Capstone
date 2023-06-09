@@ -156,6 +156,7 @@ const  NewDogForm = (props) => {
        atThePark: false,
        startTimeAtPark: null,
        friendsArray: [],
+       pendingFriends: [],
        dogDislikes: handleDislikesListChange(event),
        dogParks: 'Alberta Park',
        id: v4(),
