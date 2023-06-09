@@ -22,6 +22,7 @@ export const getDogSchema = /* GraphQL */ `
       createdAt
       updatedAt
       friendsArray
+      pendingFriends
     }
   }
 `;
@@ -51,6 +52,7 @@ export const listDogSchemas = /* GraphQL */ `
         createdAt
         updatedAt
         friendsArray
+        pendingFriends
       }
       nextToken
     }
