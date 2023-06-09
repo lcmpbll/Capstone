@@ -5,7 +5,7 @@ import {AppContext} from '../components/App';
 import { useMediaQuery } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useParams, useNavigate } from 'react-router-dom';
-import { fetchDog, fetchDogs, deleteDog } from '../functions/apihelper';
+import { fetchDog, fetchDogs, deleteDog, updateDog } from '../functions/apihelper';
 import { switchParkStatus } from '../functions/parkFunctions';
 import FriendDogForm from '../components/FriendingDog';
 
@@ -41,6 +41,7 @@ const DogDetail = () => {
     fetchDog(id)
     // .then((res) => res.json())
     .then((data) => setDog(data));
+
   }, [id])
   
   const onClickingDelete = (dog) => {
@@ -62,6 +63,8 @@ const DogDetail = () => {
     navigate('/');
   }
  }
+ 
+
   
  
   if(!dog) return null;
@@ -70,6 +73,9 @@ const DogDetail = () => {
     let dogsFriends = dog.friendsArray.indexOf(dogFriends.id) !== -1;
     return dogsFriends;
   });
+  
+
+  console.log(dog);
   
   // const handleEditingDogInList = async (dog) => {
   //   await updateDog(dog);
@@ -85,10 +91,13 @@ const DogDetail = () => {
     } 
   }
 
-  
+  let pendingFriendsArray = [];
   const displayLikes = dog.dogLikes.join(" ");
   const dsiplayDislikes = dog.dogDislikes.join(" ");
   
+
+  
+
   
   //Styling
   const detailsPageStyle = {
@@ -124,9 +133,16 @@ const DogDetail = () => {
   let atTheParkStatus = null;
   let buttonText = null;
   const dogPotentialFriendsList = dogList.filter(dogs => !dog.friendsArray.includes(dogs.id));
+  
+  
+  // if(dog.pendingFriendsdogList.filter(dogs => dog.pendingFriends.includes(dogs.id));
+  if(dog.pendingFriends !== null){
+    pendingFriendsArray = dogList.filter((dogs) => dog.pendingFriends.includes(dogs.id));
+    console.log(pendingFriendsArray);
+  }
  
   if(friending){
-    friendForm = <FriendDogForm  dog={dog} dogList={dogPotentialFriendsList} />
+    friendForm = <FriendDogForm  dog={dog} dogList={dogPotentialFriendsList} pendingFriendsList={pendingFriendsArray}/>
   }
   if(dog.atThePark === true && ageError === null){
     buttonText = "leave the park";
@@ -171,8 +187,9 @@ const DogDetail = () => {
                   dogName={dog.dogName} />
                   ): null}
               </div>
-              <div>
-                
+              <div className="pending-friends">
+                {pendingFriendsArray ? pendingFriendsArray.map((dog) => <FriendedDog key={dog.id} dogName={dog.dogName} />
+                ): null}
               </div>
               <br/>
               
@@ -213,7 +230,7 @@ const DeleteModal = (props) => {
   const {handleClickingConfirm, dog} = props;
   
   return(
-    <div sx={{height: '20%', width: '50%', margin: 'auto', padding: '10px'}}>
+    <div sx={{height: '20%', width: '50%', margin: 'auto', padding: '10px', border: '2px solid black', position: 'fixed', background: 'rgba(200, 200, 200, 0.9)'}}>
       <button sx={{cursor: 'pointer'}} onClick={() => handleClickingConfirm(dog)} >Confirm deleting {dog.name}</button>
     </div>
   )

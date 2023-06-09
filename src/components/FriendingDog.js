@@ -8,30 +8,31 @@ function FriendDogForm(props) {
   const officialDogList = dogList.filter(dogs => pendingFriendsList.includes(dogs.id) === false);
   
   const [target, setTarget] = useState(null);
-  const [friendsArray, setFriendsArray] = useState([]);
-  const [pendingArray, setPendingArray] = useState([]);
+  const [friendsArray, setFriendsArray] = useState(dog.friendsArray);
+  const [pendingArray, setPendingArray] = useState(pendingFriendsList);
   
   const handleFriendChange = (event) => {
     const {value} = event.target;
     const newTarget = dogList.filter(dogs => dogs.id === value)[0];
     setTarget(newTarget)
     console.log(target, 'friend')
-    const newFriendsArray = dog.friendsArray.concat(value);
-    setFriendsArray(newFriendsArray);
+    // const newFriendsArray = dog.friendsArray.concat(value);
+    // setFriendsArray(newFriendsArray);
     return friendsArray;
   }
   
   const handleNewRequest = (event) => {
     const {value} = event.target;
     // const target = dogList.filter(dogs => dogs.id === value)[0];
-    console.log(target, 'pending');
+    console.log(pendingArray, 'pending');
     // if(target.pendingFrieds.includes(dog.id)){
     //   const newPendingArray = dog.pendingFriends;
     //   setPendingArray(newPendingArray);
     //   return pendingArray;
     // } else {
-      const newPendingArray = pendingArray.concat(target.id);
+      const newPendingArray = pendingArray.concat(value);
       setPendingArray(newPendingArray);
+      console.log(pendingArray);
       return pendingArray;
     }
 //}
