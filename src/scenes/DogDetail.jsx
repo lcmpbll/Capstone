@@ -171,6 +171,9 @@ const DogDetail = () => {
                   dogName={dog.dogName} />
                   ): null}
               </div>
+              <div>
+                
+              </div>
               <br/>
               
               <button onClick={() => (setFriending(!friending))}>{friending ? `Close Friend Form` : `Make Some Friends`}</button>

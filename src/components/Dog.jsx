@@ -71,6 +71,7 @@ Dog.propTypes = {
   atThePark: PropTypes.bool,
   ownerId: PropTypes.string,
   friendsArray: PropTypes.array,
+  pendinFriends: PropTypes.array,
   id: PropTypes.string,
   
   
