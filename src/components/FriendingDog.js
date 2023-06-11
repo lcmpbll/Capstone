@@ -7,43 +7,64 @@ function FriendDogForm(props) {
   
   const officialDogList = dogList.filter(dogs => pendingFriendsList.includes(dogs.id) === false);
   
-  const [target, setTarget] = useState(null);
-  const [friendsArray, setFriendsArray] = useState(dog.friendsArray);
-  const [pendingArray, setPendingArray] = useState(pendingFriendsList);
+  // const [target, setTarget] = useState(null);
+  const [friendsList, setFriendsList] = useState(dog.friendsArray);
+  const [pendingList, setPendingList] = useState(pendingFriendsList);
   
   const handleFriendChange = (event) => {
     const {value} = event.target;
-    const newTarget = dogList.filter(dogs => dogs.id === value)[0];
-    setTarget(newTarget)
-    console.log(target, 'friend')
-    // const newFriendsArray = dog.friendsArray.concat(value);
-    // setFriendsArray(newFriendsArray);
-    return friendsArray;
+    
+    // setTarget(value)
+    console.log(value.pendingFriends)
+    // if the  target dog already has the current dog in the pending array
+    if(value && value.pendingFriends.indexOf(dog.id) !== -1){
+      const newFriendsArray = dog.friendsArray.concat(value.id);
+      setFriendsList(newFriendsArray);
+      return newFriendsArray;
+      
+    } else {
+      setFriendsList(dog.friendsArray);
+      return friendsList;
+    }
   }
   
+  const updateTargetDog = async (event, selectedDog) => {
+    const {value} = event.target;
+    console.log(value, 'updog')
+    const newPendingArray = value.pendingFriends.filter((id) => id !== selectedDog.id);
+    const newFriendsArray = value.friendArray.concat(selectedDog.id);
+    const updatedTargetDog = {
+      ...value,
+      friendsArray: newFriendsArray,
+      pendingFriends: newPendingArray
+    };
+    await updateDog(updatedTargetDog);
+  }
   const handleNewRequest = (event) => {
     const {value} = event.target;
-    // const target = dogList.filter(dogs => dogs.id === value)[0];
-    console.log(pendingArray, 'pending');
-    // if(target.pendingFrieds.includes(dog.id)){
-    //   const newPendingArray = dog.pendingFriends;
-    //   setPendingArray(newPendingArray);
-    //   return pendingArray;
-    // } else {
-      const newPendingArray = pendingArray.concat(value);
-      setPendingArray(newPendingArray);
-      console.log(pendingArray);
-      return pendingArray;
+    const newTarget = dogList.find(dogs => dogs.id === value.id);
+    
+    if(value && value.pendingFriends.indexOf(dog.id) !== -1){
+      const newPendingArray = dog.pendingFriends;
+      setPendingList(newPendingArray);
+      return newPendingArray;
+    } else {
+      const newPendingArray = dog.pendingFriends.concat(value.id);
+      setPendingList(newPendingArray);
+      // console.log(pendingList);
+      return newPendingArray;
     }
-//}
+  }
   const handleFriendDogFormSubmission = async(event) => {
     event.preventDefault();
+    handleFriendChange(event);
+    handleNewRequest(event);
     const dogWithNewFriend = {
       ...dog,
-      friendsArray: handleFriendChange(event),
-      pendingFriends: handleNewRequest(event),
+      friendsArray: friendsList,
+      pendingFriends: pendingList,
     }
-    
+    await updateTargetDog(event, dog);
     await updateDog(dogWithNewFriend);
   }
   
@@ -59,7 +80,7 @@ function FriendDogForm(props) {
         <h2>Find Friends for {dog.dogName}:</h2>
         <select onChange={handleFriendChange} >
           <option value='none'>--Select a friend for your dog--</option>
-          {(officialDogList).filter(dogs => dogs.id !== props.dog.id).map((dogs) => <option key={dogs.id} value={dogs.id}>{dogs.dogName}</option>)}
+          {(officialDogList).filter(dogs => dogs.id !== props.dog.id).map((dogs) => <option key={dogs.id} value={dogs}>{dogs.dogName}</option>)}
         </select>
         <br/>
         <button type="submit" className='btn btn-default'>Submit</button> 
