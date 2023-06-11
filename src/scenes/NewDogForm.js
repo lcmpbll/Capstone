@@ -137,7 +137,7 @@ const  NewDogForm = (props) => {
   }
   
   const handleAddingNewDogToList = async (newDog) => {
-    // console.log(newDog);
+    
     await addDog(newDog)
      
     
