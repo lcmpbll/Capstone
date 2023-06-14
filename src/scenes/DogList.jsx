@@ -119,17 +119,7 @@ const DogList = (props, {match}) => {
   }
 
   
-  const sortButtonStyle = {
-    margin: '5px',
-    width: 'content',
-    // background: 'rgba(219, 219, 219)',
-    border: 'solid 2px #4986e8',
-    borderRadius: '8px',
-    shadow: '0',
-    cursor: 'pointer',
-    alignItems: 'center',
-    
-  }
+
   
   const linkStyle = {
     textDecoration: 'none',

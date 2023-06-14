@@ -25,6 +25,7 @@ export const createDogSchema = /* GraphQL */ `
       createdAt
       updatedAt
       friendsArray
+      pendingFriends
     }
   }
 `;
@@ -52,6 +53,7 @@ export const updateDogSchema = /* GraphQL */ `
       createdAt
       updatedAt
       friendsArray
+      pendingFriends
     }
   }
 `;
@@ -79,6 +81,7 @@ export const deleteDogSchema = /* GraphQL */ `
       createdAt
       updatedAt
       friendsArray
+      pendingFriends
     }
   }
 `;

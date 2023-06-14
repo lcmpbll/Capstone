@@ -23,6 +23,7 @@ const  NewDogForm = (props) => {
       setIsLoading(false);
     }   
   }, 3000)
+  
   const [dogLikesList, setDogLikesList] = useState({
     dogLikes: [], likesResponse: [],
   });
@@ -51,7 +52,7 @@ const  NewDogForm = (props) => {
   
   const handleDislikesListChange = (event) => {
     const { value, checked } = event.target;
-    const {dogDislikes } = dogDislikesList;
+    const { dogDislikes } = dogDislikesList;
     if(checked) {
       setDogDislikesList({
         dogDislikes: [...dogDislikes, value],
@@ -136,7 +137,7 @@ const  NewDogForm = (props) => {
   }
   
   const handleAddingNewDogToList = async (newDog) => {
-    // console.log(newDog);
+    
     await addDog(newDog)
      
     
@@ -156,6 +157,7 @@ const  NewDogForm = (props) => {
        atThePark: false,
        startTimeAtPark: null,
        friendsArray: [],
+       pendingFriends: [],
        dogDislikes: handleDislikesListChange(event),
        dogParks: 'Alberta Park',
        id: v4(),
