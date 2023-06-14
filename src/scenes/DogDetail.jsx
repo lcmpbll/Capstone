@@ -45,10 +45,9 @@ const DogDetail = () => {
   }, [id])
   
   const onClickingDelete = (dog) => {
-    console.log('click')
+   
     if(currentUser.id === dog.ownerId || currentUser.username === 'liam22campbell@gmail.com'){
       setAreYouSure(true);
-      console.log(areYouSure)
       if(areYouSure === true && sureResponse === true){
         deleteDog(dog);
       }
@@ -168,19 +167,19 @@ const DogDetail = () => {
         </div>
         <hr/>
         <div className='likes'>
-          <h2>Likes</h2>
+          <h3>Likes</h3>
           {displayLikes}
           <hr/>
         </div>
         <div className='dislikes'>
-          <h2>Dislikes</h2>
-          {dsiplayDislikes}
+          <h3>Dislikes</h3>
+          <p>{dsiplayDislikes}</p>
           <hr/>
         </div>
         {currentUser?.id === dog.ownerId || (dog.ownerId === null && currentUser?.username === 'liam22campbell@gmail.com') ? 
           <div className='owner_functions'>
             <div className='friends'>
-              <h2>Friends</h2>
+              <h3>Friends</h3>
               <div style={friendsListStyle}>
                 {displayedFriends ? displayedFriends.map((dog) => <FriendedDog
                   key={dog.dogId}
@@ -188,6 +187,7 @@ const DogDetail = () => {
                   ): null}
               </div>
               <div className="pending-friends">
+                <h3>Pending Friends</h3>
                 {pendingFriendsArray ? pendingFriendsArray.map((dog) => <FriendedDog key={dog.id} dogName={dog.dogName} />
                 ): null}
               </div>
