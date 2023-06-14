@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { updateDog } from '../functions/apihelper';
 
 function FriendDogForm(props) {
   const {dog, dogList, pendingFriendsList} = props;
 
-  useEffect(() => {
+  // useEffect(() => {
     
-  }, [dog])
+  // }, [dog])
+  
+  
   
   const officialDogList = dogList.filter(dogs => pendingFriendsList.includes(dogs.id) === false);
 
